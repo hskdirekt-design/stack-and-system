@@ -5,102 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stack & System | Workflows & AI</title>
     <style>
-        body {
-            background-color: #0f0f0f;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
-            text-align: center;
-        }
-        .container {
-            max-width: 400px;
-            width: 100%;
-        }
-        h1 {
-            font-size: 22px;
-            margin-bottom: 6px;
-            letter-spacing: -0.5px;
-        }
-        p {
-            color: #888;
-            font-size: 13px;
-            margin-bottom: 28px;
-        }
-        .section-title {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #555;
-            margin: 20px 0 10px 0;
-            text-align: left;
-            width: 100%;
-            padding-left: 4px;
-        }
-        .btn {
-            display: block;
-            background-color: #1a1a1a;
-            color: #ffffff;
-            text-decoration: none;
-            padding: 14px 18px;
-            border-radius: 8px;
-            font-weight: 500;
-            font-size: 14px;
-            margin-bottom: 10px;
-            border: 1px solid #333;
-            text-align: left;
-        }
-        .btn span {
-            display: block;
-            font-size: 11px;
-            color: #888;
-            font-weight: 400;
-            margin-top: 2px;
-        }
-        .footer {
-            margin-top: 35px;
-            font-size: 11px;
-            color: #444;
-        }
+        :root { --bg: #05070a; --card: rgba(22,28,40,0.6); --border: rgba(255,255,255,0.08); --accent: #6366f1; --text: #f8fafc; --muted: #94a3b8; --dim: #64748b; --ok: #10b981; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.5; min-height: 100vh; overflow-x: hidden; }
+        .orb { position: fixed; border-radius: 50%; filter: blur(80px); opacity: 0.3; pointer-events: none; }
+        .orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, #6366f1, transparent 70%); top: -10%; left: -10%; }
+        .orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, #a855f7, transparent 70%); top: 40%; right: -15%; }
+        .wrap { max-width: 480px; margin: 0 auto; padding: 40px 20px 60px; position: relative; z-index: 2; }
+        .profile { text-align: center; margin-bottom: 32px; animation: up 0.8s ease forwards; }
+        .profile img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin-bottom: 16px; border: 2px solid rgba(255,255,255,0.1); box-shadow: 0 8px 24px rgba(99,102,241,0.3); }
+        h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; background: linear-gradient(to right, #fff, #cbd5e1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .bio { color: var(--muted); font-size: 15px; margin: 8px auto 16px; max-width: 320px; }
+        .badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.12); color: #818cf8; font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 999px; border: 1px solid rgba(99,102,241,0.25); }
+        .badge::before { content: ''; width: 6px; height: 6px; background: var(--ok); border-radius: 50%; box-shadow: 0 0 8px var(--ok); animation: pulse 2s infinite; }
+        @keyframes pulse { 50% { opacity: 0.5; transform: scale(0.85); } }
+        .sec { display: flex; align-items: center; gap: 10px; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--dim); margin: 32px 0 14px; font-weight: 700; }
+        .sec::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, var(--border), transparent); }
+        .hero { background: linear-gradient(135deg, rgba(30,27,75,0.8), rgba(49,16,66,0.8)); border: 1px solid rgba(139,92,246,0.3); border-radius: 20px; padding: 24px; margin-bottom: 28px; backdrop-filter: blur(12px); }
+        .hero h2 { font-size: 19px; margin-bottom: 8px; }
+        .hero p { color: #cbd5e1; font-size: 14px; margin-bottom: 18px; }
+        .btns { display: flex; gap: 10px; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; flex: 1; background: #8b5cf6; color: #fff; padding: 12px 0; border-radius: 12px; font-weight: 600; font-size: 13px; text-decoration: none; border: none; cursor: pointer; transition: all 0.3s; box-shadow: 0 4px 16px rgba(139,92,246,0.3); }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(139,92,246,0.4); }
+        .btn-gh { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: var(--muted); box-shadow: none; flex: 0 0 auto; padding: 12px 16px; }
+        .btn-gh:hover { background: rgba(255,255,255,0.1); color: var(--text); }
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 18px 20px; margin-bottom: 14px; transition: all 0.4s; backdrop-filter: blur(12px); }
+        .card:hover { transform: translateY(-3px); border-color: rgba(99,102,241,0.3); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+        .card-head { display: flex; align-items: center; margin-bottom: 10px; }
+        .icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 14px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); font-size: 20px; }
+        .card h3 { font-size: 16px; font-weight: 700; }
+        .card p { color: var(--muted); font-size: 13.5px; margin: 8px 0 14px 54px; line-height: 1.5; }
+        .card .btn { margin-left: 54px; width: calc(100% - 54px); background: var(--accent); font-size: 12px; padding: 10px 0; }
+        .card .btn.alt { background: #334155; }
+        .faq { background: var(--card); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; overflow: hidden; backdrop-filter: blur(12px); }
+        .faq-q { width: 100%; padding: 16px 20px; background: none; border: none; color: var(--text); font-size: 14px; font-weight: 600; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-q:hover { color: #818cf8; }
+        .faq-i { font-size: 18px; transition: transform 0.3s; color: var(--dim); }
+        .faq.open .faq-i { transform: rotate(45deg); color: var(--accent); }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s, padding 0.35s; padding: 0 20px; }
+        .faq.open .faq-a { max-height: 300px; padding: 0 20px 16px; }
+        .faq-a p { color: var(--muted); font-size: 13.5px; line-height: 1.6; }
+        .faq-a a { color: #818cf8; text-decoration: none; font-weight: 600; }
+        footer { margin-top: 48px; text-align: center; }
+        footer .line { width: 40px; height: 2px; background: linear-gradient(to right, transparent, var(--dim), transparent); margin: 0 auto 20px; }
+        footer p { font-size: 12px; color: var(--dim); }
+        .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(100px); background: rgba(22,28,40,0.95); color: var(--text); padding: 12px 24px; border-radius: 12px; font-size: 13px; font-weight: 600; border: 1px solid var(--border); backdrop-filter: blur(12px); z-index: 100; opacity: 0; transition: all 0.4s; display: flex; align-items: center; gap: 8px; }
+        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+        @keyframes up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 480px) { .wrap { padding: 32px 16px 48px; } h1 { font-size: 24px; } .btns { flex-direction: column; } .card p, .card .btn { padding-left: 0; margin-left: 0; width: 100%; } }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>STACK & SYSTEM</h1>
-        <p>Automate your workflow. Zero fluff, zero budget.</p>
-        
-        <a href="#" class="btn">
-            📥 Free Gmail-to-Notion Blueprint
-            <span>Get the step-by-step setup guide</span>
-        </a>
-
-        <div class="section-title">Recommended Tech Stack</div>
-        
-        <a href="#" class="btn">
-            ⚡ Make.com (Workflow Automation)
-            <span>The core engine for zero-code systems</span>
-        </a>
-        <a href="#" class="btn">
-            📝 Notion (Database & Workspace)
-            <span>Where all your data lives</span>
-        </a>
-        
-        <div class="section-title">Connect</div>
-        <a href="https://instagram.com/stackandsystem" class="btn">
-            💬 Follow on Instagram
-            <span>Daily workflow tips and systems</span>
-        </a>
-
-        <div class="footer">
-            &copy; 2026 Stack & System. All rights reserved.
+    <div class="orb orb-1"></div><div class="orb orb-2"></div>
+    <div class="wrap">
+        <!-- LOGO: Replace src with your image URL -->
+        <div class="profile">
+            <img src="<a href='https://postimg.cc/Zv07s5qm' target='_blank'><img src='https://i.postimg.cc/Zv07s5qm/1785791263840.png' border='0' alt='1785791263840'></a>" alt="Stack & System">
+            <h1>STACK & SYSTEM</h1>
+            <p class="bio">Building zero-code automations, AI workflows, and digital operating systems.</p>
+            <span class="badge">Verified Tech Stack 2026</span>
         </div>
+
+        <div class="hero">
+            <h2>📥 Free Blueprint: Gmail to Notion</h2>
+            <p>Automate your inbox clutter and turn emails into actionable Notion database entries in under 5 minutes.</p>
+            <div class="btns">
+                <a href="gmail-to-notion-blueprint.html" class="btn">Download Free Blueprint ↓</a>
+                <button class="btn btn-gh" onclick="copy()">📋</button>
+            </div>
+        </div>
+
+        <div class="sec">Common Questions</div>
+        <div class="faq"><button class="faq-q" onclick="toggle(this)">Do I need to know how to code? <span class="faq-i">+</span></button><div class="faq-a"><p>Nope. Every tool here is zero-code. I built my entire business using <a href="https://www.make.com/en/register?pc=stackandsystem" target="_blank">Make.com</a> to connect apps visually — like Lego blocks.</p></div></div>
+        <div class="faq"><button class="faq-q" onclick="toggle(this)">How do I create AI voiceovers? <span class="faq-i">+</span></button><div class="faq-a"><p><a href="https://try.elevenlabs.io/9bgot6k6tgcs" target="_blank">ElevenLabs</a> is the best AI voice generator. Type your script, pick a voice, download studio-quality audio in seconds.</p></div></div>
+        <div class="faq"><button class="faq-q" onclick="toggle(this)">Best free form builder? <span class="faq-i">+</span></button><div class="faq-a"><p><a href="https://tally.cello.so/bKOHpwR6kGK" target="_blank">Tally.so</a>. It looks like Notion, works like a form, and feeds directly into your automations.</p></div></div>
+        <div class="faq"><button class="faq-q" onclick="toggle(this)">Landing page without a developer? <span class="faq-i">+</span></button><div class="faq-a"><p><a href="https://try.carrd.co/skw4pwl8" target="_blank">Carrd</a> lets you launch a beautiful one-page site in under an hour.</p></div></div>
+
+        <div class="sec">Core Automation Engine</div>
+        <div class="card"><div class="card-head"><span class="icon">⚡</span><h3>Make.com</h3></div><p>The visual platform I use to connect apps and build custom zero-code workflows without touching code.</p><a href="https://www.make.com/en/register?pc=stackandsystem" target="_blank" class="btn">Try Make Free →</a></div>
+
+        <div class="sec">AI & Content Production</div>
+        <div class="card"><div class="card-head"><span class="icon">🎙️</span><h3>ElevenLabs</h3></div><p>Industry-leading AI voice generator for voiceovers, automated content creation, and videos.</p><a href="https://try.elevenlabs.io/9bgot6k6tgcs" target="_blank" class="btn">Generate AI Voices →</a></div>
+
+        <div class="sec">Forms & Landing Pages</div>
+        <div class="card"><div class="card-head"><span class="icon">📋</span><h3>Tally.so</h3></div><p>The cleanest, Notion-style form builder for capturing leads and feeding data into your automation pipelines.</p><a href="https://tally.cello.so/bKOHpwR6kGK" target="_blank" class="btn">Build Free Forms →</a></div>
+        <div class="card"><div class="card-head"><span class="icon">🌐</span><h3>Carrd</h3></div><p>Simple, responsive one-page websites for launching your digital products and landing pages fast.</p><a href="https://try.carrd.co/skw4pwl8" target="_blank" class="btn">Start Building on Carrd →</a></div>
+
+        <div class="sec">Connect With Me</div>
+        <div class="card"><div class="card-head"><span class="icon">💬</span><h3>Instagram @stackandsystem</h3></div><p>Daily zero-code tutorials, workflow breakdowns, and step-by-step AI system guides.</p><a href="https://instagram.com/stackandsystem" target="_blank" class="btn alt">Follow on Instagram →</a></div>
+
+        <footer><div class="line"></div><p>© 2026 Stack & System. All rights reserved.</p></footer>
     </div>
+    <div class="toast" id="toast"><span style="color:var(--ok)">✓</span> <span id="tm">Link copied</span></div>
+    <script>
+        function toggle(btn){const item=btn.parentElement,open=item.classList.contains('open');document.querySelectorAll('.faq').forEach(i=>i.classList.remove('open'));if(!open)item.classList.add('open');}
+        function copy(){const url=window.location.href.replace('index.html','')+'gmail-to-notion-blueprint.html';if(navigator.clipboard){navigator.clipboard.writeText(url).then(()=>show('Link copied'));}else{const t=document.createElement('textarea');t.value=url;t.style.position='fixed';t.style.left='-9999px';document.body.appendChild(t);t.select();document.execCommand('copy');document.body.removeChild(t);show('Link copied');}}
+        function show(msg){const t=document.getElementById('toast'),m=document.getElementById('tm');m.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);}
+    </script>
 </body>
 </html>
+
 

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gmail → Notion Automation Blueprint — Stack & System</title>
+<meta name="description" content="Turn inbox clutter into an organized Notion database in under 5 minutes, using a free Make.com scenario.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="orb orb-1"></div><div class="orb orb-2"></div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../index.html" class="logo"><span class="mark">⚡</span>Stack & System</a>
+    <nav class="main-nav">
+      <a href="../index.html">Home</a>
+      <a href="../reviews/index.html">Reviews</a>
+      <a href="../best-tools.html">Best Tools</a>
+      <a href="index.html" class="active">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../reviews/index.html" class="nav-cta">Read reviews →</a>
+    </nav>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<section class="review-hero" style="padding-bottom:8px;">
+  <div class="wrap">
+    <span class="badge">Zero-Code · Make.com · 2026 Edition</span>
+    <h1 class="review-title" style="max-width:22ch; margin-top:14px;">Gmail → Notion Automation Blueprint</h1>
+    <p class="review-summary">Turn inbox clutter into an organized task database in under 5 minutes.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:16px;">
+  <div class="wrap">
+    <div class="hero-card" style="margin-bottom:8px;">
+      <h2>📋 What this blueprint covers</h2>
+      <p>By the end of this guide, every starred or labeled email in your Gmail will automatically create a new entry in a Notion database — sender, subject, body snippet, and a direct link back to the email.</p>
+    </div>
+
+    <article class="body-copy" style="max-width:none;">
+
+      <h2><span class="step-num">1</span>Prerequisites</h2>
+      <ul class="check">
+        <li>A Gmail account (personal or Google Workspace)</li>
+        <li>A Notion account (free tier works)</li>
+        <li>A free account on <a href="https://www.make.com/en/register?pc=stackandsystem" target="_blank" rel="sponsored noopener">Make.com</a></li>
+        <li>5 minutes of uninterrupted focus</li>
+      </ul>
+
+      <h2><span class="step-num">2</span>Set up your Notion database</h2>
+      <p>Before touching Make.com, create the destination for your emails.</p>
+      <h3 style="font-size:15.5px; font-weight:800; color:var(--text); margin:20px 0 8px;">2.1 Create the database</h3>
+      <ol style="margin-left:20px; margin-bottom:16px;">
+        <li>Open Notion and create a new page called <strong>"Email Inbox"</strong>.</li>
+        <li>Add an <strong>Inline Database</strong> (Table view).</li>
+        <li>Name the database <strong>"Captured Emails"</strong>.</li>
+      </ol>
+      <h3 style="font-size:15.5px; font-weight:800; color:var(--text); margin:20px 0 8px;">2.2 Configure these properties</h3>
+      <div class="block">Property Name      | Type       | Purpose
+-------------------|------------|----------------------------------
+Name               | Title      | Email subject line
+Sender             | Email      | From address
+Received           | Date       | Timestamp of the email
+Status             | Select     | New, Actioned, Archived
+Body Snippet       | Text       | First 200 chars of email body
+Gmail Link         | URL        | Direct link to open the email
+Label              | Multi-select| Gmail label (e.g., Urgent, Read)</div>
+      <div class="tip">
+        <span>💡</span>
+        <div><strong>Pro tip</strong> Add a <code>Priority</code> Select property with options <code>High / Medium / Low</code>. Use Make.com filters later to auto-tag emails from specific senders as High priority.</div>
+      </div>
+      <h3 style="font-size:15.5px; font-weight:800; color:var(--text); margin:20px 0 8px;">2.3 Share with Make.com</h3>
+      <ol style="margin-left:20px; margin-bottom:16px;">
+        <li>Click the <strong>⋯</strong> menu in the top-right of your database page.</li>
+        <li>Select <strong>Add connections</strong> → search for <strong>Make</strong> → click <strong>Confirm</strong>.</li>
+        <li>Copy the <strong>Database ID</strong> from the URL: <code>notion.so/workspace/[DATABASE-ID]?v=...</code></li>
+      </ol>
+
+      <h2><span class="step-num">3</span>Build the Make.com scenario</h2>
+      <h3 style="font-size:15.5px; font-weight:800; color:var(--text); margin:20px 0 8px;">3.1 Create a new scenario</h3>
+      <ol style="margin-left:20px; margin-bottom:16px;">
+        <li>Log into your <a href="https://www.make.com/en/register?pc=stackandsystem" target="_blank" rel="sponsored noopener">Make.com account</a> and click <strong>Create a new scenario</strong>.</li>
+        <li>Search for and select the <strong>Gmail</strong> module as your trigger.</li>
+        <li>Choose the trigger: <strong>Watch Emails</strong>.</li>
+      </ol>
+      <h3 style="font-size:15.5px; font-weight:800; color:var(--text); margin:20px 0 8px;">3.2 Connect your Gmail</h3>
+      <ol style="margin-left:20px; margin-bottom:16px;">
+        <li>Click <strong>Add</strong> to create a new connection.</li>
+        <li>Sign in with Google and authorize Make.com to access Gmail.</li>
+        <li>Set <strong>Folder</strong> to <code>INBOX</code> (or <code>STARRED</code> for starred emails only).</li>
+        <li>Set <strong>Filter type</strong> to <code>SEARCH</code>: <code>label:important -category:promotions -category:social</code></li>
+      </ol>
+      <div class="tip warn">
+        <span>⚠️</span>
+        <div><strong>Important</strong> On a Google Workspace account, your admin may need to whitelist Make.com in the Google Admin Console under <em>Security → API Controls → App Access Control</em>.</div>
+      </div>
+      <h3 style="font-size:15.5px; font-weight:800; color:var(--text); margin:20px 0 8px;">3.3 Add the Notion module</h3>
+      <ol style="margin-left:20px; margin-bottom:16px;">
+        <li>Click the <strong>+</strong> next to your Gmail module.</li>
+        <li>Search for <strong>Notion</strong> and select <strong>Create a Database Item</strong>.</li>
+        <li>Connect your Notion account (authorize via popup).</li>
+        <li>Select your <strong>Captured Emails</strong> database.</li>
+      </ol>
+      <h3 style="font-size:15.5px; font-weight:800; color:var(--text); margin:20px 0 8px;">3.4 Map the data fields</h3>
+      <div class="block">Notion Property  ←  Gmail Data
+-----------------------------------------------
+Name             ←  Subject
+Sender           ←  From
+Received         ←  Date
+Body Snippet     ←  Snippet (or Body for full text)
+Gmail Link       ←  https://mail.google.com/mail/u/0/#inbox/{Message ID}
+Label            ←  Label name(s)</div>
+      <div class="tip">
+        <span>🧠</span>
+        <div><strong>Smart mapping</strong> Set <code>Status</code> to <code>New</code> manually so every incoming email starts in your "New" queue. For <code>Body Snippet</code>, use <code>substring()</code> to cap it at 200 characters.</div>
+      </div>
+      <h3 style="font-size:15.5px; font-weight:800; color:var(--text); margin:20px 0 8px;">3.5 Set the schedule</h3>
+      <ol style="margin-left:20px; margin-bottom:16px;">
+        <li>Click the clock icon on your Gmail trigger.</li>
+        <li>Set <strong>Run scenario</strong> to <code>Every 15 minutes</code> (free tier) or <code>Every 5 minutes</code> (paid tier).</li>
+        <li>Toggle the scenario <strong>ON</strong>.</li>
+      </ol>
+
+      <h2><span class="step-num">4</span>Test your automation</h2>
+      <ol style="margin-left:20px; margin-bottom:16px;">
+        <li>Send yourself an email with the subject <code>Test: Blueprint Working</code>.</li>
+        <li>Click <strong>Run once</strong> in Make.com (top-right).</li>
+        <li>Check your Notion database — the email should appear within seconds.</li>
+        <li>If it fails, click the bubble with the red number for the exact error message.</li>
+      </ol>
+
+      <h2><span class="step-num">5</span>Troubleshooting</h2>
+      <ul style="margin-left:20px; margin-bottom:16px;">
+        <li><strong>"Notion database not found"</strong> → confirm you shared the database with the Make integration (step 2.3).</li>
+        <li><strong>Emails not triggering</strong> → your Gmail filter query may be too restrictive; try removing filters temporarily.</li>
+        <li><strong>Duplicate entries</strong> → add a <code>Message ID</code> text property in Notion and use Make's <strong>Search Database Items</strong> module to check for existing IDs first.</li>
+        <li><strong>Body is blank</strong> → some emails are image-only; use <code>Snippet</code> instead of <code>Body</code>.</li>
+      </ul>
+
+      <h2><span class="step-num">6</span>Level up your workflow stack</h2>
+      <div class="tools-box">
+        <h3 style="margin-top:0; font-size:15.5px; font-weight:800; color:var(--text);">🛠️ Recommended tools</h3>
+        <ul style="margin-left:20px;">
+          <li><strong>Capture custom submissions:</strong> Replace raw emails with structured lead forms using <a href="https://tally.cello.so/bKOHpwR6kGK" target="_blank" rel="sponsored noopener">Tally.so</a>.</li>
+          <li><strong>AI audio summaries:</strong> Convert urgent incoming emails into instant audio briefings using <a href="https://try.elevenlabs.io/9bgot6k6tgcs" target="_blank" rel="sponsored noopener">ElevenLabs</a>.</li>
+          <li><strong>Build a client portal:</strong> Host your blueprints and services on a fast, lightweight site built with <a href="https://try.carrd.co/skw4pwl8" target="_blank" rel="sponsored noopener">Carrd</a>.</li>
+        </ul>
+      </div>
+
+      <h2><span class="step-num">7</span>Maintenance</h2>
+      <ul class="check">
+        <li>Review your Notion "New" queue weekly so it doesn't become a graveyard.</li>
+        <li>Check Make.com execution logs monthly for failed runs.</li>
+        <li>Update your Gmail filter query if you start getting too much noise.</li>
+        <li>Back up your scenario via <strong>⋯ → Export Blueprint</strong> in Make.com.</li>
+      </ul>
+    </article>
+
+    <div class="cta-band">
+      <div>
+        <div style="font-weight:800; font-size:16px;">Run this on Make.com</div>
+        <span class="cta-price">Free tier covers this entire blueprint</span>
+      </div>
+      <a href="https://www.make.com/en/register?pc=stackandsystem" target="_blank" rel="sponsored noopener" class="btn primary">Start free →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-bottom">
+      <span>Generated by <strong>Stack & System</strong> — <a href="https://instagram.com/stackandsystem" target="_blank" rel="noopener">@stackandsystem</a></span>
+      <span><a href="../about.html#disclosure">Affiliate disclosure</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/script.js"></script>
+</body>
+</html>

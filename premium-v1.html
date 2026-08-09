@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stack & System — Premium v1</title>
+  <meta name="description" content="Premium AI-driven automations, workflows, and business systems — test experience (premium-v1)." />
+  <meta name='robots' content='noindex'>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Three.js for a lightweight 3D hero effect -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+
+  <style>
+    :root{
+      --bg:#0b1020; --card: rgba(255,255,255,0.03); --muted: #9aa6bf; --accent:#7c5cff; --text:#e6eef8; --glass: rgba(255,255,255,0.04);
+      --radius:18px; --container:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;background:linear-gradient(180deg,#071024 0%, #061225 50%, #04121a 100%);color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+
+    /* Layout */
+    .site{max-width:var(--container);margin:32px auto;padding:20px;}
+    header{display:flex;align-items:center;gap:18px;padding:18px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.04)}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#5dd3c6);display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-family:Playfair Display,serif;box-shadow:0 8px 40px rgba(124,92,255,0.14)}
+    .brand h1{font-size:18px;margin:0;letter-spacing:-0.5px}
+    .nav{margin-left:auto;display:flex;gap:12px;align-items:center}
+    .nav a{color:var(--muted);text-decoration:none;font-size:14px;padding:8px 12px;border-radius:10px}
+    .nav a.cta{background:linear-gradient(90deg,var(--accent),#5dd3c6);color:#041127;font-weight:700}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;margin-top:22px;align-items:center}
+    .hero-card{padding:28px;border-radius:var(--radius);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);backdrop-filter:blur(8px)}
+    .eyebrow{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1.6px;font-weight:700}
+    .hero h2{font-family:Playfair Display,serif;font-size:34px;margin:8px 0 12px}
+    .lead{color:var(--muted);font-size:15px;line-height:1.6}
+    .actions{display:flex;gap:12px;margin-top:18px}
+    .btn{padding:12px 16px;border-radius:12px;font-weight:700;border:none;cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg,var(--accent),#5dd3c6);color:#041127}
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+
+    /* 3D canvas container */
+    .hero-canvas{width:100%;height:420px;border-radius:18px;overflow:hidden;background:linear-gradient(180deg, rgba(124,92,255,0.06), rgba(13,20,40,0.3));display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.03)}
+
+    /* Sections */
+    .cols{display:grid;grid-template-columns:1fr 360px;gap:22px;margin-top:22px}
+    .card{padding:18px;border-radius:14px;background:var(--card);border:1px solid rgba(255,255,255,0.03)}
+    h3{margin:0 0 10px;font-size:18px}
+    p.lead-muted{color:var(--muted);font-size:14px}
+
+    .feature-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px}
+    .feature{display:flex;gap:12px;align-items:flex-start}
+    .feature .icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#fff1 0%, #fff0 100%);display:flex;align-items:center;justify-content:center;font-size:20px}
+
+    /* Pricing / Monetisation */
+    .pricing{display:flex;gap:12px;margin-top:12px}
+    .price{flex:1;padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04)}
+    .price h4{margin:0 0 6px}
+    .muted{color:var(--muted)}
+
+    footer{margin-top:32px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* Responsive */
+    @media (max-width:980px){.hero{grid-template-columns:1fr;}.hero-canvas{height:300px}.cols{grid-template-columns:1fr}.nav{display:none}}
+    @media (max-width:520px){.site{padding:16px;margin:8px auto}.hero-canvas{height:220px}.hero h2{font-size:22px}}
+  </style>
+</head>
+<body>
+  <div class="site">
+    <header>
+      <div class="brand">
+        <div class="logo">S&S</div>
+        <div>
+          <h1>Stack & System</h1>
+          <div style="font-size:12px;color:var(--muted)">Premium AI Automations</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="#features">Features</a>
+        <a href="#tools">AI Tools</a>
+        <a href="#pricing">Pricing</a>
+        <a class="cta" href="#get-started">Get Started</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-card">
+          <div class="eyebrow">Beta • premium-v1</div>
+          <h2>Design robust AI workflows and monetise your automations</h2>
+          <p class="lead">A cohesive platform approach: build, test, and ship AI-powered automations that integrate with your tools, scale across teams, and convert into predictable revenue.</p>
+
+          <div class="actions">
+            <button class="btn primary" onclick="scrollTo('#get-started')">Start free trial</button>
+            <button class="btn ghost" onclick="copyLink()">Copy demo link</button>
+          </div>
+
+          <div style="margin-top:18px;display:flex;gap:10px;align-items:center;">
+            <div style="background:linear-gradient(90deg,#0ea5a4, #7c5cff);padding:6px 8px;border-radius:8px;font-weight:700;color:#041127;font-size:13px">Verified Stack</div>
+            <div style="color:var(--muted);font-size:13px">Trusted by zero-code teams & creators</div>
+          </div>
+
+          <div id="get-started" style="margin-top:18px;font-size:13px;color:var(--muted)">This is a standalone test experience — nothing here overwrites the live site.</div>
+        </div>
+
+        <div class="hero-canvas" id="hero-canvas">
+          <!-- three.js canvas will be injected here -->
+          <canvas id="c"></canvas>
+        </div>
+      </section>
+
+      <section class="cols">
+        <div>
+          <div class="card" id="features">
+            <h3>What you get</h3>
+            <p class="lead-muted">A complete toolkit for building AI-powered automations, from connectors and templates to monetisation-ready flows.</p>
+
+            <div class="feature-list">
+              <div class="feature"><div class="icon">⚡</div><div><strong>Visual Flow Builder</strong><div class="muted">Drag & drop logic, transform data, orchestrate tools.</div></div></div>
+              <div class="feature"><div class="icon">🔗</div><div><strong>Connectors</strong><div class="muted">Prebuilt integrations: Gmail, Notion, Slack, Stripe, Webhooks.</div></div></div>
+              <div class="feature"><div class="icon">🤖</div><div><strong>AI Actions</strong><div class="muted">LLM prompts, generative media, transcription, and voice synthesis.</div></div></div>
+              <div class="feature"><div class="icon">📈</div><div><strong>Monetisation</strong><div class="muted">Paywalls, affiliate links, usage billing and templates to sell automations.</div></div></div>
+            </div>
+
+            <div style="margin-top:14px;display:flex;gap:10px">
+              <button class="btn primary" onclick="scrollTo('#pricing')">Explore pricing</button>
+              <button class="btn ghost" onclick="openTemplate()">Open demo template</button>
+            </div>
+          </div>
+
+          <div class="card" style="margin-top:12px;">
+            <h3 id="tools">AI & resources</h3>
+            <p class="lead-muted">Curated tools and recommended vendors to keep costs low and output high.</p>
+            <ul style="color:var(--muted);margin-top:10px;line-height:1.9">
+              <li><strong>LLMs:</strong> OpenAI-compatible models + prompt library</li>
+              <li><strong>Voice:</strong> ElevenLabs-style TTS connectors</li>
+              <li><strong>Media:</strong> Image generation, upscaling, & video render queuing</li>
+              <li><strong>Forms:</strong> Notion & Tally integrations for lead capture</li>
+            </ul>
+          </div>
+        </div>
+
+        <aside>
+          <div class="card">
+            <h3>Production-ready features</h3>
+            <p class="muted">Security, observability, and team access controls built-in for professional deployment.</p>
+            <ul style="color:var(--muted);margin-top:10px;line-height:1.8">
+              <li>Role-based access & audit logs</li>
+              <li>Secrets management & encrypted connectors</li>
+              <li>Usage dashboards & billing integrations</li>
+            </ul>
+          </div>
+
+          <div class="card" style="margin-top:12px">
+            <h3 id="pricing">Monetisation</h3>
+            <p class="muted">Simple pricing & affiliate-friendly flows so you can monetize templates and automations.</p>
+            <div class="pricing">
+              <div class="price">
+                <h4>Free</h4>
+                <div class="muted">0 — great to prototype</div>
+                <div style="margin-top:8px;font-weight:700">Basic connectors • Community</div>
+              </div>
+              <div class="price">
+                <h4>Pro</h4>
+                <div class="muted">$29 / month</div>
+                <div style="margin-top:8px;font-weight:700">Unlimited templates • Monetisation</div>
+              </div>
+            </div>
+            <div style="margin-top:12px"><button class="btn primary" onclick="alert('Demo: purchase flow disabled in preview')">Upgrade to Pro</button></div>
+          </div>
+        </aside>
+      </section>
+
+      <section style="display:flex;gap:12px;margin-top:18px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+        <div style="flex:1;min-width:260px" class="card">
+          <h3>Ready-made Blueprints</h3>
+          <p class="muted">Prebuilt pipelines you can import: Gmail → Notion, Form → CRM, Leads → Follow-up sequences.</p>
+          <div style="margin-top:8px"><button class="btn ghost" onclick="openBlueprint()">Browse blueprints</button></div>
+        </div>
+
+        <div style="min-width:280px" class="card">
+          <h3>Affiliate & Partners</h3>
+          <p class="muted">Earn by sharing templates or connecting services — clear attribution & referral tracking.</p>
+          <div style="margin-top:8px"><button class="btn primary" onclick="alert('Partner signup is demo-only')">Become a partner</button></div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+        <div>
+          <strong>Stack & System</strong>
+          <div class="muted">Premium test build — premium-v1</div>
+        </div>
+        <div style="text-align:right;font-size:13px;color:var(--muted)">
+          <div>© 2026 Stack & System</div>
+          <div><a href="mailto:hello@stackandsystem.com" style="color:var(--muted);text-decoration:none">Contact</a></div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Utility helpers
+    function scrollTo(sel){document.querySelector(sel).scrollIntoView({behavior:'smooth',block:'start'})}
+    function copyLink(){const url=window.location.href.replace('premium-v1.html','')+'premium-v1.html';navigator.clipboard?.writeText(url).then(()=>alert('Link copied'))}
+    function openTemplate(){alert('Opening demo template — preview only')}
+    function openBlueprint(){alert('Browse blueprints — preview only')}
+
+    // Lightweight three.js hero animation: rotating organic mesh + parallax
+    (function(){
+      try{
+        const canvas = document.getElementById('c');
+        const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(40,1,0.1,1000);
+        camera.position.z = 3.5;
+
+        // resize
+        function resize(){
+          const parent = document.getElementById('hero-canvas');
+          const w = parent.clientWidth, h = parent.clientHeight;
+          renderer.setSize(w,h);
+          camera.aspect = w/h; camera.updateProjectionMatrix();
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        // light
+        const amb = new THREE.AmbientLight(0xffffff,0.6); scene.add(amb);
+        const dir = new THREE.DirectionalLight(0xffffff,0.6); dir.position.set(5,5,5); scene.add(dir);
+
+        // geometry: icosahedron with smooth modifier look
+        const geom = new THREE.IcosahedronGeometry(1.1, 4);
+        const mat = new THREE.MeshStandardMaterial({color:0xffffff, metalness:0.15, roughness:0.35, envMapIntensity:0.8, transparent:true, opacity:0.98});
+        const mesh = new THREE.Mesh(geom, mat);
+        scene.add(mesh);
+
+        // subtle vertex displacement for organic motion
+        const verts = geom.attributes.position;
+        const basePositions = new Float32Array(verts.array.length); basePositions.set(verts.array);
+
+        let t=0;
+        function animate(){
+          t += 0.005;
+          for(let i=0;i<verts.count;i++){
+            const ix = i*3;
+            const bx = basePositions[ix], by = basePositions[ix+1], bz = basePositions[ix+2];
+            const n = 0.02 * Math.sin(bx*4 + t*2 + i) + 0.02 * Math.cos(by*3 + t*1.5 + i*0.5);
+            verts.array[ix] = bx + n;
+            verts.array[ix+1] = by + n;
+            verts.array[ix+2] = bz + n;
+          }
+          verts.needsUpdate = true;
+
+          mesh.rotation.y += 0.005;
+          mesh.rotation.x += 0.0035;
+          renderer.render(scene, camera);
+          requestAnimationFrame(animate);
+        }
+        animate();
+
+        // parallax on mouse
+        document.getElementById('hero-canvas').addEventListener('pointermove', (e)=>{
+          const r = e.currentTarget.getBoundingClientRect();
+          const x = (e.clientX - r.left)/r.width - 0.5;
+          const y = (e.clientY - r.top)/r.height - 0.5;
+          mesh.rotation.y = x * 0.8;
+          mesh.rotation.x = -y * 0.8;
+        });
+
+      }catch(err){console.warn('3D preview failed', err)}
+    })();
+  </script>
+</body>
+</html>

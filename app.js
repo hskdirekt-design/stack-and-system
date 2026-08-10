@@ -1,50 +1,205 @@
+(() => {
+  "use strict";
 
-const year = document.querySelectorAll("[data-year]");
-year.forEach(el => el.textContent = new Date().getFullYear());
+  const $ = (selector, parent = document) =>
+    parent.querySelector(selector);
 
-const user = JSON.parse(localStorage.getItem("ss_user") || "null");
-document.querySelectorAll("[data-user]").forEach(el => {
-  el.textContent = user ? `Hi, ${user.name}` : "Sign in";
-});
+  const $$ = (selector, parent = document) =>
+    [...parent.querySelectorAll(selector)];
 
-document.querySelectorAll("[data-newsletter]").forEach(form => {
-  form.addEventListener("submit", e => {
-    e.preventDefault();
-    const email = form.querySelector("input[type=email]")?.value.trim();
-    if (!email) return;
-    const list = JSON.parse(localStorage.getItem("ss_newsletter") || "[]");
-    if (!list.includes(email)) list.push(email);
-    localStorage.setItem("ss_newsletter", JSON.stringify(list));
-    const status = form.querySelector("[data-form-status]");
-    if (status) status.textContent = "You're on the preview list. Connect a real email provider before launch to send campaigns.";
-    form.reset();
-  });
-});
+  /* ------------------------------
+     MOBILE NAVIGATION
+  ------------------------------ */
 
-const signin = document.querySelector("[data-signin]");
-if (signin) {
-  signin.addEventListener("submit", e => {
-    e.preventDefault();
-    const name = signin.querySelector("[name=name]").value.trim();
-    const email = signin.querySelector("[name=email]").value.trim();
-    if (!name || !email) return;
-    localStorage.setItem("ss_user", JSON.stringify({name, email}));
-    const status = signin.querySelector("[data-form-status]");
-    status.textContent = `Signed in for this preview as ${name}. This is demo authentication; production login needs a real auth provider/backend.`;
-  });
-}
+  const mobileToggle = $(".mobile-toggle");
+  const navLinks = $(".nav-links");
 
-const visual = document.querySelector(".hero-visual");
-if (visual) {
-  const nodes = visual.querySelectorAll(".node");
-  visual.addEventListener("pointermove", e => {
-    const r = visual.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width - .5;
-    const y = (e.clientY - r.top) / r.height - .5;
-    nodes.forEach((node, i) => {
-      const depth = (i % 3 + 1) * 7;
-      node.style.transform = `translate(calc(-50% + ${x * depth}px), calc(-50% + ${y * depth}px))`;
+  if (mobileToggle && navLinks) {
+    mobileToggle.addEventListener("click", () => {
+      const open = navLinks.classList.toggle("is-open");
+
+      mobileToggle.setAttribute(
+        "aria-expanded",
+        String(open)
+      );
+    });
+
+    $$(".nav-links a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("is-open");
+        mobileToggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+      });
+    });
+  }
+
+  /* ------------------------------
+     3D SYSTEM PARALLAX
+  ------------------------------ */
+
+  const visual = $(".hero-visual");
+
+  if (visual && window.matchMedia("(pointer:fine)").matches) {
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+
+    visual.addEventListener("pointermove", (event) => {
+      const rect = visual.getBoundingClientRect();
+
+      const x =
+        (event.clientX - rect.left) / rect.width - 0.5;
+
+      const y =
+        (event.clientY - rect.top) / rect.height - 0.5;
+
+      targetX = x * 16;
+      targetY = y * -16;
+    });
+
+    visual.addEventListener("pointerleave", () => {
+      targetX = 0;
+      targetY = 0;
+    });
+
+    const animate = () => {
+      currentX +=
+        (targetX - currentX) * 0.07;
+
+      currentY +=
+        (targetY - currentY) * 0.07;
+
+      visual.style.transform =
+        `rotateY(${currentX}deg) rotateX(${currentY}deg)`;
+
+      requestAnimationFrame(animate);
+    };
+
+    animate();
+  }
+
+  /* ------------------------------
+     SCROLL REVEAL
+  ------------------------------ */
+
+  const revealItems = $$(
+    ".card, .tool-preview, .feature-panel, .signal-panel, .flow a"
+  );
+
+  if ("IntersectionObserver" in window) {
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            entry.target.classList.add(
+              "is-visible"
+            );
+
+            observer.unobserve(
+              entry.target
+            );
+          });
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+    revealItems.forEach((item) => {
+      item.classList.add("reveal");
+      observer.observe(item);
+    });
+  } else {
+    revealItems.forEach((item) => {
+      item.classList.add("is-visible");
+    });
+  }
+
+  /* ------------------------------
+     CURRENT YEAR
+  ------------------------------ */
+
+  const year = $("#current-year");
+
+  if (year) {
+    year.textContent =
+      new Date().getFullYear();
+  }
+
+  /* ------------------------------
+     NEWSLETTER FORM
+  ------------------------------ */
+
+  const newsletterForms =
+    $$("form[data-newsletter]");
+
+  newsletterForms.forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const email =
+        $("input[type='email']", form);
+
+      const message =
+        $(".form-message", form);
+
+      if (!email || !message) return;
+
+      const value =
+        email.value.trim();
+
+      if (!value) {
+        message.textContent =
+          "Enter your email address.";
+
+        return;
+      }
+
+      if (!email.checkValidity()) {
+        message.textContent =
+          "Enter a valid email address.";
+
+        return;
+      }
+
+      /*
+       * The front-end is intentionally ready
+       * for a real email provider.
+       *
+       * We do NOT pretend the email was stored
+       * until a real backend/provider is connected.
+       */
+
+      message.textContent =
+        "You're ready to join The Signal.";
+
+      form.classList.add(
+        "submitted"
+      );
+
+      email.value = "";
     });
   });
-  visual.addEventListener("pointerleave", () => nodes.forEach(node => node.style.transform = "translate(-50%,-50%)"));
-}
+
+  /* ------------------------------
+     EXTERNAL LINKS
+  ------------------------------ */
+
+  $$("a[data-external]").forEach((link) => {
+    link.setAttribute(
+      "target",
+      "_blank"
+    );
+
+    link.setAttribute(
+      "rel",
+      "noopener noreferrer"
+    );
+  });
+
+})();

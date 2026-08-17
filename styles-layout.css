@@ -2125,3 +2125,352 @@ footer {
   }
 
 }
+
+/* =========================================================
+   FINAL INTERACTIVE SYSTEM FIXES
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   MOBILE MENU
+   --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+  .site-header {
+    z-index: 1000;
+  }
+
+  .nav {
+    position: relative;
+  }
+
+  .nav-actions {
+    position: relative;
+    z-index: 1100;
+  }
+
+  .mobile-toggle {
+    display: inline-flex !important;
+
+    position: relative;
+
+    width: 42px;
+    height: 38px;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 12px;
+
+    background:
+      rgba(10,17,25,.95);
+
+    color: #fff;
+
+    cursor: pointer;
+
+    z-index: 1101;
+  }
+
+  .mobile-toggle::before {
+    content: "☰";
+
+    display: block;
+
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .mobile-toggle[aria-expanded="true"]::before {
+    content: "×";
+
+    font-size: 25px;
+  }
+
+  .nav-links {
+    display: none !important;
+
+    position: absolute !important;
+
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+
+    width: 100%;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 4px;
+
+    padding: 12px;
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    border-radius: 18px;
+
+    background:
+      rgba(5,7,10,.98);
+
+    box-shadow:
+      0 25px 70px rgba(0,0,0,.65),
+      0 0 40px rgba(25,191,255,.08);
+
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+
+    z-index: 1099;
+  }
+
+  .nav-links.is-open {
+    display: flex !important;
+  }
+
+  .nav-links a {
+    display: block;
+
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border-radius: 11px;
+
+    color: #dbe4ed;
+
+    font-size: 14px;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.is-current {
+    color: #fff;
+
+    background:
+      rgba(25,191,255,.09);
+  }
+
+}
+
+
+/* ---------------------------------------------------------
+   THE MACHINE
+   --------------------------------------------------------- */
+
+.flow {
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, minmax(0,1fr));
+
+  gap: 10px;
+}
+
+
+.flow-step {
+  min-height: 125px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 18px 12px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.09);
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.055),
+      rgba(255,255,255,.012)
+    );
+
+  color: #fff;
+
+  text-decoration: none;
+
+  text-align: center;
+
+  transform:
+    translateY(0)
+    translateZ(0);
+
+  transition:
+    transform .3s cubic-bezier(.2,.8,.2,1),
+    border-color .25s ease,
+    box-shadow .3s ease,
+    background .3s ease;
+}
+
+
+.flow-step:hover {
+
+  transform:
+    translateY(-8px)
+    translateZ(20px);
+
+  border-color:
+    rgba(25,191,255,.5);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(25,191,255,.11),
+      rgba(255,255,255,.025)
+    );
+
+  box-shadow:
+    0 20px 55px rgba(0,0,0,.4),
+    0 0 35px rgba(25,191,255,.1);
+}
+
+
+.flow-step:focus-visible {
+
+  outline:
+    2px solid
+    var(--blue);
+
+  outline-offset: 4px;
+}
+
+
+.flow-step > span {
+
+  margin-bottom: 8px;
+
+  color:
+    var(--blue);
+
+  font-size: 10px;
+
+  font-weight: 900;
+
+  letter-spacing: .15em;
+}
+
+
+.flow-step strong {
+
+  font-size: 15px;
+
+  letter-spacing: -.02em;
+}
+
+
+.flow-step small {
+
+  margin-top: 5px;
+
+  color:
+    var(--muted);
+
+  font-size: 10px;
+
+  line-height: 1.3;
+}
+
+
+/* ---------------------------------------------------------
+   FLOW RESPONSIVE
+   --------------------------------------------------------- */
+
+@media (max-width: 800px) {
+
+  .flow {
+
+    grid-template-columns:
+      repeat(2, minmax(0,1fr));
+
+  }
+
+}
+
+
+@media (max-width: 500px) {
+
+  .flow {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+  .flow-step {
+
+    min-height: 95px;
+
+  }
+
+}
+
+
+/* ---------------------------------------------------------
+   SCROLL VISUALS — MAKE THEM MORE VISIBLE
+   --------------------------------------------------------- */
+
+.section-visual {
+
+  opacity: .28;
+
+  filter:
+    saturate(1.15);
+
+}
+
+
+.section-visual.is-active {
+
+  opacity: .48;
+
+}
+
+
+.visual-grid {
+
+  opacity: .75;
+
+}
+
+
+.visual-orb {
+
+  filter:
+    blur(8px);
+
+}
+
+
+.visual-core {
+
+  box-shadow:
+    0 0 40px rgba(25,191,255,.22),
+    0 0 100px rgba(8,119,255,.12);
+
+}
+
+
+/* ---------------------------------------------------------
+   DON'T ALLOW VISUAL LAYERS TO BLOCK CLICKS
+   --------------------------------------------------------- */
+
+.section-visual,
+.visual-grid,
+.visual-orb,
+.visual-ring,
+.visual-core {
+
+  pointer-events: none !important;
+
+}

@@ -12,98 +12,170 @@
      MOBILE NAVIGATION
      ========================================================= */
 
-  const mobileToggle = $(".mobile-toggle");
-  const navLinks = $(".nav-links");
+  const setupMobileNavigation = () => {
 
-  if (mobileToggle && navLinks) {
+    const button = $(".mobile-toggle");
+    const navigation = $(".nav-links");
 
-    mobileToggle.addEventListener("click", () => {
+    if (!button || !navigation) return;
 
-      const open =
-        navLinks.classList.toggle("is-open");
 
-      mobileToggle.setAttribute(
+    const closeMenu = () => {
+
+      navigation.classList.remove("is-open");
+
+      button.setAttribute(
         "aria-expanded",
-        String(open)
+        "false"
       );
 
-    });
+    };
 
 
-    $$(".nav-links a").forEach((link) => {
+    const toggleMenu = (event) => {
 
-      link.addEventListener("click", () => {
+      event.preventDefault();
+      event.stopPropagation();
 
-        navLinks.classList.remove("is-open");
+      const isOpen =
+        navigation.classList.contains("is-open");
 
-        mobileToggle.setAttribute(
+
+      if (isOpen) {
+
+        closeMenu();
+
+      } else {
+
+        navigation.classList.add("is-open");
+
+        button.setAttribute(
           "aria-expanded",
-          "false"
+          "true"
         );
 
-      });
+      }
 
-    });
+    };
 
-  }
+
+    /*
+     * Use pointerdown as well as click.
+     * This makes the menu reliable on desktop testing,
+     * mobile browsers and touch devices.
+     */
+
+    button.addEventListener(
+      "pointerdown",
+      (event) => {
+
+        event.preventDefault();
+
+      }
+    );
+
+
+    button.addEventListener(
+      "click",
+      toggleMenu
+    );
+
+
+    $$(".nav-links a").forEach(
+      (link) => {
+
+        link.addEventListener(
+          "click",
+          closeMenu
+        );
+
+      }
+    );
+
+
+    document.addEventListener(
+      "click",
+      (event) => {
+
+        if (
+          !navigation.classList.contains("is-open")
+        ) return;
+
+
+        if (
+          navigation.contains(event.target) ||
+          button.contains(event.target)
+        ) return;
+
+
+        closeMenu();
+
+      }
+    );
+
+
+    window.addEventListener(
+      "resize",
+      () => {
+
+        if (
+          window.innerWidth > 900
+        ) {
+
+          closeMenu();
+
+        }
+
+      }
+    );
+
+  };
+
+
+  setupMobileNavigation();
 
 
   /* =========================================================
-     3D SYSTEM
+     3D SYSTEM NODES
      ========================================================= */
 
   const visual = $(".hero-visual");
 
+
   if (visual) {
 
-    /*
-     * The original HTML uses:
-     *
-     * .node
-     * .node-1
-     * .node-2
-     *
-     * while the original CSS expected:
-     *
-     * .system-node
-     * .node-idea
-     * .node-ai
-     *
-     * Normalise the existing HTML instead of changing index.html.
-     */
-
-    const nodeMap = [
+    const nodes = [
       {
         selector: ".node-1",
-        label: "01",
+        number: "01",
         title: "IDEA",
         description: "Find an opportunity",
         href: "solutions.html"
       },
       {
         selector: ".node-2",
-        label: "02",
+        number: "02",
         title: "AI",
         description: "Choose the right tools",
         href: "ai.html"
       },
       {
         selector: ".node-3",
-        label: "03",
+        number: "03",
         title: "AUTOMATION",
         description: "Connect the workflow",
         href: "automation.html"
       },
       {
         selector: ".node-4",
-        label: "04",
+        number: "04",
         title: "PRODUCT",
         description: "Build something useful",
         href: "products.html"
       },
       {
         selector: ".node-5",
-        label: "05",
+        number: "05",
         title: "OUTCOME",
         description: "Measure the result",
         href: "money.html"
@@ -111,81 +183,83 @@
     ];
 
 
-    nodeMap.forEach((item, index) => {
+    nodes.forEach(
+      (item, index) => {
 
-      const node = $(item.selector, visual);
+        const original =
+          $(item.selector, visual);
 
-      if (!node) return;
-
-
-      node.classList.add(
-        "system-node",
-        `system-node-${index + 1}`
-      );
+        if (!original) return;
 
 
-      /*
-       * Turn every 3D node into a real hyperlink.
-       */
+        let node;
 
-      let link;
 
-      if (node.tagName.toLowerCase() === "a") {
+        if (
+          original.tagName.toLowerCase() === "a"
+        ) {
 
-        link = node;
+          node = original;
 
-      } else {
+        } else {
 
-        link = document.createElement("a");
+          node =
+            document.createElement("a");
 
-        link.href = item.href;
+          node.href =
+            item.href;
 
-        link.className =
-          node.className;
+          node.className =
+            original.className;
 
-        link.innerHTML =
-          node.innerHTML;
+          original.replaceWith(node);
 
-        node.replaceWith(link);
+        }
+
+
+        node.classList.add(
+          "system-node",
+          `system-node-${index + 1}`
+        );
+
+
+        node.setAttribute(
+          "aria-label",
+          `${item.number} ${item.title}: ${item.description}`
+        );
+
+
+        node.innerHTML = `
+          <span class="node-number">
+            ${item.number}
+          </span>
+
+          <strong>
+            ${item.title}
+          </strong>
+
+          <small>
+            ${item.description}
+          </small>
+        `;
 
       }
+    );
 
 
-      link.setAttribute(
-        "aria-label",
-        `${item.label} ${item.title}: ${item.description}`
-      );
-
-
-      link.innerHTML = `
-        <span class="node-number">
-          ${item.label}
-        </span>
-
-        <strong>
-          ${item.title}
-        </strong>
-
-        <small>
-          ${item.description}
-        </small>
-      `;
-
-    });
-
-
-    /*
-     * Remove the second floating brand identity.
-     * Turn the centre into a system engine instead.
-     */
+    /* ---------------------------------------------------------
+       SYSTEM CORE
+       --------------------------------------------------------- */
 
     const core =
       $(".system-core", visual);
+
 
     if (core) {
 
       core.innerHTML = `
         <div class="core-inner">
+
           <span class="core-label">
             SYSTEM ENGINE
           </span>
@@ -197,24 +271,20 @@
           <span class="core-status">
             ONLINE
           </span>
+
         </div>
       `;
-
-      core.setAttribute(
-        "aria-label",
-        "Stack and System AI system engine"
-      );
 
     }
 
 
-    /*
-     * Add additional orbital layers.
-     * This is generated through JavaScript so index.html
-     * does not need to change.
-     */
+    /* ---------------------------------------------------------
+       EXTRA 3D ORBITS
+       --------------------------------------------------------- */
 
-    if (!$(".system-glow", visual)) {
+    if (
+      !$(".system-glow", visual)
+    ) {
 
       const glow =
         document.createElement("div");
@@ -227,7 +297,9 @@
     }
 
 
-    if (!$(".orbit-two", visual)) {
+    if (
+      !$(".orbit-two", visual)
+    ) {
 
       const orbit =
         document.createElement("div");
@@ -235,12 +307,16 @@
       orbit.className =
         "system-orbit orbit-two";
 
-      visual.appendChild(orbit);
+      visual.appendChild(
+        orbit
+      );
 
     }
 
 
-    if (!$(".orbit-three", visual)) {
+    if (
+      !$(".orbit-three", visual)
+    ) {
 
       const orbit =
         document.createElement("div");
@@ -248,16 +324,20 @@
       orbit.className =
         "system-orbit orbit-three";
 
-      visual.appendChild(orbit);
+      visual.appendChild(
+        orbit
+      );
 
     }
 
 
-    /*
-     * Add subtle particles.
-     */
+    /* ---------------------------------------------------------
+       PARTICLES
+       --------------------------------------------------------- */
 
-    if (!$(".system-particles", visual)) {
+    if (
+      !$(".system-particles", visual)
+    ) {
 
       const particles =
         document.createElement("div");
@@ -265,36 +345,47 @@
       particles.className =
         "system-particles";
 
-      for (let i = 0; i < 28; i++) {
+
+      for (
+        let i = 0;
+        i < 32;
+        i++
+      ) {
 
         const particle =
           document.createElement("span");
+
 
         particle.style.setProperty(
           "--particle-x",
           `${Math.random() * 100}%`
         );
 
+
         particle.style.setProperty(
           "--particle-y",
           `${Math.random() * 100}%`
         );
+
 
         particle.style.setProperty(
           "--particle-delay",
           `${Math.random() * -8}s`
         );
 
+
         particle.style.setProperty(
           "--particle-size",
           `${1 + Math.random() * 2.5}px`
         );
+
 
         particles.appendChild(
           particle
         );
 
       }
+
 
       visual.appendChild(
         particles
@@ -303,9 +394,9 @@
     }
 
 
-    /*
-     * Mouse / pointer depth.
-     */
+    /* ---------------------------------------------------------
+       POINTER PARALLAX
+       --------------------------------------------------------- */
 
     if (
       window.matchMedia(
@@ -327,18 +418,30 @@
           const rect =
             visual.getBoundingClientRect();
 
+
           const x =
-            (event.clientX - rect.left) /
-              rect.width -
+            (
+              event.clientX -
+              rect.left
+            ) /
+            rect.width -
             0.5;
+
 
           const y =
-            (event.clientY - rect.top) /
-              rect.height -
+            (
+              event.clientY -
+              rect.top
+            ) /
+            rect.height -
             0.5;
 
-          targetX = x * 12;
-          targetY = y * -10;
+
+          targetX =
+            x * 12;
+
+          targetY =
+            y * -10;
 
         }
       );
@@ -359,12 +462,17 @@
         () => {
 
           currentX +=
-            (targetX - currentX) *
-            0.06;
+            (
+              targetX -
+              currentX
+            ) * .06;
+
 
           currentY +=
-            (targetY - currentY) *
-            0.06;
+            (
+              targetY -
+              currentY
+            ) * .06;
 
 
           visual.style.transform =
@@ -389,13 +497,105 @@
 
 
   /* =========================================================
-     SCROLL REVEAL
+     THE MACHINE
+     ========================================================= */
+
+  const machine =
+    $(".flow");
+
+
+  if (machine) {
+
+    const machineSteps = [
+      {
+        number: "01",
+        title: "Discover",
+        description: "Find the opportunity.",
+        href: "solutions.html"
+      },
+      {
+        number: "02",
+        title: "Stack",
+        description: "Choose the tools.",
+        href: "stacks.html"
+      },
+      {
+        number: "03",
+        title: "Automate",
+        description: "Connect the workflow.",
+        href: "automation.html"
+      },
+      {
+        number: "04",
+        title: "Deliver",
+        description: "Create the outcome.",
+        href: "systems.html"
+      },
+      {
+        number: "05",
+        title: "Measure",
+        description: "Track what works.",
+        href: "money.html"
+      }
+    ];
+
+
+    const existingSteps =
+      $$(":scope > div", machine);
+
+
+    existingSteps.forEach(
+      (step, index) => {
+
+        const data =
+          machineSteps[index];
+
+        if (!data) return;
+
+
+        const link =
+          document.createElement("a");
+
+
+        link.href =
+          data.href;
+
+
+        link.className =
+          "flow-step";
+
+
+        link.innerHTML = `
+          <span>
+            ${data.number}
+          </span>
+
+          <strong>
+            ${data.title}
+          </strong>
+
+          <small>
+            ${data.description}
+          </small>
+        `;
+
+
+        step.replaceWith(
+          link
+        );
+
+      }
+    );
+
+  }
+
+
+  /* =========================================================
+     SCROLL REVEALS
      ========================================================= */
 
   const revealItems =
-    $$(
-      ".card, .tool-preview, .feature-panel, .signal-panel, .flow a"
-    );
+    $$(".card, .tool-preview, .feature-panel, .signal-panel, .flow-step");
 
 
   if (
@@ -428,7 +628,7 @@
 
         },
         {
-          threshold: 0.12
+          threshold: .12
         }
       );
 
@@ -463,7 +663,7 @@
 
 
   /* =========================================================
-     SCROLL VISUAL SYSTEM
+     SCROLL VISUALS
      ========================================================= */
 
   const sections =
@@ -481,39 +681,40 @@
       ) return;
 
 
-      const visual =
+      const sectionVisual =
         document.createElement("div");
 
-      visual.className =
+
+      sectionVisual.className =
         "section-visual";
 
 
-      visual.innerHTML = `
+      sectionVisual.innerHTML = `
         <div class="visual-grid"></div>
 
         <div class="visual-orb orb-a"></div>
+
         <div class="visual-orb orb-b"></div>
 
         <div class="visual-ring ring-a"></div>
+
         <div class="visual-ring ring-b"></div>
 
         <div class="visual-core">
-          <span>${String(index).padStart(2, "0")}</span>
+          <span>
+            ${String(index).padStart(2, "0")}
+          </span>
         </div>
       `;
 
 
       section.prepend(
-        visual
+        sectionVisual
       );
 
     }
   );
 
-
-  /*
-   * Highlight visual layers as they enter the viewport.
-   */
 
   const visualSections =
     $$(".section-visual");
@@ -540,16 +741,16 @@
 
         },
         {
-          threshold: 0.15
+          threshold: .15
         }
       );
 
 
     visualSections.forEach(
-      (visual) => {
+      (item) => {
 
         visualObserver.observe(
-          visual
+          item
         );
 
       }
@@ -576,103 +777,7 @@
 
 
   /* =========================================================
-     NEWSLETTER
-     ========================================================= */
-
-  const newsletterForms =
-    $$("form[data-newsletter]");
-
-
-  newsletterForms.forEach(
-    (form) => {
-
-      form.addEventListener(
-        "submit",
-        (event) => {
-
-          event.preventDefault();
-
-
-          const email =
-            $("input[type='email']", form);
-
-          const message =
-            $(".form-message", form);
-
-
-          if (
-            !email ||
-            !message
-          ) return;
-
-
-          const value =
-            email.value.trim();
-
-
-          if (!value) {
-
-            message.textContent =
-              "Enter your email address.";
-
-            return;
-
-          }
-
-
-          if (
-            !email.checkValidity()
-          ) {
-
-            message.textContent =
-              "Enter a valid email address.";
-
-            return;
-
-          }
-
-
-          message.textContent =
-            "You're ready to join The Signal.";
-
-          form.classList.add(
-            "submitted"
-          );
-
-          email.value = "";
-
-        }
-      );
-
-    }
-  );
-
-
-  /* =========================================================
-     EXTERNAL LINKS
-     ========================================================= */
-
-  $$(
-    "a[data-external]"
-  ).forEach(
-    (link) => {
-
-      link.setAttribute(
-        "target",
-        "_blank"
-      );
-
-      link.setAttribute(
-        "rel",
-        "noopener noreferrer"
-      );
-
-    }
-  );
-
-
-  /* =========================================================
-     ACTIVE NAVIGATION
+     ACTIVE NAV
      ========================================================= */
 
   const currentPage =
@@ -685,12 +790,9 @@
   $$(".nav-links a").forEach(
     (link) => {
 
-      const href =
-        link.getAttribute("href");
-
-
       if (
-        href === currentPage
+        link.getAttribute("href") ===
+        currentPage
       ) {
 
         link.classList.add(

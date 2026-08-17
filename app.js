@@ -9,26 +9,56 @@
 
 
   /* =========================================================
-     MOBILE NAVIGATION
+     NAVIGATION
      ========================================================= */
 
-  const setupMobileNavigation = () => {
+  const setupNavigation = () => {
 
-    const button = $(".mobile-toggle");
     const navigation = $(".nav-links");
+    const menuButton = $(".mobile-toggle");
 
-    if (!button || !navigation) return;
+    if (!navigation) return;
+
+
+    /* Add Blog without changing index.html */
+
+    if (!navigation.querySelector('a[href="blog.html"]')) {
+
+      const blogLink = document.createElement("a");
+
+      blogLink.href = "blog.html";
+      blogLink.textContent = "Blog";
+
+      navigation.prepend(blogLink);
+    }
+
+
+    if (!menuButton) return;
+
+
+    const openMenu = () => {
+
+      navigation.classList.add("is-open");
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        "true"
+      );
+
+      menuButton.classList.add("is-active");
+    };
 
 
     const closeMenu = () => {
 
       navigation.classList.remove("is-open");
 
-      button.setAttribute(
+      menuButton.setAttribute(
         "aria-expanded",
         "false"
       );
 
+      menuButton.classList.remove("is-active");
     };
 
 
@@ -37,106 +67,60 @@
       event.preventDefault();
       event.stopPropagation();
 
-      const isOpen =
-        navigation.classList.contains("is-open");
-
-
-      if (isOpen) {
-
+      if (navigation.classList.contains("is-open")) {
         closeMenu();
-
       } else {
-
-        navigation.classList.add("is-open");
-
-        button.setAttribute(
-          "aria-expanded",
-          "true"
-        );
-
+        openMenu();
       }
-
     };
 
 
-    /*
-     * Use pointerdown as well as click.
-     * This makes the menu reliable on desktop testing,
-     * mobile browsers and touch devices.
-     */
-
-    button.addEventListener(
-      "pointerdown",
-      (event) => {
-
-        event.preventDefault();
-
-      }
-    );
+    menuButton.onclick = toggleMenu;
 
 
-    button.addEventListener(
-      "click",
-      toggleMenu
-    );
+    navigation.addEventListener("click", (event) => {
 
-
-    $$(".nav-links a").forEach(
-      (link) => {
-
-        link.addEventListener(
-          "click",
-          closeMenu
-        );
-
-      }
-    );
-
-
-    document.addEventListener(
-      "click",
-      (event) => {
-
-        if (
-          !navigation.classList.contains("is-open")
-        ) return;
-
-
-        if (
-          navigation.contains(event.target) ||
-          button.contains(event.target)
-        ) return;
-
-
+      if (event.target.closest("a")) {
         closeMenu();
-
       }
-    );
+
+    });
 
 
-    window.addEventListener(
-      "resize",
-      () => {
+    document.addEventListener("click", (event) => {
 
-        if (
-          window.innerWidth > 900
-        ) {
-
-          closeMenu();
-
-        }
-
+      if (!navigation.classList.contains("is-open")) {
+        return;
       }
-    );
+
+      if (
+        navigation.contains(event.target) ||
+        menuButton.contains(event.target)
+      ) {
+        return;
+      }
+
+      closeMenu();
+
+    });
+
+
+    window.addEventListener("resize", () => {
+
+      if (window.innerWidth > 900) {
+        closeMenu();
+      }
+
+    });
 
   };
 
 
-  setupMobileNavigation();
+  setupNavigation();
 
 
   /* =========================================================
-     3D SYSTEM NODES
+     3D SYSTEM
      ========================================================= */
 
   const visual = $(".hero-visual");
@@ -145,6 +129,7 @@
   if (visual) {
 
     const nodes = [
+
       {
         selector: ".node-1",
         number: "01",
@@ -152,6 +137,7 @@
         description: "Find an opportunity",
         href: "solutions.html"
       },
+
       {
         selector: ".node-2",
         number: "02",
@@ -159,6 +145,7 @@
         description: "Choose the right tools",
         href: "ai.html"
       },
+
       {
         selector: ".node-3",
         number: "03",
@@ -166,6 +153,7 @@
         description: "Connect the workflow",
         href: "automation.html"
       },
+
       {
         selector: ".node-4",
         number: "04",
@@ -173,6 +161,7 @@
         description: "Build something useful",
         href: "products.html"
       },
+
       {
         selector: ".node-5",
         number: "05",
@@ -180,79 +169,73 @@
         description: "Measure the result",
         href: "money.html"
       }
+
     ];
 
 
-    nodes.forEach(
-      (item, index) => {
+    nodes.forEach((item, index) => {
 
-        const original =
-          $(item.selector, visual);
+      const original = $(item.selector, visual);
 
-        if (!original) return;
+      if (!original) return;
 
 
-        let node;
+      let node;
 
 
-        if (
-          original.tagName.toLowerCase() === "a"
-        ) {
+      if (
+        original.tagName.toLowerCase() === "a"
+      ) {
 
-          node = original;
+        node = original;
 
-        } else {
+      } else {
 
-          node =
-            document.createElement("a");
+        node = document.createElement("a");
 
-          node.href =
-            item.href;
+        node.href = item.href;
 
-          node.className =
-            original.className;
+        node.className = original.className;
 
-          original.replaceWith(node);
-
-        }
-
-
-        node.classList.add(
-          "system-node",
-          `system-node-${index + 1}`
-        );
-
-
-        node.setAttribute(
-          "aria-label",
-          `${item.number} ${item.title}: ${item.description}`
-        );
-
-
-        node.innerHTML = `
-          <span class="node-number">
-            ${item.number}
-          </span>
-
-          <strong>
-            ${item.title}
-          </strong>
-
-          <small>
-            ${item.description}
-          </small>
-        `;
+        original.replaceWith(node);
 
       }
-    );
 
 
-    /* ---------------------------------------------------------
+      node.classList.add(
+        "system-node",
+        `system-node-${index + 1}`
+      );
+
+
+      node.setAttribute(
+        "aria-label",
+        `${item.number} ${item.title}: ${item.description}`
+      );
+
+
+      node.innerHTML = `
+        <span class="node-number">
+          ${item.number}
+        </span>
+
+        <strong>
+          ${item.title}
+        </strong>
+
+        <small>
+          ${item.description}
+        </small>
+      `;
+
+    });
+
+
+    /* =======================================================
        SYSTEM CORE
-       --------------------------------------------------------- */
+       ======================================================= */
 
-    const core =
-      $(".system-core", visual);
+    const core = $(".system-core", visual);
 
 
     if (core) {
@@ -275,69 +258,58 @@
         </div>
       `;
 
+      core.setAttribute(
+        "aria-label",
+        "Stack and System AI system engine"
+      );
+
     }
 
 
-    /* ---------------------------------------------------------
-       EXTRA 3D ORBITS
-       --------------------------------------------------------- */
+    /* =======================================================
+       EXTRA ORBITS
+       ======================================================= */
 
-    if (
-      !$(".system-glow", visual)
-    ) {
+    if (!$(".system-glow", visual)) {
 
-      const glow =
-        document.createElement("div");
+      const glow = document.createElement("div");
 
-      glow.className =
-        "system-glow";
+      glow.className = "system-glow";
 
       visual.prepend(glow);
 
     }
 
 
-    if (
-      !$(".orbit-two", visual)
-    ) {
+    if (!$(".orbit-two", visual)) {
 
-      const orbit =
-        document.createElement("div");
+      const orbit = document.createElement("div");
 
       orbit.className =
         "system-orbit orbit-two";
 
-      visual.appendChild(
-        orbit
-      );
+      visual.appendChild(orbit);
 
     }
 
 
-    if (
-      !$(".orbit-three", visual)
-    ) {
+    if (!$(".orbit-three", visual)) {
 
-      const orbit =
-        document.createElement("div");
+      const orbit = document.createElement("div");
 
       orbit.className =
         "system-orbit orbit-three";
 
-      visual.appendChild(
-        orbit
-      );
+      visual.appendChild(orbit);
 
     }
 
 
-    /* ---------------------------------------------------------
+    /* =======================================================
        PARTICLES
-       --------------------------------------------------------- */
+       ======================================================= */
 
-    if (
-      !$(".system-particles", visual)
-    ) {
+    if (!$(".system-particles", visual)) {
 
       const particles =
         document.createElement("div");
@@ -346,11 +318,7 @@
         "system-particles";
 
 
-      for (
-        let i = 0;
-        i < 32;
-        i++
-      ) {
+      for (let i = 0; i < 32; i++) {
 
         const particle =
           document.createElement("span");
@@ -380,28 +348,22 @@
         );
 
 
-        particles.appendChild(
-          particle
-        );
+        particles.appendChild(particle);
 
       }
 
 
-      visual.appendChild(
-        particles
-      );
+      visual.appendChild(particles);
 
     }
 
 
-    /* ---------------------------------------------------------
+    /* =======================================================
        POINTER PARALLAX
-       --------------------------------------------------------- */
+       ======================================================= */
 
     if (
-      window.matchMedia(
-        "(pointer:fine)"
-      ).matches
+      window.matchMedia("(pointer:fine)").matches
     ) {
 
       let targetX = 0;
@@ -437,11 +399,8 @@
             0.5;
 
 
-          targetX =
-            x * 12;
-
-          targetY =
-            y * -10;
+          targetX = x * 12;
+          targetY = y * -10;
 
         }
       );
@@ -458,35 +417,25 @@
       );
 
 
-      const animate =
-        () => {
+      const animate = () => {
 
-          currentX +=
-            (
-              targetX -
-              currentX
-            ) * .06;
+        currentX +=
+          (targetX - currentX) * 0.06;
 
-
-          currentY +=
-            (
-              targetY -
-              currentY
-            ) * .06;
+        currentY +=
+          (targetY - currentY) * 0.06;
 
 
-          visual.style.transform =
-            `
-              rotateY(${currentX}deg)
-              rotateX(${currentY}deg)
-            `;
+        visual.style.transform =
+          `
+            rotateY(${currentX}deg)
+            rotateX(${currentY}deg)
+          `;
 
 
-          requestAnimationFrame(
-            animate
-          );
+        requestAnimationFrame(animate);
 
-        };
+      };
 
 
       animate();
@@ -500,43 +449,48 @@
      THE MACHINE
      ========================================================= */
 
-  const machine =
-    $(".flow");
+  const machine = $(".flow");
 
 
   if (machine) {
 
     const machineSteps = [
+
       {
         number: "01",
         title: "Discover",
         description: "Find the opportunity.",
         href: "solutions.html"
       },
+
       {
         number: "02",
         title: "Stack",
         description: "Choose the tools.",
         href: "stacks.html"
       },
+
       {
         number: "03",
         title: "Automate",
         description: "Connect the workflow.",
         href: "automation.html"
       },
+
       {
         number: "04",
         title: "Deliver",
         description: "Create the outcome.",
         href: "systems.html"
       },
+
       {
         number: "05",
         title: "Measure",
         description: "Track what works.",
         href: "money.html"
       }
+
     ];
 
 
@@ -544,48 +498,42 @@
       $$(":scope > div", machine);
 
 
-    existingSteps.forEach(
-      (step, index) => {
+    existingSteps.forEach((step, index) => {
 
-        const data =
-          machineSteps[index];
+      const data =
+        machineSteps[index];
 
-        if (!data) return;
-
-
-        const link =
-          document.createElement("a");
+      if (!data) return;
 
 
-        link.href =
-          data.href;
+      const link =
+        document.createElement("a");
 
 
-        link.className =
-          "flow-step";
+      link.href = data.href;
+
+      link.className =
+        "flow-step";
 
 
-        link.innerHTML = `
-          <span>
-            ${data.number}
-          </span>
+      link.innerHTML = `
+        <span>
+          ${data.number}
+        </span>
 
-          <strong>
-            ${data.title}
-          </strong>
+        <strong>
+          ${data.title}
+        </strong>
 
-          <small>
-            ${data.description}
-          </small>
-        `;
+        <small>
+          ${data.description}
+        </small>
+      `;
 
 
-        step.replaceWith(
-          link
-        );
+      step.replaceWith(link);
 
-      }
-    );
+    });
 
   }
 
@@ -595,7 +543,9 @@
      ========================================================= */
 
   const revealItems =
-    $$(".card, .tool-preview, .feature-panel, .signal-panel, .flow-step");
+    $$(
+      ".card, .tool-preview, .feature-panel, .signal-panel, .flow-step"
+    );
 
 
   if (
@@ -606,58 +556,48 @@
       new IntersectionObserver(
         (entries) => {
 
-          entries.forEach(
-            (entry) => {
+          entries.forEach((entry) => {
 
-              if (
-                !entry.isIntersecting
-              ) return;
-
-
-              entry.target.classList.add(
-                "is-visible"
-              );
-
-
-              observer.unobserve(
-                entry.target
-              );
-
+            if (!entry.isIntersecting) {
+              return;
             }
-          );
+
+
+            entry.target.classList.add(
+              "is-visible"
+            );
+
+
+            observer.unobserve(
+              entry.target
+            );
+
+          });
 
         },
         {
-          threshold: .12
+          threshold: 0.12
         }
       );
 
 
-    revealItems.forEach(
-      (item) => {
+    revealItems.forEach((item) => {
 
-        item.classList.add(
-          "reveal"
-        );
+      item.classList.add("reveal");
 
-        observer.observe(
-          item
-        );
+      observer.observe(item);
 
-      }
-    );
+    });
 
   } else {
 
-    revealItems.forEach(
-      (item) => {
+    revealItems.forEach((item) => {
 
-        item.classList.add(
-          "is-visible"
-        );
+      item.classList.add(
+        "is-visible"
+      );
 
-      }
-    );
+    });
 
   }
 
@@ -670,50 +610,48 @@
     $$(".section");
 
 
-  sections.forEach(
-    (section, index) => {
+  sections.forEach((section, index) => {
 
-      if (
-        index === 0 ||
-        section.querySelector(
-          ".section-visual"
-        )
-      ) return;
-
-
-      const sectionVisual =
-        document.createElement("div");
-
-
-      sectionVisual.className =
-        "section-visual";
-
-
-      sectionVisual.innerHTML = `
-        <div class="visual-grid"></div>
-
-        <div class="visual-orb orb-a"></div>
-
-        <div class="visual-orb orb-b"></div>
-
-        <div class="visual-ring ring-a"></div>
-
-        <div class="visual-ring ring-b"></div>
-
-        <div class="visual-core">
-          <span>
-            ${String(index).padStart(2, "0")}
-          </span>
-        </div>
-      `;
-
-
-      section.prepend(
-        sectionVisual
-      );
-
+    if (
+      index === 0 ||
+      section.querySelector(".section-visual")
+    ) {
+      return;
     }
-  );
+
+
+    const sectionVisual =
+      document.createElement("div");
+
+
+    sectionVisual.className =
+      "section-visual";
+
+
+    sectionVisual.innerHTML = `
+      <div class="visual-grid"></div>
+
+      <div class="visual-orb orb-a"></div>
+
+      <div class="visual-orb orb-b"></div>
+
+      <div class="visual-ring ring-a"></div>
+
+      <div class="visual-ring ring-b"></div>
+
+      <div class="visual-core">
+        <span>
+          ${String(index).padStart(2, "0")}
+        </span>
+      </div>
+    `;
+
+
+    section.prepend(
+      sectionVisual
+    );
+
+  });
 
 
   const visualSections =
@@ -728,33 +666,27 @@
       new IntersectionObserver(
         (entries) => {
 
-          entries.forEach(
-            (entry) => {
+          entries.forEach((entry) => {
 
-              entry.target.classList.toggle(
-                "is-active",
-                entry.isIntersecting
-              );
+            entry.target.classList.toggle(
+              "is-active",
+              entry.isIntersecting
+            );
 
-            }
-          );
+          });
 
         },
         {
-          threshold: .15
+          threshold: 0.15
         }
       );
 
 
-    visualSections.forEach(
-      (item) => {
+    visualSections.forEach((item) => {
 
-        visualObserver.observe(
-          item
-        );
+      visualObserver.observe(item);
 
-      }
-    );
+    });
 
   }
 
@@ -777,7 +709,7 @@
 
 
   /* =========================================================
-     ACTIVE NAV
+     ACTIVE NAVIGATION
      ========================================================= */
 
   const currentPage =
@@ -787,21 +719,102 @@
     "index.html";
 
 
-  $$(".nav-links a").forEach(
-    (link) => {
+  $$(".nav-links a").forEach((link) => {
 
-      if (
-        link.getAttribute("href") ===
-        currentPage
-      ) {
+    if (
+      link.getAttribute("href") ===
+      currentPage
+    ) {
 
-        link.classList.add(
-          "is-current"
-        );
-
-      }
+      link.classList.add(
+        "is-current"
+      );
 
     }
-  );
+
+  });
+
+
+  /* =========================================================
+     EXTERNAL LINKS
+     ========================================================= */
+
+  $$("a[data-external]").forEach((link) => {
+
+    link.setAttribute(
+      "target",
+      "_blank"
+    );
+
+    link.setAttribute(
+      "rel",
+      "noopener noreferrer"
+    );
+
+  });
+
+
+  /* =========================================================
+     NEWSLETTER FORMS
+     ========================================================= */
+
+  $$("form[data-newsletter]").forEach((form) => {
+
+    form.addEventListener(
+      "submit",
+      (event) => {
+
+        event.preventDefault();
+
+
+        const email =
+          $("input[type='email']", form);
+
+        const message =
+          $(".form-message", form);
+
+
+        if (!email || !message) {
+          return;
+        }
+
+
+        const value =
+          email.value.trim();
+
+
+        if (!value) {
+
+          message.textContent =
+            "Enter your email address.";
+
+          return;
+
+        }
+
+
+        if (!email.checkValidity()) {
+
+          message.textContent =
+            "Enter a valid email address.";
+
+          return;
+
+        }
+
+
+        message.textContent =
+          "You're ready to join The Signal.";
+
+        form.classList.add(
+          "submitted"
+        );
+
+        email.value = "";
+
+      }
+    );
+
+  });
 
 })();

@@ -1430,3 +1430,698 @@ footer {
   }
 
 }
+/* =========================================================
+   STACK & SYSTEM — VISUAL SYSTEM UPGRADE
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   NAVIGATION
+   --------------------------------------------------------- */
+
+.nav-links a {
+  position: relative;
+  transition:
+    color .2s ease,
+    opacity .2s ease;
+}
+
+/*
+ * No preview panels, tooltips or dropdowns on hover.
+ * Navigation remains simple and predictable.
+ */
+
+.nav-links a::before,
+.nav-links a::after {
+  display: none !important;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+.nav-links a.is-current {
+  color: var(--blue);
+}
+
+
+/* ---------------------------------------------------------
+   CENTRE SYSTEM ENGINE
+   --------------------------------------------------------- */
+
+.system-core {
+  cursor: default;
+
+  text-align: center;
+
+  overflow: visible;
+
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease;
+}
+
+.system-core:hover {
+  box-shadow:
+    0 0 45px rgba(25,191,255,.4),
+    0 0 120px rgba(8,119,255,.2),
+    inset 15px 15px 35px rgba(255,255,255,.12),
+    inset -20px -20px 35px rgba(0,0,0,.35);
+}
+
+.core-inner {
+  position: relative;
+  z-index: 5;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  width: 100%;
+  height: 100%;
+}
+
+.core-label {
+  color: rgba(255,255,255,.7);
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: .2em;
+}
+
+.core-inner strong {
+  color: #fff;
+
+  font-size: 38px;
+  line-height: 1;
+
+  letter-spacing: -.05em;
+
+  text-shadow:
+    0 0 20px rgba(255,255,255,.4);
+}
+
+.core-status {
+  color: rgba(255,255,255,.58);
+
+  font-size: 7px;
+  font-weight: 800;
+
+  letter-spacing: .22em;
+}
+
+
+/* ---------------------------------------------------------
+   REAL 3D NODES
+   --------------------------------------------------------- */
+
+.hero-visual .system-node {
+  display: flex;
+
+  color: inherit;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transform-style: preserve-3d;
+
+  transition:
+    transform .35s cubic-bezier(.2,.8,.2,1),
+    border-color .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
+}
+
+.hero-visual .system-node:hover {
+  transform:
+    translateY(-8px)
+    translateZ(35px)
+    scale(1.04);
+
+  border-color:
+    rgba(72,209,255,.9);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(19,38,53,.97),
+      rgba(5,12,19,.97)
+    );
+
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.55),
+    0 0 35px rgba(25,191,255,.18);
+}
+
+.hero-visual .system-node:focus-visible {
+  outline:
+    2px solid var(--blue);
+
+  outline-offset: 5px;
+}
+
+.hero-visual .system-node strong {
+  color: #fff;
+
+  font-size: 13px;
+}
+
+.hero-visual .system-node small {
+  display: block;
+
+  color: #8191a2;
+
+  font-size: 9px;
+}
+
+
+/* Correct the positions for the actual index.html classes */
+
+.hero-visual .node-1 {
+  left: 50%;
+  top: 3%;
+
+  transform:
+    translateX(-50%)
+    translateZ(30px);
+}
+
+.hero-visual .node-2 {
+  right: 1%;
+  top: 26%;
+
+  transform:
+    translateZ(20px);
+}
+
+.hero-visual .node-3 {
+  right: 0;
+  bottom: 12%;
+
+  transform:
+    translateZ(10px);
+}
+
+.hero-visual .node-4 {
+  left: 50%;
+  bottom: 0;
+
+  transform:
+    translateX(-50%)
+    translateZ(30px);
+}
+
+.hero-visual .node-5 {
+  left: 1%;
+  top: 26%;
+
+  transform:
+    translateZ(20px);
+}
+
+
+/* ---------------------------------------------------------
+   CONNECTOR LINES
+   --------------------------------------------------------- */
+
+.hero-visual .connector {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 210px;
+  height: 1px;
+
+  transform-origin: left center;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(25,191,255,.6),
+      rgba(25,191,255,.04)
+    );
+
+  box-shadow:
+    0 0 12px rgba(25,191,255,.18);
+
+  opacity: .55;
+
+  pointer-events: none;
+}
+
+.hero-visual .c1 {
+  transform: rotate(-90deg);
+}
+
+.hero-visual .c2 {
+  transform: rotate(-25deg);
+}
+
+.hero-visual .c3 {
+  transform: rotate(30deg);
+}
+
+.hero-visual .c4 {
+  transform: rotate(90deg);
+}
+
+.hero-visual .c5 {
+  transform: rotate(150deg);
+}
+
+.hero-visual .c6 {
+  transform: rotate(205deg);
+}
+
+
+/* ---------------------------------------------------------
+   PARTICLES
+   --------------------------------------------------------- */
+
+.system-particles {
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+.system-particles span {
+  position: absolute;
+
+  left: var(--particle-x);
+  top: var(--particle-y);
+
+  width: var(--particle-size);
+  height: var(--particle-size);
+
+  border-radius: 50%;
+
+  background:
+    rgba(72,209,255,.75);
+
+  box-shadow:
+    0 0 10px rgba(25,191,255,.5);
+
+  opacity: .25;
+
+  animation:
+    particleFloat 7s ease-in-out infinite;
+
+  animation-delay:
+    var(--particle-delay);
+}
+
+@keyframes particleFloat {
+
+  0%,
+  100% {
+    opacity: .15;
+    transform:
+      translate3d(0,0,0)
+      scale(.8);
+  }
+
+  50% {
+    opacity: .75;
+    transform:
+      translate3d(0,-18px,30px)
+      scale(1.2);
+  }
+
+}
+
+
+/* ---------------------------------------------------------
+   SCROLL VISUALS
+   --------------------------------------------------------- */
+
+.section {
+  position: relative;
+  isolation: isolate;
+}
+
+.section > .container {
+  position: relative;
+  z-index: 5;
+}
+
+.section-visual {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: min(760px,80vw);
+  height: 460px;
+
+  transform:
+    translate(-50%,-50%)
+    perspective(900px)
+    rotateX(58deg)
+    rotateZ(-12deg);
+
+  opacity: .18;
+
+  pointer-events: none;
+
+  z-index: -1;
+
+  transition:
+    opacity 1s ease,
+    transform 1.2s cubic-bezier(.2,.8,.2,1);
+}
+
+.section-visual.is-active {
+  opacity: .34;
+
+  transform:
+    translate(-50%,-50%)
+    perspective(900px)
+    rotateX(58deg)
+    rotateZ(-8deg)
+    scale(1.04);
+}
+
+.visual-grid {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(25,191,255,.16) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(25,191,255,.16) 1px,
+      transparent 1px
+    );
+
+  background-size:
+    46px 46px;
+
+  mask-image:
+    radial-gradient(
+      ellipse,
+      black 20%,
+      transparent 75%
+    );
+}
+
+.visual-orb {
+  position: absolute;
+
+  border-radius: 50%;
+
+  filter: blur(12px);
+
+  mix-blend-mode: screen;
+}
+
+.orb-a {
+  width: 180px;
+  height: 180px;
+
+  left: 22%;
+  top: 25%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(25,191,255,.55),
+      transparent 70%
+    );
+
+  animation:
+    visualOrbA 9s ease-in-out infinite;
+}
+
+.orb-b {
+  width: 230px;
+  height: 230px;
+
+  right: 15%;
+  bottom: 10%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(8,119,255,.42),
+      transparent 70%
+    );
+
+  animation:
+    visualOrbB 11s ease-in-out infinite;
+}
+
+@keyframes visualOrbA {
+
+  0%,
+  100% {
+    transform:
+      translate3d(0,0,0);
+  }
+
+  50% {
+    transform:
+      translate3d(45px,-25px,60px);
+  }
+
+}
+
+@keyframes visualOrbB {
+
+  0%,
+  100% {
+    transform:
+      translate3d(0,0,0);
+  }
+
+  50% {
+    transform:
+      translate3d(-35px,20px,50px);
+  }
+
+}
+
+.visual-ring {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  border:
+    1px solid rgba(72,209,255,.25);
+
+  border-radius: 50%;
+
+  transform:
+    translate(-50%,-50%);
+}
+
+.ring-a {
+  width: 300px;
+  height: 180px;
+
+  animation:
+    visualRingA 14s linear infinite;
+}
+
+.ring-b {
+  width: 430px;
+  height: 260px;
+
+  border-color:
+    rgba(255,255,255,.08);
+
+  animation:
+    visualRingB 19s linear infinite reverse;
+}
+
+@keyframes visualRingA {
+
+  from {
+    transform:
+      translate(-50%,-50%)
+      rotate(0deg);
+  }
+
+  to {
+    transform:
+      translate(-50%,-50%)
+      rotate(360deg);
+  }
+
+}
+
+@keyframes visualRingB {
+
+  from {
+    transform:
+      translate(-50%,-50%)
+      rotateX(55deg)
+      rotate(0deg);
+  }
+
+  to {
+    transform:
+      translate(-50%,-50%)
+      rotateX(55deg)
+      rotate(360deg);
+  }
+
+}
+
+.visual-core {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 100px;
+  height: 100px;
+
+  display: grid;
+  place-items: center;
+
+  transform:
+    translate(-50%,-50%)
+    translateZ(40px);
+
+  border:
+    1px solid rgba(72,209,255,.5);
+
+  border-radius: 24px;
+
+  background:
+    radial-gradient(
+      circle at 30% 25%,
+      rgba(72,209,255,.75),
+      rgba(8,119,255,.35) 45%,
+      rgba(2,8,15,.9) 100%
+    );
+
+  box-shadow:
+    0 0 50px rgba(25,191,255,.2);
+
+  color: #fff;
+
+  font-size: 13px;
+  font-weight: 900;
+
+  letter-spacing: .12em;
+}
+
+
+/* ---------------------------------------------------------
+   REDUCE THE EMPTY BLACK FEEL
+   --------------------------------------------------------- */
+
+.section:nth-of-type(even)::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 900px;
+  height: 500px;
+
+  transform:
+    translate(-50%,-50%);
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(25,191,255,.045),
+      transparent 68%
+    );
+
+  pointer-events: none;
+
+  z-index: -2;
+}
+
+
+/* ---------------------------------------------------------
+   BETTER CARD DEPTH
+   --------------------------------------------------------- */
+
+.card {
+  transition:
+    transform .35s cubic-bezier(.2,.8,.2,1),
+    border-color .25s ease,
+    box-shadow .35s ease,
+    background .35s ease;
+}
+
+.card:hover {
+  transform:
+    translateY(-7px)
+    translateZ(0);
+
+  border-color:
+    rgba(25,191,255,.24);
+
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.35),
+    0 0 40px rgba(25,191,255,.07);
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE
+   --------------------------------------------------------- */
+
+@media (max-width: 850px) {
+
+  .section-visual {
+    width: 120vw;
+    height: 360px;
+
+    opacity: .14;
+  }
+
+  .section-visual.is-active {
+    opacity: .22;
+  }
+
+  .hero-visual .system-node {
+    width: 110px;
+    min-height: 68px;
+  }
+
+  .hero-visual .system-node strong {
+    font-size: 10px;
+  }
+
+  .hero-visual .system-node small {
+    font-size: 7px;
+  }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  .system-particles span,
+  .visual-orb,
+  .visual-ring {
+    animation: none !important;
+  }
+
+  .section-visual {
+    transform:
+      translate(-50%,-50%);
+  }
+
+}

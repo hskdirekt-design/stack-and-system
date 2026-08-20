@@ -660,7 +660,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "nextiva.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -809,7 +809,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "amplitude.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -920,7 +920,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "softr.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -957,7 +957,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "apollo.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -994,7 +994,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "clay.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -1031,7 +1031,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "descript.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -1068,7 +1068,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "fireflies-ai.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -1105,7 +1105,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "grammarly.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -1142,7 +1142,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "intercom.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -1179,7 +1179,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "pipedrive.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -1216,7 +1216,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "posthog.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -1253,7 +1253,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "relevance-ai.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -1290,7 +1290,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "typeform.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -1327,7 +1327,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "zapier.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -1364,7 +1364,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "n8n.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -1401,7 +1401,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "jotform.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -1438,7 +1438,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "webflow.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -1475,7 +1475,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "framer.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -1512,7 +1512,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "bubble.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -1549,7 +1549,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "retell-ai.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -1586,7 +1586,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "vapi.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -1623,7 +1623,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "bland-ai.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -1660,7 +1660,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "twilio.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -1697,7 +1697,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "glide.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -1734,7 +1734,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "retool.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -1771,7 +1771,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "qdrant.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }
@@ -1808,7 +1808,7 @@ const STACK_SYSTEM_TOOLS = [
     },
     editorial: {
       status: "Research candidate",
-      profileUrl: null,
+      profileUrl: "weaviate.html",
       lastVerified: "2026-08",
       handsOnReview: false
     }

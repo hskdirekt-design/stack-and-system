@@ -1,0 +1,862 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- =========================================================
+       SEO
+       Replace the placeholders for each company.
+       ========================================================= -->
+
+  <title>{{TOOL_NAME}} Review &amp; Guide | Stack &amp; System</title>
+
+  <meta
+    name="description"
+    content="{{META_DESCRIPTION}}"
+  >
+
+  <link
+    rel="canonical"
+    href="{{CANONICAL_URL}}"
+  >
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{TOOL_NAME}} | Stack &amp; System">
+  <meta property="og:description" content="{{META_DESCRIPTION}}">
+  <meta property="og:url" content="{{CANONICAL_URL}}">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+
+    <a class="logo" href="index.html">
+      STACK<span>&amp;</span>SYSTEM
+    </a>
+
+    <nav
+      id="primary-navigation"
+      class="nav-links"
+      aria-label="Primary navigation"
+    >
+      <a href="content.html">Content</a>
+      <a href="tools.html">Tools</a>
+      <a href="agents.html">Agents</a>
+      <a href="stacks.html">Stacks</a>
+      <a href="systems.html">Systems</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="blueprints.html">Blueprints</a>
+      <a href="resources.html">Resources</a>
+      <a href="products.html">Products</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a
+        class="btn btn-small"
+        href="signin.html"
+        data-user
+      >
+        Sign in
+      </a>
+
+      <a
+        class="btn btn-primary btn-small"
+        href="newsletter.html"
+      >
+        Join free
+      </a>
+
+      <button
+        class="btn btn-small mobile-toggle"
+        type="button"
+        aria-label="Toggle mobile menu"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+      ></button>
+    </div>
+
+  </div>
+</header>
+
+
+<main>
+
+  <!-- =========================================================
+       HERO
+       ========================================================= -->
+
+  <section class="container page-hero">
+
+    <div class="kicker">
+      {{CATEGORY}} · {{EDITORIAL_STATUS}}
+    </div>
+
+    <h1>{{TOOL_NAME}}</h1>
+
+    <p class="lead">
+      {{SHORT_DESCRIPTION}}
+    </p>
+
+    <div class="actions">
+
+      <!--
+        If there is a VERIFIED affiliate relationship,
+        use the verified affiliate URL here.
+
+        Otherwise use the official URL.
+
+        Never invent an affiliate URL.
+      -->
+
+      <a
+        class="btn btn-primary"
+        href="{{PRIMARY_DESTINATION}}"
+        target="_blank"
+        rel="{{LINK_REL}}"
+      >
+        Visit {{TOOL_NAME}} →
+      </a>
+
+      <a
+        class="btn btn-small"
+        href="tools.html"
+      >
+        Back to tools
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       QUICK VERDICT
+       ========================================================= -->
+
+  <section
+    class="section"
+    style="padding-top:0;"
+  >
+
+    <div class="container">
+
+      <div
+        class="feature-panel"
+        style="margin-bottom:40px;"
+      >
+
+        <div>
+
+          <h2>
+            The Verdict:
+            <em>{{VERDICT_LABEL}}</em>
+          </h2>
+
+          <p>
+            {{VERDICT_SUMMARY}}
+          </p>
+
+          <p>
+            <strong>Best for:</strong>
+            {{BEST_FOR}}
+          </p>
+
+          <p>
+            <strong>System role:</strong>
+            {{SYSTEM_ROLE}}
+          </p>
+
+        </div>
+
+
+        <div class="feature-list">
+
+          <div>
+            <span>+</span>
+
+            <div>
+              <strong>{{STRENGTH_1_TITLE}}</strong>
+              <small>{{STRENGTH_1_DESCRIPTION}}</small>
+            </div>
+          </div>
+
+          <div>
+            <span>+</span>
+
+            <div>
+              <strong>{{STRENGTH_2_TITLE}}</strong>
+              <small>{{STRENGTH_2_DESCRIPTION}}</small>
+            </div>
+          </div>
+
+          <div>
+            <span>-</span>
+
+            <div>
+              <strong>{{LIMITATION_TITLE}}</strong>
+              <small>{{LIMITATION_DESCRIPTION}}</small>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       1. WHAT IS IT?
+       ========================================================= -->
+
+  <section class="section">
+
+    <div class="container">
+
+      <div class="card" style="padding:40px;">
+
+        <span class="kicker">01 · Understand</span>
+
+        <h2>What is {{TOOL_NAME}}?</h2>
+
+        <p>
+          {{WHAT_IT_IS}}
+        </p>
+
+        <p>
+          {{WHAT_IT_IS_CONTEXT}}
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       2. WHAT PROBLEM DOES IT SOLVE?
+       ========================================================= -->
+
+  <section class="section">
+
+    <div class="container">
+
+      <div class="card" style="padding:40px;">
+
+        <span class="kicker">02 · Problem</span>
+
+        <h2>What problem does it solve?</h2>
+
+        <p>
+          {{PROBLEM_SOLVED}}
+        </p>
+
+        <ul>
+          <li>{{PROBLEM_POINT_1}}</li>
+          <li>{{PROBLEM_POINT_2}}</li>
+          <li>{{PROBLEM_POINT_3}}</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       3. HOW DOES IT WORK?
+       ========================================================= -->
+
+  <section class="section">
+
+    <div class="container">
+
+      <div class="card" style="padding:40px;">
+
+        <span class="kicker">03 · How it works</span>
+
+        <h2>How does it work?</h2>
+
+        <p>
+          {{HOW_IT_WORKS_INTRO}}
+        </p>
+
+        <ol>
+          <li>{{HOW_IT_WORKS_1}}</li>
+          <li>{{HOW_IT_WORKS_2}}</li>
+          <li>{{HOW_IT_WORKS_3}}</li>
+          <li>{{HOW_IT_WORKS_4}}</li>
+        </ol>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       4. WHAT DID STACK & SYSTEM TEST?
+       ========================================================= -->
+
+  <section class="section">
+
+    <div class="container">
+
+      <div class="feature-panel">
+
+        <div>
+
+          <span class="kicker">
+            04 · Stack &amp; System test
+          </span>
+
+          <h2>What did Stack &amp; System test?</h2>
+
+          <p>
+            {{TESTING_INTRO}}
+          </p>
+
+          <p>
+            {{TESTING_METHOD}}
+          </p>
+
+        </div>
+
+        <div class="feature-list">
+
+          <div>
+            <span>+</span>
+
+            <div>
+              <strong>What worked</strong>
+              <small>{{TEST_RESULT_POSITIVE}}</small>
+            </div>
+          </div>
+
+          <div>
+            <span>+</span>
+
+            <div>
+              <strong>What surprised us</strong>
+              <small>{{TEST_RESULT_SURPRISE}}</small>
+            </div>
+          </div>
+
+          <div>
+            <span>-</span>
+
+            <div>
+              <strong>What didn't</strong>
+              <small>{{TEST_RESULT_NEGATIVE}}</small>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       5. WHO IS IT FOR?
+       ========================================================= -->
+
+  <section class="section">
+
+    <div class="container">
+
+      <div class="card" style="padding:40px;">
+
+        <span class="kicker">05 · Fit</span>
+
+        <h2>Who is {{TOOL_NAME}} for?</h2>
+
+        <p>
+          {{WHO_FOR_INTRO}}
+        </p>
+
+        <ul>
+          <li>{{WHO_FOR_1}}</li>
+          <li>{{WHO_FOR_2}}</li>
+          <li>{{WHO_FOR_3}}</li>
+          <li>{{WHO_FOR_4}}</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       6. WHEN MIGHT IT BE UNNECESSARY?
+       ========================================================= -->
+
+  <section class="section">
+
+    <div class="container">
+
+      <div class="card" style="padding:40px;">
+
+        <span class="kicker">06 · Don't overbuild</span>
+
+        <h2>When might {{TOOL_NAME}} be unnecessary?</h2>
+
+        <p>
+          {{UNNECESSARY_INTRO}}
+        </p>
+
+        <ul>
+          <li>{{UNNECESSARY_1}}</li>
+          <li>{{UNNECESSARY_2}}</li>
+          <li>{{UNNECESSARY_3}}</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       7. HOW DOES AI FIT INTO IT?
+       ========================================================= -->
+
+  <section class="section">
+
+    <div class="container">
+
+      <div class="feature-panel">
+
+        <div>
+
+          <span class="kicker">
+            07 · AI
+          </span>
+
+          <h2>How does AI fit into it?</h2>
+
+          <p>
+            {{AI_INTRO}}
+          </p>
+
+          <p>
+            {{AI_ROLE}}
+          </p>
+
+        </div>
+
+        <div class="feature-list">
+
+          <div>
+            <span>+</span>
+
+            <div>
+              <strong>{{AI_CAPABILITY_1_TITLE}}</strong>
+              <small>{{AI_CAPABILITY_1_DESCRIPTION}}</small>
+            </div>
+          </div>
+
+          <div>
+            <span>+</span>
+
+            <div>
+              <strong>{{AI_CAPABILITY_2_TITLE}}</strong>
+              <small>{{AI_CAPABILITY_2_DESCRIPTION}}</small>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       8. WHAT CAN IT WORK ALONGSIDE?
+       ========================================================= -->
+
+  <section class="section">
+
+    <div class="container">
+
+      <div class="card" style="padding:40px;">
+
+        <span class="kicker">08 · Systems</span>
+
+        <h2>What can it work alongside?</h2>
+
+        <p>
+          {{SYSTEM_INTRO}}
+        </p>
+
+        <div class="feature-list">
+
+          <div>
+            <span>→</span>
+
+            <div>
+              <strong>{{RELATED_TOOL_1}}</strong>
+              <small>{{RELATED_TOOL_1_REASON}}</small>
+            </div>
+          </div>
+
+          <div>
+            <span>→</span>
+
+            <div>
+              <strong>{{RELATED_TOOL_2}}</strong>
+              <small>{{RELATED_TOOL_2_REASON}}</small>
+            </div>
+          </div>
+
+          <div>
+            <span>→</span>
+
+            <div>
+              <strong>{{RELATED_TOOL_3}}</strong>
+              <small>{{RELATED_TOOL_3_REASON}}</small>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       9. COST
+       ========================================================= -->
+
+  <section class="section">
+
+    <div class="container">
+
+      <div class="card" style="padding:40px;">
+
+        <span class="kicker">09 · Cost</span>
+
+        <h2>What does {{TOOL_NAME}} cost?</h2>
+
+        <p>
+          {{PRICING_SUMMARY}}
+        </p>
+
+        <p>
+          <strong>Free option:</strong>
+          {{FREE_PLAN}}
+        </p>
+
+        <p>
+          <strong>Paid plans:</strong>
+          {{PAID_PLANS}}
+        </p>
+
+        <p>
+          <strong>Stack &amp; System view:</strong>
+          {{PRICING_VERDICT}}
+        </p>
+
+        <p>
+          Prices and plans can change. Check the provider's
+          current pricing before making a purchase decision.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       10. FINAL VERDICT
+       ========================================================= -->
+
+  <section class="section">
+
+    <div class="container">
+
+      <div
+        class="feature-panel"
+        style="margin-bottom:40px;"
+      >
+
+        <div>
+
+          <span class="kicker">
+            10 · Stack &amp; System verdict
+          </span>
+
+          <h2>{{FINAL_VERDICT_HEADLINE}}</h2>
+
+          <p>
+            {{FINAL_VERDICT}}
+          </p>
+
+        </div>
+
+        <div>
+
+          <p>
+            <strong>Best use:</strong>
+            {{BEST_USE}}
+          </p>
+
+          <p>
+            <strong>Avoid if:</strong>
+            {{AVOID_IF}}
+          </p>
+
+          <p>
+            <strong>Overall:</strong>
+            {{OVERALL_VERDICT}}
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       ALTERNATIVES
+       ========================================================= -->
+
+  <section class="section">
+
+    <div class="container">
+
+      <div class="card" style="padding:40px;">
+
+        <span class="kicker">
+          Compare
+        </span>
+
+        <h2>Alternatives to {{TOOL_NAME}}</h2>
+
+        <p>
+          {{ALTERNATIVES_INTRO}}
+        </p>
+
+        <div class="feature-list">
+
+          <div>
+            <span>↔</span>
+
+            <div>
+              <strong>
+                <a href="{{ALTERNATIVE_1_URL}}">
+                  {{ALTERNATIVE_1}}
+                </a>
+              </strong>
+
+              <small>
+                {{ALTERNATIVE_1_REASON}}
+              </small>
+            </div>
+          </div>
+
+          <div>
+            <span>↔</span>
+
+            <div>
+              <strong>
+                <a href="{{ALTERNATIVE_2_URL}}">
+                  {{ALTERNATIVE_2}}
+                </a>
+              </strong>
+
+              <small>
+                {{ALTERNATIVE_2_REASON}}
+              </small>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       11. WHERE TO LEARN NEXT
+       ========================================================= -->
+
+  <section class="section">
+
+    <div class="container">
+
+      <div class="feature-panel">
+
+        <div>
+
+          <span class="kicker">
+            11 · Learn next
+          </span>
+
+          <h2>Where should you learn next?</h2>
+
+          <p>
+            {{LEARN_NEXT_INTRO}}
+          </p>
+
+        </div>
+
+        <div class="actions">
+
+          <a
+            class="btn btn-primary"
+            href="{{NEXT_RESOURCE_URL}}"
+          >
+            {{NEXT_RESOURCE_LABEL}} →
+          </a>
+
+          <a
+            class="btn btn-small"
+            href="tools.html"
+          >
+            Explore all tools
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================
+       COMMERCIAL DESTINATION
+       ========================================================= -->
+
+  <section class="section">
+
+    <div class="container">
+
+      <div class="card" style="padding:32px;">
+
+        <p>
+          <strong>Visit {{TOOL_NAME}}</strong>
+        </p>
+
+        <p>
+          {{COMMERCIAL_DISCLOSURE}}
+        </p>
+
+        <a
+          class="btn btn-primary"
+          href="{{PRIMARY_DESTINATION}}"
+          target="_blank"
+          rel="{{LINK_REL}}"
+        >
+          Visit {{TOOL_NAME}} →
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  <div class="container footer-grid">
+
+    <div>
+
+      <a class="logo" href="index.html">
+        STACK<span>&amp;</span>SYSTEM
+      </a>
+
+      <p>
+        Practical AI, automation and online-business systems.
+      </p>
+
+      <p class="affiliate-note">
+        Some tool links may become affiliate links.
+        We only publish tracked links after approval and verification.
+      </p>
+
+    </div>
+
+    <div>
+
+      <h4>Discover</h4>
+
+      <a href="content.html">Content</a>
+      <a href="tools.html">Tools</a>
+      <a href="agents.html">Agents</a>
+      <a href="resources.html">Resources</a>
+
+    </div>
+
+    <div>
+
+      <h4>Build</h4>
+
+      <a href="stacks.html">Stacks</a>
+      <a href="systems.html">Systems</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="blueprints.html">Blueprints</a>
+      <a href="products.html">Products</a>
+
+    </div>
+
+    <div>
+
+      <h4>Platform</h4>
+
+      <a href="newsletter.html">Newsletter</a>
+      <a href="index.html">Home</a>
+
+    </div>
+
+  </div>
+
+  <div
+    class="container"
+    style="margin-top:30px"
+  >
+    © <span data-year></span> Stack &amp; System
+  </div>
+
+</footer>
+
+
+<script src="app.js" defer></script>
+
+</body>
+</html>

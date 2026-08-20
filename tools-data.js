@@ -20139,4 +20139,1855 @@ const STACK_SYSTEM_TOOLS = [
       "handsOnReview": false
     }
   }
+,
+
+{
+  "id": "systeme-io",
+  "name": "systeme.io",
+  "slug": "systeme-io",
+  "category": "Business",
+  "subcategory": "All-in-One Business Platform",
+  "description": "An all-in-one platform for building sales funnels, websites, email campaigns, online courses and other online-business systems.",
+  "whatItIs": "A broad online-business platform that combines funnels, email marketing, courses, websites and related business tools.",
+  "problemSolved": "Reduces the need to stitch together multiple services when building a simple online-business stack.",
+  "bestFor": [
+    "Online businesses",
+    "Sales funnels",
+    "Email marketing",
+    "Courses",
+    "Digital products"
+  ],
+  "useCases": [
+    "Sales funnels",
+    "Lead capture",
+    "Email campaigns",
+    "Online courses",
+    "Digital products",
+    "Affiliate management"
+  ],
+  "capabilities": [
+    "Sales funnels",
+    "Lead capture",
+    "Email campaigns",
+    "Online courses",
+    "Digital products",
+    "Affiliate management"
+  ],
+  "systemRoles": [
+    "Business foundation → funnel → email → monetisation"
+  ],
+  "tags": [
+    "business",
+    "funnels",
+    "email",
+    "courses",
+    "digital products",
+    "affiliate"
+  ],
+  "alternatives": [],
+  "relatedTools": [],
+  "pricing": {
+    "currency": "USD",
+    "model": "Subscription / programme dependent",
+    "free": {
+      "available": null
+    },
+    "lastVerified": "2026-08"
+  },
+  "officialUrl": "https://systeme.io/",
+  "affiliateUrl": null,
+  "relationship": {
+    "affiliate": true,
+    "verified": true,
+    "marketplace": null,
+    "affiliateNetwork": "Direct"
+  },
+  "affiliateProgram": {
+    "url": "https://systeme.io/affiliate-program",
+    "commission": "60% lifetime recurring on qualifying sales",
+    "attribution": "Lifetime attribution"
+  },
+  "editorial": {
+    "status": "Affiliate programme verified",
+    "profileUrl": "systeme-io.html",
+    "lastVerified": "2026-08",
+    "handsOnReview": false
+  }
+},
+
+{
+  "id": "beehiiv",
+  "name": "beehiiv",
+  "slug": "beehiiv",
+  "category": "Content",
+  "subcategory": "Newsletter Platform",
+  "description": "A newsletter and publishing platform built for creators, publishers and businesses that want to grow and monetise an email audience.",
+  "whatItIs": "A newsletter publishing platform with tools for audience growth, publishing and monetisation.",
+  "problemSolved": "Gives creators and publishers a dedicated system for building an owned email audience instead of relying entirely on social platforms.",
+  "bestFor": [
+    "Newsletters",
+    "Creators",
+    "Publishers",
+    "Audience growth",
+    "Email monetisation"
+  ],
+  "useCases": [
+    "Newsletter publishing",
+    "Audience growth",
+    "Email monetisation",
+    "Creator newsletters",
+    "Publisher operations"
+  ],
+  "capabilities": [
+    "Newsletter publishing",
+    "Audience growth",
+    "Email monetisation",
+    "Creator newsletters",
+    "Publisher operations"
+  ],
+  "systemRoles": [
+    "Audience layer → newsletter → content distribution → monetisation"
+  ],
+  "tags": [
+    "newsletter",
+    "email",
+    "creator",
+    "publishing",
+    "audience",
+    "affiliate"
+  ],
+  "alternatives": [],
+  "relatedTools": [],
+  "pricing": {
+    "currency": "USD",
+    "model": "Subscription / programme dependent",
+    "free": {
+      "available": null
+    },
+    "lastVerified": "2026-08"
+  },
+  "officialUrl": "https://www.beehiiv.com/",
+  "affiliateUrl": null,
+  "relationship": {
+    "affiliate": true,
+    "verified": true,
+    "marketplace": null,
+    "affiliateNetwork": "beehiiv Partner Program"
+  },
+  "affiliateProgram": {
+    "url": "https://www.beehiiv.com/partners",
+    "commission": "Up to 60% of referred revenue for one year",
+    "attribution": "Programme terms vary by tier"
+  },
+  "editorial": {
+    "status": "Partner programme verified",
+    "profileUrl": "beehiiv.html",
+    "lastVerified": "2026-08",
+    "handsOnReview": false
+  }
+},
+
+{
+  "id": "writesonic",
+  "name": "Writesonic",
+  "slug": "writesonic",
+  "category": "AI",
+  "subcategory": "AI Search & Content",
+  "description": "An AI platform for content creation and AI-search visibility, with tools aimed at marketers, creators and SEO teams.",
+  "whatItIs": "An AI marketing platform focused on content creation and visibility across AI search experiences.",
+  "problemSolved": "Helps marketers produce content and understand how brands appear across AI-driven search and answer platforms.",
+  "bestFor": [
+    "AI search visibility",
+    "SEO",
+    "Content marketing",
+    "Creators",
+    "Marketing teams"
+  ],
+  "useCases": [
+    "AI content",
+    "SEO content",
+    "AI visibility",
+    "GEO workflows",
+    "Marketing research"
+  ],
+  "capabilities": [
+    "AI content",
+    "SEO content",
+    "AI visibility",
+    "GEO workflows",
+    "Marketing research"
+  ],
+  "systemRoles": [
+    "Research → content → AI visibility → optimisation"
+  ],
+  "tags": [
+    "ai",
+    "seo",
+    "content",
+    "geo",
+    "ai search",
+    "affiliate"
+  ],
+  "alternatives": [],
+  "relatedTools": [],
+  "pricing": {
+    "currency": "USD",
+    "model": "Subscription / programme dependent",
+    "free": {
+      "available": null
+    },
+    "lastVerified": "2026-08"
+  },
+  "officialUrl": "https://writesonic.com/",
+  "affiliateUrl": null,
+  "relationship": {
+    "affiliate": true,
+    "verified": true,
+    "marketplace": null,
+    "affiliateNetwork": "FirstPromoter"
+  },
+  "affiliateProgram": {
+    "url": "https://writesonic.com/affiliate",
+    "commission": "20% recurring for up to 12 months",
+    "attribution": "60 days"
+  },
+  "editorial": {
+    "status": "Affiliate programme verified",
+    "profileUrl": "writesonic.html",
+    "lastVerified": "2026-08",
+    "handsOnReview": false
+  }
+},
+
+{
+  "id": "heygen",
+  "name": "HeyGen",
+  "slug": "heygen",
+  "category": "Content",
+  "subcategory": "AI Video",
+  "description": "An AI video platform for creating avatar-led videos, translated content and other synthetic-video experiences.",
+  "whatItIs": "An AI video creation platform that can generate videos using digital avatars and synthetic media workflows.",
+  "problemSolved": "Makes video production more accessible when traditional filming, presenters or localisation would be slow or expensive.",
+  "bestFor": [
+    "AI video",
+    "Training",
+    "Marketing",
+    "Explainer videos",
+    "Creators"
+  ],
+  "useCases": [
+    "Explainer videos",
+    "Training",
+    "Product demos",
+    "Marketing videos",
+    "Video localisation"
+  ],
+  "capabilities": [
+    "Explainer videos",
+    "Training",
+    "Product demos",
+    "Marketing videos",
+    "Video localisation"
+  ],
+  "systemRoles": [
+    "Script → AI video → localisation → distribution"
+  ],
+  "tags": [
+    "ai",
+    "video",
+    "avatars",
+    "translation",
+    "content",
+    "affiliate"
+  ],
+  "alternatives": [],
+  "relatedTools": [],
+  "pricing": {
+    "currency": "USD",
+    "model": "Subscription / programme dependent",
+    "free": {
+      "available": null
+    },
+    "lastVerified": "2026-08"
+  },
+  "officialUrl": "https://www.heygen.com/",
+  "affiliateUrl": null,
+  "relationship": {
+    "affiliate": true,
+    "verified": true,
+    "marketplace": null,
+    "affiliateNetwork": "Rewardful"
+  },
+  "affiliateProgram": {
+    "url": "https://heygen.getrewardful.com/",
+    "commission": "20% of qualifying customer payments for the first 12 months",
+    "attribution": "Program terms govern attribution"
+  },
+  "editorial": {
+    "status": "Affiliate programme verified",
+    "profileUrl": "heygen.html",
+    "lastVerified": "2026-08",
+    "handsOnReview": false
+  }
+},
+
+{
+  "id": "capcut",
+  "name": "CapCut",
+  "slug": "capcut",
+  "category": "Content",
+  "subcategory": "Video Editing",
+  "description": "A video creation and editing platform with AI-powered editing features, templates and tools for short-form and social content.",
+  "whatItIs": "A consumer and creator-focused video editing platform with templates and AI-assisted creation features.",
+  "problemSolved": "Shortens the path from raw footage or an idea to publishable social video.",
+  "bestFor": [
+    "Short-form video",
+    "Social content",
+    "Creators",
+    "Video editing",
+    "AI video tools"
+  ],
+  "useCases": [
+    "Short-form video",
+    "Social posts",
+    "AI effects",
+    "Captions",
+    "Video editing",
+    "Creator workflows"
+  ],
+  "capabilities": [
+    "Short-form video",
+    "Social posts",
+    "AI effects",
+    "Captions",
+    "Video editing",
+    "Creator workflows"
+  ],
+  "systemRoles": [
+    "Idea → edit → caption → publish → repurpose"
+  ],
+  "tags": [
+    "video",
+    "editing",
+    "ai",
+    "creator",
+    "social",
+    "affiliate"
+  ],
+  "alternatives": [],
+  "relatedTools": [],
+  "pricing": {
+    "currency": "USD",
+    "model": "Subscription / programme dependent",
+    "free": {
+      "available": null
+    },
+    "lastVerified": "2026-08"
+  },
+  "officialUrl": "https://www.capcut.com/",
+  "affiliateUrl": null,
+  "relationship": {
+    "affiliate": true,
+    "verified": true,
+    "marketplace": null,
+    "affiliateNetwork": "Impact"
+  },
+  "affiliateProgram": {
+    "url": "https://www.capcut.com/partners/affiliate-program",
+    "commission": "Up to 35% recurring commission",
+    "attribution": "Programme terms vary"
+  },
+  "editorial": {
+    "status": "Affiliate programme verified",
+    "profileUrl": "capcut.html",
+    "lastVerified": "2026-08",
+    "handsOnReview": false
+  }
+},
+
+{
+  "id": "semrush",
+  "name": "Semrush",
+  "slug": "semrush",
+  "category": "Marketing",
+  "subcategory": "SEO & AI Visibility",
+  "description": "A search and marketing intelligence platform covering SEO, AI visibility, content, competitive research and related growth workflows.",
+  "whatItIs": "A broad marketing intelligence suite for search visibility, competitive research, content and AI-search visibility.",
+  "problemSolved": "Provides data and workflows for understanding search demand, competitors, content performance and visibility.",
+  "bestFor": [
+    "SEO",
+    "AI visibility",
+    "Content marketing",
+    "Competitive research",
+    "Marketing teams"
+  ],
+  "useCases": [
+    "Keyword research",
+    "SEO audits",
+    "Competitive research",
+    "AI visibility",
+    "Content planning"
+  ],
+  "capabilities": [
+    "Keyword research",
+    "SEO audits",
+    "Competitive research",
+    "AI visibility",
+    "Content planning"
+  ],
+  "systemRoles": [
+    "Research → strategy → content → visibility → measurement"
+  ],
+  "tags": [
+    "seo",
+    "ai visibility",
+    "marketing",
+    "research",
+    "content",
+    "affiliate"
+  ],
+  "alternatives": [],
+  "relatedTools": [],
+  "pricing": {
+    "currency": "USD",
+    "model": "Subscription / programme dependent",
+    "free": {
+      "available": null
+    },
+    "lastVerified": "2026-08"
+  },
+  "officialUrl": "https://www.semrush.com/",
+  "affiliateUrl": null,
+  "relationship": {
+    "affiliate": true,
+    "verified": true,
+    "marketplace": null,
+    "affiliateNetwork": "Impact"
+  },
+  "affiliateProgram": {
+    "url": "https://www.semrush.com/lp/affiliate-program/en/",
+    "commission": "Up to $450 per sale depending on product and partner tier; trial commissions also available",
+    "attribution": "120 days"
+  },
+  "editorial": {
+    "status": "Affiliate programme verified",
+    "profileUrl": "semrush.html",
+    "lastVerified": "2026-08",
+    "handsOnReview": false
+  }
+},
+
+{
+  "id": "vidiq",
+  "name": "vidIQ",
+  "slug": "vidiq",
+  "category": "Content",
+  "subcategory": "YouTube Growth",
+  "description": "A YouTube growth platform with keyword research, channel insights, AI-assisted ideas and optimisation tools.",
+  "whatItIs": "A YouTube-focused research and optimisation platform for creators and video marketers.",
+  "problemSolved": "Helps creators make better decisions about topics, keywords, titles and channel growth instead of relying only on guesswork.",
+  "bestFor": [
+    "YouTube",
+    "Video SEO",
+    "Creators",
+    "Channel growth",
+    "Content research"
+  ],
+  "useCases": [
+    "Keyword research",
+    "Video ideas",
+    "Channel optimisation",
+    "YouTube SEO",
+    "Content planning"
+  ],
+  "capabilities": [
+    "Keyword research",
+    "Video ideas",
+    "Channel optimisation",
+    "YouTube SEO",
+    "Content planning"
+  ],
+  "systemRoles": [
+    "Research → create → optimise → publish → measure"
+  ],
+  "tags": [
+    "youtube",
+    "video",
+    "seo",
+    "creator",
+    "ai",
+    "affiliate"
+  ],
+  "alternatives": [],
+  "relatedTools": [],
+  "pricing": {
+    "currency": "USD",
+    "model": "Subscription / programme dependent",
+    "free": {
+      "available": null
+    },
+    "lastVerified": "2026-08"
+  },
+  "officialUrl": "https://vidiq.com/",
+  "affiliateUrl": null,
+  "relationship": {
+    "affiliate": true,
+    "verified": true,
+    "marketplace": null,
+    "affiliateNetwork": "Direct"
+  },
+  "affiliateProgram": {
+    "url": "https://vidiq.com/affiliate/",
+    "commission": "15% base, rising to 25% with higher affiliate levels; recurring",
+    "attribution": "Programme terms govern attribution"
+  },
+  "editorial": {
+    "status": "Affiliate programme verified",
+    "profileUrl": "vidiq.html",
+    "lastVerified": "2026-08",
+    "handsOnReview": false
+  }
+}
+,
+
+{
+  "id": "kinsta",
+  "name": "Kinsta",
+  "slug": "kinsta",
+  "category": "Developer",
+  "subcategory": "Managed WordPress Hosting",
+  "description": "Premium managed WordPress hosting with performance, security and developer-focused infrastructure.",
+  "whatItIs": "A managed hosting platform for WordPress sites, applications and digital businesses.",
+  "problemSolved": "Provides a managed infrastructure layer so site owners can focus on publishing, products and growth rather than server administration.",
+  "bestFor": [
+    "WordPress sites",
+    "Agencies",
+    "High-traffic websites",
+    "Developers",
+    "Digital businesses"
+  ],
+  "useCases": [
+    "Website hosting",
+    "WordPress migrations",
+    "Client hosting",
+    "High-performance publishing",
+    "Business websites"
+  ],
+  "capabilities": [
+    "Managed WordPress hosting",
+    "Global CDN",
+    "SSL",
+    "Backups",
+    "Staging",
+    "Performance monitoring"
+  ],
+  "systemRoles": [
+    "Infrastructure layer",
+    "Hosting",
+    "Website delivery"
+  ],
+  "tags": [
+    "hosting",
+    "wordpress",
+    "web",
+    "infrastructure",
+    "performance",
+    "affiliate"
+  ],
+  "alternatives": [
+    "Cloudways",
+    "Hostinger",
+    "WP Engine"
+  ],
+  "relatedTools": [
+    "elementor",
+    "webflow"
+  ],
+  "pricing": {
+    "currency": "USD",
+    "model": "Subscription / programme dependent",
+    "free": {
+      "available": null
+    },
+    "lastVerified": "2026-08"
+  },
+  "officialUrl": "https://kinsta.com/",
+  "affiliateUrl": null,
+  "relationship": {
+    "affiliate": true,
+    "verified": true,
+    "marketplace": null,
+    "affiliateNetwork": "Direct"
+  },
+  "affiliateProgram": {
+    "url": "https://kinsta.com/affiliates/",
+    "commission": "$50–$500 one-time commission plus 10% monthly recurring commission for the lifetime of the referred WordPress customer",
+    "attribution": "60-day conversion window"
+  },
+  "editorial": {
+    "status": "Affiliate programme verified",
+    "profileUrl": "kinsta.html",
+    "lastVerified": "2026-08",
+    "handsOnReview": false
+  }
+}
+,
+
+{
+  "id": "hostinger",
+  "name": "Hostinger",
+  "slug": "hostinger",
+  "category": "Developer",
+  "subcategory": "Web Hosting",
+  "description": "A broad web hosting platform covering websites, WordPress, domains, email and newer AI-powered website tools.",
+  "whatItIs": "A hosting and website platform designed to make launching and operating websites accessible at a wide range of price points.",
+  "problemSolved": "Reduces the technical and cost barriers involved in getting a website, domain and hosting stack online.",
+  "bestFor": [
+    "New websites",
+    "WordPress",
+    "Entrepreneurs",
+    "Small businesses",
+    "Landing pages"
+  ],
+  "useCases": [
+    "Website hosting",
+    "WordPress hosting",
+    "Domains",
+    "Business email",
+    "Website building",
+    "AI website creation"
+  ],
+  "capabilities": [
+    "Web hosting",
+    "WordPress",
+    "Domains",
+    "Email",
+    "Website builder",
+    "AI website tools"
+  ],
+  "systemRoles": [
+    "Infrastructure layer",
+    "Website layer",
+    "Launch layer"
+  ],
+  "tags": [
+    "hosting",
+    "website",
+    "wordpress",
+    "domains",
+    "ai",
+    "affiliate"
+  ],
+  "alternatives": [
+    "Kinsta",
+    "Cloudways",
+    "SiteGround"
+  ],
+  "relatedTools": [
+    "elementor",
+    "systeme-io"
+  ],
+  "pricing": {
+    "currency": "USD",
+    "model": "Subscription / programme dependent",
+    "free": {
+      "available": null
+    },
+    "lastVerified": "2026-08"
+  },
+  "officialUrl": "https://www.hostinger.com/",
+  "affiliateUrl": null,
+  "relationship": {
+    "affiliate": true,
+    "verified": true,
+    "marketplace": null,
+    "affiliateNetwork": "Direct"
+  },
+  "affiliateProgram": {
+    "url": "https://www.hostinger.com/affiliates",
+    "commission": "Starts at 40% and can increase with sales volume; Hostinger Horizons has offers up to 60% under specific programme terms",
+    "attribution": "Up to 30 days"
+  },
+  "editorial": {
+    "status": "Affiliate programme verified",
+    "profileUrl": "hostinger.html",
+    "lastVerified": "2026-08",
+    "handsOnReview": false
+  }
+}
+,
+
+{
+  "id": "kit",
+  "name": "Kit",
+  "slug": "kit",
+  "category": "Content",
+  "subcategory": "Creator Email",
+  "description": "A creator-focused email platform for building newsletters, audiences, automations and digital-business revenue.",
+  "whatItIs": "An email marketing platform designed around creators who want to own and monetise their audience.",
+  "problemSolved": "Gives creators an owned audience channel with email automation, landing pages and monetisation tools.",
+  "bestFor": [
+    "Creators",
+    "Newsletter businesses",
+    "Email marketing",
+    "Audience growth",
+    "Digital products"
+  ],
+  "useCases": [
+    "Newsletters",
+    "Lead magnets",
+    "Email sequences",
+    "Audience segmentation",
+    "Creator monetisation"
+  ],
+  "capabilities": [
+    "Email marketing",
+    "Landing pages",
+    "Automations",
+    "Subscriber management",
+    "Commerce",
+    "Creator recommendations"
+  ],
+  "systemRoles": [
+    "Audience layer",
+    "Email layer",
+    "Monetisation"
+  ],
+  "tags": [
+    "email",
+    "newsletter",
+    "creator",
+    "audience",
+    "marketing",
+    "affiliate"
+  ],
+  "alternatives": [
+    "beehiiv",
+    "Mailchimp",
+    "ConvertKit"
+  ],
+  "relatedTools": [
+    "beehiiv",
+    "systeme-io",
+    "tally"
+  ],
+  "pricing": {
+    "currency": "USD",
+    "model": "Subscription / programme dependent",
+    "free": {
+      "available": null
+    },
+    "lastVerified": "2026-08"
+  },
+  "officialUrl": "https://kit.com/",
+  "affiliateUrl": null,
+  "relationship": {
+    "affiliate": true,
+    "verified": true,
+    "marketplace": null,
+    "affiliateNetwork": "Direct"
+  },
+  "affiliateProgram": {
+    "url": "https://kit.com/affiliate",
+    "commission": "50% commission for up to 12 months; qualifying affiliates can unlock 10–20% recurring revenue beyond the first year",
+    "attribution": "Programme terms apply"
+  },
+  "editorial": {
+    "status": "Affiliate programme verified",
+    "profileUrl": "kit.html",
+    "lastVerified": "2026-08",
+    "handsOnReview": false
+  }
+}
+,
+
+{
+  "id": "synthesia",
+  "name": "Synthesia",
+  "slug": "synthesia",
+  "category": "Content",
+  "subcategory": "AI Video",
+  "description": "An AI video platform for creating presenter-led videos using AI avatars, voices and multilingual production.",
+  "whatItIs": "A business-oriented AI video creation platform that turns scripts and content into presenter-style videos.",
+  "problemSolved": "Reduces the production cost and time involved in creating polished training, marketing and educational videos.",
+  "bestFor": [
+    "Business video",
+    "Training",
+    "Marketing",
+    "Education",
+    "Multilingual content"
+  ],
+  "useCases": [
+    "Training videos",
+    "Product demos",
+    "Marketing videos",
+    "Internal communications",
+    "Localised video"
+  ],
+  "capabilities": [
+    "AI avatars",
+    "AI voices",
+    "Script-to-video",
+    "Translation",
+    "Video templates",
+    "Presenter videos"
+  ],
+  "systemRoles": [
+    "Content layer",
+    "Video production",
+    "Training layer"
+  ],
+  "tags": [
+    "ai",
+    "video",
+    "avatars",
+    "training",
+    "content",
+    "affiliate"
+  ],
+  "alternatives": [
+    "HeyGen",
+    "Pictory",
+    "Descript"
+  ],
+  "relatedTools": [
+    "heygen",
+    "elevenlabs",
+    "opusclip"
+  ],
+  "pricing": {
+    "currency": "USD",
+    "model": "Subscription / programme dependent",
+    "free": {
+      "available": null
+    },
+    "lastVerified": "2026-08"
+  },
+  "officialUrl": "https://www.synthesia.io/",
+  "affiliateUrl": null,
+  "relationship": {
+    "affiliate": true,
+    "verified": true,
+    "marketplace": null,
+    "affiliateNetwork": "Direct"
+  },
+  "affiliateProgram": {
+    "url": "https://www.synthesia.io/partners/affiliates",
+    "commission": "25% commission on Starter and Creator plan payments",
+    "attribution": "60-day cookie"
+  },
+  "editorial": {
+    "status": "Affiliate programme verified",
+    "profileUrl": "synthesia.html",
+    "lastVerified": "2026-08",
+    "handsOnReview": false
+  }
+}
+,
+
+{
+  "id": "opusclip",
+  "name": "OpusClip",
+  "slug": "opusclip",
+  "category": "Content",
+  "subcategory": "AI Video Repurposing",
+  "description": "An AI video repurposing platform that turns long-form footage into short-form clips for social channels.",
+  "whatItIs": "An AI-assisted clipping and repurposing tool built around extracting publishable short videos from longer content.",
+  "problemSolved": "Turns long recordings into multiple social-ready clips without manually editing every segment.",
+  "bestFor": [
+    "YouTube creators",
+    "Podcasters",
+    "Short-form video",
+    "Content repurposing",
+    "Social media"
+  ],
+  "useCases": [
+    "Podcast clips",
+    "YouTube Shorts",
+    "TikTok clips",
+    "Reels",
+    "Video repurposing"
+  ],
+  "capabilities": [
+    "AI clipping",
+    "Reframing",
+    "Captions",
+    "Clip selection",
+    "Social publishing",
+    "Video repurposing"
+  ],
+  "systemRoles": [
+    "Content production",
+    "Repurposing layer",
+    "Distribution"
+  ],
+  "tags": [
+    "video",
+    "ai",
+    "shorts",
+    "youtube",
+    "content",
+    "affiliate"
+  ],
+  "alternatives": [
+    "CapCut",
+    "Pictory",
+    "Descript"
+  ],
+  "relatedTools": [
+    "riverside",
+    "elevenlabs",
+    "capcut"
+  ],
+  "pricing": {
+    "currency": "USD",
+    "model": "Subscription / programme dependent",
+    "free": {
+      "available": null
+    },
+    "lastVerified": "2026-08"
+  },
+  "officialUrl": "https://www.opus.pro/",
+  "affiliateUrl": null,
+  "relationship": {
+    "affiliate": true,
+    "verified": true,
+    "marketplace": null,
+    "affiliateNetwork": "Rewardful"
+  },
+  "affiliateProgram": {
+    "url": "https://www.opus.pro/affiliate",
+    "commission": "25% recurring commission through the first year for each new subscriber referred",
+    "attribution": "Programme terms apply"
+  },
+  "editorial": {
+    "status": "Affiliate programme verified",
+    "profileUrl": "opusclip.html",
+    "lastVerified": "2026-08",
+    "handsOnReview": false
+  }
+}
+,
+
+{
+  "id": "pictory",
+  "name": "Pictory",
+  "slug": "pictory",
+  "category": "Content",
+  "subcategory": "AI Video",
+  "description": "An AI video creation platform for turning scripts, articles and long-form content into polished videos.",
+  "whatItIs": "An AI-powered video creation and repurposing platform for marketers, creators and businesses.",
+  "problemSolved": "Reduces the manual work required to turn written or long-form content into video assets.",
+  "bestFor": [
+    "Content marketers",
+    "Creators",
+    "Businesses",
+    "Video repurposing",
+    "Social content"
+  ],
+  "useCases": [
+    "Blog-to-video",
+    "Script-to-video",
+    "Highlights",
+    "Captions",
+    "Content repurposing"
+  ],
+  "capabilities": [
+    "Script-to-video",
+    "Blog-to-video",
+    "Text editing",
+    "Highlights",
+    "Auto captions",
+    "Summarisation"
+  ],
+  "systemRoles": [
+    "Content layer",
+    "Video production",
+    "Repurposing"
+  ],
+  "tags": [
+    "ai",
+    "video",
+    "content",
+    "marketing",
+    "creator",
+    "affiliate"
+  ],
+  "alternatives": [
+    "OpusClip",
+    "Synthesia",
+    "HeyGen"
+  ],
+  "relatedTools": [
+    "elevenlabs",
+    "writesonic",
+    "opusclip"
+  ],
+  "pricing": {
+    "currency": "USD",
+    "model": "Subscription / programme dependent",
+    "free": {
+      "available": null
+    },
+    "lastVerified": "2026-08"
+  },
+  "officialUrl": "https://pictory.ai/",
+  "affiliateUrl": null,
+  "relationship": {
+    "affiliate": true,
+    "verified": true,
+    "marketplace": null,
+    "affiliateNetwork": "Direct"
+  },
+  "affiliateProgram": {
+    "url": "https://partners.pictory.ai/signup/40690",
+    "commission": "Published affiliate offers include 40% on the first payment; Pictory also advertises affiliate opportunities up to 50% depending on programme terms",
+    "attribution": "Programme terms apply"
+  },
+  "editorial": {
+    "status": "Affiliate programme verified",
+    "profileUrl": "pictory.html",
+    "lastVerified": "2026-08",
+    "handsOnReview": false
+  }
+}
+,
+
+{
+  "id": "frase",
+  "name": "Frase",
+  "slug": "frase",
+  "category": "Marketing",
+  "subcategory": "SEO & GEO",
+  "description": "An SEO and AI-search optimisation platform for researching, creating and improving content.",
+  "whatItIs": "A content optimisation platform that combines traditional SEO workflows with emerging AI-search visibility needs.",
+  "problemSolved": "Helps content teams decide what to write, optimise pages and improve visibility across search environments.",
+  "bestFor": [
+    "SEO",
+    "Content teams",
+    "GEO",
+    "AI search",
+    "Content strategy"
+  ],
+  "useCases": [
+    "Keyword research",
+    "Content briefs",
+    "Content optimisation",
+    "AI-search optimisation",
+    "SERP analysis"
+  ],
+  "capabilities": [
+    "SEO research",
+    "Content briefs",
+    "Content optimisation",
+    "GEO",
+    "SERP analysis",
+    "Content scoring"
+  ],
+  "systemRoles": [
+    "Research layer",
+    "Content strategy",
+    "Search visibility"
+  ],
+  "tags": [
+    "seo",
+    "geo",
+    "ai search",
+    "content",
+    "marketing",
+    "affiliate"
+  ],
+  "alternatives": [
+    "Surfer SEO",
+    "Semrush",
+    "Writesonic"
+  ],
+  "relatedTools": [
+    "semrush",
+    "writesonic",
+    "originality-ai"
+  ],
+  "pricing": {
+    "currency": "USD",
+    "model": "Subscription / programme dependent",
+    "free": {
+      "available": null
+    },
+    "lastVerified": "2026-08"
+  },
+  "officialUrl": "https://www.frase.io/",
+  "affiliateUrl": null,
+  "relationship": {
+    "affiliate": true,
+    "verified": true,
+    "marketplace": null,
+    "affiliateNetwork": "FirstPromoter"
+  },
+  "affiliateProgram": {
+    "url": "https://www.frase.io/partners/affiliates",
+    "commission": "30% recurring commission for 12 months; top tiers can reach 35% and 40%",
+    "attribution": "60-day cookie"
+  },
+  "editorial": {
+    "status": "Affiliate programme verified",
+    "profileUrl": "frase.html",
+    "lastVerified": "2026-08",
+    "handsOnReview": false
+  }
+}
+,
+
+{
+  "id": "originality-ai",
+  "name": "Originality.ai",
+  "slug": "originality-ai",
+  "category": "Marketing",
+  "subcategory": "AI Detection & Content Quality",
+  "description": "An AI detection, plagiarism and content-quality platform for publishers, agencies and content teams.",
+  "whatItIs": "A content verification and quality-control platform focused on AI detection, plagiarism checking and publishing workflows.",
+  "problemSolved": "Helps publishers and teams assess content originality and AI-generated content risk before publication.",
+  "bestFor": [
+    "Publishers",
+    "SEO teams",
+    "Agencies",
+    "Editors",
+    "Content QA"
+  ],
+  "useCases": [
+    "AI detection",
+    "Plagiarism checking",
+    "Content audits",
+    "Editorial QA",
+    "Website scanning"
+  ],
+  "capabilities": [
+    "AI detection",
+    "Plagiarism detection",
+    "Readability",
+    "Fact checking",
+    "Website scanning",
+    "API"
+  ],
+  "systemRoles": [
+    "Quality layer",
+    "Editorial QA",
+    "Content verification"
+  ],
+  "tags": [
+    "ai",
+    "content",
+    "plagiarism",
+    "seo",
+    "publishing",
+    "affiliate"
+  ],
+  "alternatives": [
+    "GPTZero",
+    "Copyleaks"
+  ],
+  "relatedTools": [
+    "frase",
+    "writesonic",
+    "semrush"
+  ],
+  "pricing": {
+    "currency": "USD",
+    "model": "Subscription / programme dependent",
+    "free": {
+      "available": null
+    },
+    "lastVerified": "2026-08"
+  },
+  "officialUrl": "https://originality.ai/",
+  "affiliateUrl": null,
+  "relationship": {
+    "affiliate": true,
+    "verified": true,
+    "marketplace": null,
+    "affiliateNetwork": "Rewardful"
+  },
+  "affiliateProgram": {
+    "url": "https://originality.ai/affiliates",
+    "commission": "25% recurring commission for up to 12 months",
+    "attribution": "90 days"
+  },
+  "editorial": {
+    "status": "Affiliate programme verified",
+    "profileUrl": "originality-ai.html",
+    "lastVerified": "2026-08",
+    "handsOnReview": false
+  }
+}
+,
+
+{
+  "id": "jasper",
+  "name": "Jasper",
+  "slug": "jasper",
+  "category": "AI",
+  "subcategory": "AI Marketing",
+  "description": "An AI marketing platform focused on content, brand voice, campaign workflows and marketing teams.",
+  "whatItIs": "An AI platform designed for marketers and teams that need repeatable, brand-aware content workflows.",
+  "problemSolved": "Helps marketing teams produce and manage content faster while maintaining brand consistency.",
+  "bestFor": [
+    "Marketing teams",
+    "Content marketing",
+    "Brand teams",
+    "Agencies",
+    "AI workflows"
+  ],
+  "useCases": [
+    "Marketing copy",
+    "Campaign content",
+    "Brand voice",
+    "Content workflows",
+    "Team collaboration"
+  ],
+  "capabilities": [
+    "AI content",
+    "Brand voice",
+    "Campaign workflows",
+    "Knowledge",
+    "Templates",
+    "Team collaboration"
+  ],
+  "systemRoles": [
+    "AI content layer",
+    "Marketing layer",
+    "Brand layer"
+  ],
+  "tags": [
+    "ai",
+    "marketing",
+    "content",
+    "brand",
+    "automation",
+    "affiliate"
+  ],
+  "alternatives": [
+    "Writesonic",
+    "Copy.ai",
+    "Jasper"
+  ],
+  "relatedTools": [
+    "writesonic",
+    "make",
+    "semrush"
+  ],
+  "pricing": {
+    "currency": "USD",
+    "model": "Subscription / programme dependent",
+    "free": {
+      "available": null
+    },
+    "lastVerified": "2026-08"
+  },
+  "officialUrl": "https://www.jasper.ai/",
+  "affiliateUrl": null,
+  "relationship": {
+    "affiliate": true,
+    "verified": true,
+    "marketplace": null,
+    "affiliateNetwork": "Direct"
+  },
+  "affiliateProgram": {
+    "url": "https://www.jasper.ai/legal/affiliates",
+    "commission": "25% of eligible subscription price; programme terms describe an increase to 30% after specified performance milestones",
+    "attribution": "Programme terms apply"
+  },
+  "editorial": {
+    "status": "Affiliate programme verified",
+    "profileUrl": "jasper.html",
+    "lastVerified": "2026-08",
+    "handsOnReview": false
+  }
+}
+,
+
+{
+  "id": "shopify",
+  "name": "Shopify",
+  "slug": "shopify",
+  "category": "Business",
+  "subcategory": "Ecommerce",
+  "description": "A commerce platform for launching, operating and scaling online stores and digital retail businesses.",
+  "whatItIs": "An ecommerce platform that provides storefronts, checkout, payments, commerce tools and an ecosystem of apps.",
+  "problemSolved": "Provides a central system for selling products online without building the entire commerce infrastructure from scratch.",
+  "bestFor": [
+    "Ecommerce",
+    "Online businesses",
+    "Product sellers",
+    "Brands",
+    "Entrepreneurs"
+  ],
+  "useCases": [
+    "Online stores",
+    "Product sales",
+    "Digital commerce",
+    "Subscriptions",
+    "Retail operations"
+  ],
+  "capabilities": [
+    "Storefronts",
+    "Checkout",
+    "Payments",
+    "App ecosystem",
+    "Product management",
+    "Analytics"
+  ],
+  "systemRoles": [
+    "Commerce layer",
+    "Storefront",
+    "Payments"
+  ],
+  "tags": [
+    "ecommerce",
+    "shopify",
+    "commerce",
+    "business",
+    "online store",
+    "affiliate"
+  ],
+  "alternatives": [
+    "WooCommerce",
+    "BigCommerce",
+    "systeme.io"
+  ],
+  "relatedTools": [
+    "systeme-io",
+    "klaviyo",
+    "kit"
+  ],
+  "pricing": {
+    "currency": "USD",
+    "model": "Subscription / programme dependent",
+    "free": {
+      "available": null
+    },
+    "lastVerified": "2026-08"
+  },
+  "officialUrl": "https://www.shopify.com/",
+  "affiliateUrl": null,
+  "relationship": {
+    "affiliate": true,
+    "verified": true,
+    "marketplace": null,
+    "affiliateNetwork": "Direct"
+  },
+  "affiliateProgram": {
+    "url": "https://www.shopify.com/affiliates",
+    "commission": "Commission on qualified referrals when new merchants purchase eligible full-price Shopify plans; exact payout varies by referral and market",
+    "attribution": "Programme terms apply"
+  },
+  "editorial": {
+    "status": "Affiliate programme verified",
+    "profileUrl": "shopify.html",
+    "lastVerified": "2026-08",
+    "handsOnReview": false
+  }
+}
+,
+
+{
+  "id": "elementor",
+  "name": "Elementor",
+  "slug": "elementor",
+  "category": "Website",
+  "subcategory": "WordPress Website Builder",
+  "description": "A visual WordPress website builder and hosting ecosystem for creating and managing professional websites.",
+  "whatItIs": "A drag-and-drop WordPress website builder with design, forms, hosting and AI-assisted website capabilities.",
+  "problemSolved": "Lets users build sophisticated WordPress websites visually without implementing every layout in code.",
+  "bestFor": [
+    "WordPress",
+    "Website builders",
+    "Freelancers",
+    "Agencies",
+    "Small businesses"
+  ],
+  "useCases": [
+    "Business websites",
+    "Landing pages",
+    "Client sites",
+    "Lead generation",
+    "WordPress design"
+  ],
+  "capabilities": [
+    "Visual editor",
+    "Theme builder",
+    "Forms",
+    "AI tools",
+    "Hosting",
+    "Motion effects"
+  ],
+  "systemRoles": [
+    "Website layer",
+    "Design layer",
+    "Lead capture"
+  ],
+  "tags": [
+    "wordpress",
+    "website",
+    "builder",
+    "design",
+    "ai",
+    "affiliate"
+  ],
+  "alternatives": [
+    "Webflow",
+    "Framer",
+    "Carrd"
+  ],
+  "relatedTools": [
+    "kinsta",
+    "hostinger",
+    "webflow"
+  ],
+  "pricing": {
+    "currency": "USD",
+    "model": "Subscription / programme dependent",
+    "free": {
+      "available": null
+    },
+    "lastVerified": "2026-08"
+  },
+  "officialUrl": "https://elementor.com/",
+  "affiliateUrl": null,
+  "relationship": {
+    "affiliate": true,
+    "verified": true,
+    "marketplace": null,
+    "affiliateNetwork": "Direct"
+  },
+  "affiliateProgram": {
+    "url": "https://elementor.com/affiliates/",
+    "commission": "45% on first eligible purchase for Elementor Editor and Host; 55% promotional rate for Elementor One",
+    "attribution": "45-day cookie"
+  },
+  "editorial": {
+    "status": "Affiliate programme verified",
+    "profileUrl": "elementor.html",
+    "lastVerified": "2026-08",
+    "handsOnReview": false
+  }
+}
+,
+
+{
+  "id": "cloudways",
+  "name": "Cloudways",
+  "slug": "cloudways",
+  "category": "Developer",
+  "subcategory": "Managed Cloud Hosting",
+  "description": "A managed cloud hosting platform that simplifies deploying and operating websites and applications on cloud infrastructure.",
+  "whatItIs": "A managed hosting layer that sits between raw cloud infrastructure and the website owner.",
+  "problemSolved": "Reduces the operational complexity of running performant cloud-hosted websites and applications.",
+  "bestFor": [
+    "Websites",
+    "Agencies",
+    "Developers",
+    "WordPress",
+    "Growing businesses"
+  ],
+  "useCases": [
+    "Managed hosting",
+    "WordPress",
+    "Client sites",
+    "Application hosting",
+    "Website migrations"
+  ],
+  "capabilities": [
+    "Managed cloud hosting",
+    "Server management",
+    "Backups",
+    "Scaling",
+    "Security",
+    "Performance"
+  ],
+  "systemRoles": [
+    "Infrastructure layer",
+    "Hosting",
+    "Deployment"
+  ],
+  "tags": [
+    "hosting",
+    "cloud",
+    "wordpress",
+    "developer",
+    "infrastructure",
+    "affiliate"
+  ],
+  "alternatives": [
+    "Kinsta",
+    "Hostinger",
+    "DigitalOcean"
+  ],
+  "relatedTools": [
+    "elementor",
+    "webflow",
+    "netlify"
+  ],
+  "pricing": {
+    "currency": "USD",
+    "model": "Subscription / programme dependent",
+    "free": {
+      "available": null
+    },
+    "lastVerified": "2026-08"
+  },
+  "officialUrl": "https://www.cloudways.com/",
+  "affiliateUrl": null,
+  "relationship": {
+    "affiliate": true,
+    "verified": true,
+    "marketplace": null,
+    "affiliateNetwork": "Direct"
+  },
+  "affiliateProgram": {
+    "url": "https://www.cloudways.com/en/web-hosting-affiliate-program.php",
+    "commission": "Flexible models including performance slabs up to $125 per sale and hybrid/lifetime recurring options; current terms depend on selected model",
+    "attribution": "90-day cookie"
+  },
+  "editorial": {
+    "status": "Affiliate programme verified",
+    "profileUrl": "cloudways.html",
+    "lastVerified": "2026-08",
+    "handsOnReview": false
+  }
+}
+,
+
+{
+  "id": "teachable",
+  "name": "Teachable",
+  "slug": "teachable",
+  "category": "Business",
+  "subcategory": "Creator Education",
+  "description": "A platform for creators and businesses to sell courses, coaching, digital products and memberships.",
+  "whatItIs": "A creator commerce platform for packaging knowledge and selling it online.",
+  "problemSolved": "Provides the infrastructure for turning expertise into a structured digital education business.",
+  "bestFor": [
+    "Course creators",
+    "Coaches",
+    "Educators",
+    "Digital products",
+    "Creators"
+  ],
+  "useCases": [
+    "Online courses",
+    "Coaching",
+    "Digital downloads",
+    "Memberships",
+    "Education businesses"
+  ],
+  "capabilities": [
+    "Course hosting",
+    "Payments",
+    "Student management",
+    "Digital products",
+    "Affiliates",
+    "Analytics"
+  ],
+  "systemRoles": [
+    "Product layer",
+    "Education layer",
+    "Commerce"
+  ],
+  "tags": [
+    "courses",
+    "creator",
+    "education",
+    "digital products",
+    "business",
+    "affiliate"
+  ],
+  "alternatives": [
+    "Podia",
+    "Kajabi",
+    "Whop"
+  ],
+  "relatedTools": [
+    "kit",
+    "systeme-io",
+    "podia"
+  ],
+  "pricing": {
+    "currency": "USD",
+    "model": "Subscription / programme dependent",
+    "free": {
+      "available": null
+    },
+    "lastVerified": "2026-08"
+  },
+  "officialUrl": "https://www.teachable.com/",
+  "affiliateUrl": null,
+  "relationship": {
+    "affiliate": true,
+    "verified": true,
+    "marketplace": null,
+    "affiliateNetwork": "Direct"
+  },
+  "affiliateProgram": {
+    "url": "https://www.teachable.com/partners",
+    "commission": "30% recurring commission for a full year on every referred sale",
+    "attribution": "30-day cookie"
+  },
+  "editorial": {
+    "status": "Affiliate programme verified",
+    "profileUrl": "teachable.html",
+    "lastVerified": "2026-08",
+    "handsOnReview": false
+  }
+}
+,
+
+{
+  "id": "podia",
+  "name": "Podia",
+  "slug": "podia",
+  "category": "Business",
+  "subcategory": "Creator Commerce",
+  "description": "A creator-friendly platform for selling courses, downloads, webinars and communities.",
+  "whatItIs": "An all-in-one creator commerce platform focused on simple digital-product and community businesses.",
+  "problemSolved": "Combines storefront, digital products, email and community features so creators can operate with fewer separate tools.",
+  "bestFor": [
+    "Creators",
+    "Course sellers",
+    "Digital products",
+    "Communities",
+    "Solo businesses"
+  ],
+  "useCases": [
+    "Courses",
+    "Downloads",
+    "Webinars",
+    "Communities",
+    "Email marketing"
+  ],
+  "capabilities": [
+    "Digital products",
+    "Courses",
+    "Community",
+    "Email",
+    "Checkout",
+    "Affiliate tools"
+  ],
+  "systemRoles": [
+    "Commerce layer",
+    "Creator platform",
+    "Audience monetisation"
+  ],
+  "tags": [
+    "creator",
+    "courses",
+    "digital products",
+    "community",
+    "email",
+    "affiliate"
+  ],
+  "alternatives": [
+    "Teachable",
+    "systeme.io",
+    "Whop"
+  ],
+  "relatedTools": [
+    "kit",
+    "teachable",
+    "systeme-io"
+  ],
+  "pricing": {
+    "currency": "USD",
+    "model": "Subscription / programme dependent",
+    "free": {
+      "available": null
+    },
+    "lastVerified": "2026-08"
+  },
+  "officialUrl": "https://www.podia.com/",
+  "affiliateUrl": null,
+  "relationship": {
+    "affiliate": true,
+    "verified": true,
+    "marketplace": null,
+    "affiliateNetwork": "Direct"
+  },
+  "affiliateProgram": {
+    "url": "https://help.podia.com/en/articles/11370941-becoming-a-podia-affiliate",
+    "commission": "20% commission on sales referred through an affiliate link, capped at 12 months",
+    "attribution": "Programme terms apply"
+  },
+  "editorial": {
+    "status": "Affiliate programme verified",
+    "profileUrl": "podia.html",
+    "lastVerified": "2026-08",
+    "handsOnReview": false
+  }
+}
+,
+
+{
+  "id": "whop",
+  "name": "Whop",
+  "slug": "whop",
+  "category": "Business",
+  "subcategory": "Digital Commerce Marketplace",
+  "description": "A digital commerce platform and marketplace for selling software, communities, courses, files and other online offers.",
+  "whatItIs": "A platform that combines digital product commerce, discovery, payments and affiliate distribution.",
+  "problemSolved": "Makes it easier to package and sell online offers while also providing a marketplace and affiliate infrastructure.",
+  "bestFor": [
+    "Digital products",
+    "Communities",
+    "Creators",
+    "Software sellers",
+    "Online businesses"
+  ],
+  "useCases": [
+    "Digital products",
+    "Paid communities",
+    "Courses",
+    "Software offers",
+    "Affiliate marketing"
+  ],
+  "capabilities": [
+    "Checkout",
+    "Marketplace",
+    "Affiliates",
+    "Subscriptions",
+    "Digital delivery",
+    "Payments"
+  ],
+  "systemRoles": [
+    "Commerce layer",
+    "Marketplace",
+    "Affiliate layer"
+  ],
+  "tags": [
+    "digital products",
+    "marketplace",
+    "creator",
+    "affiliate",
+    "commerce",
+    "community"
+  ],
+  "alternatives": [
+    "Podia",
+    "Teachable",
+    "Gumroad"
+  ],
+  "relatedTools": [
+    "podia",
+    "teachable",
+    "kit"
+  ],
+  "pricing": {
+    "currency": "USD",
+    "model": "Subscription / programme dependent",
+    "free": {
+      "available": null
+    },
+    "lastVerified": "2026-08"
+  },
+  "officialUrl": "https://whop.com/",
+  "affiliateUrl": null,
+  "relationship": {
+    "affiliate": true,
+    "verified": true,
+    "marketplace": null,
+    "affiliateNetwork": "Direct / Marketplace"
+  },
+  "affiliateProgram": {
+    "url": "https://docs.whop.com/affiliates/be-an-affiliate",
+    "commission": "Whop's marketplace uses a 30% default affiliate commission on offers, while individual offers can set their own rates and recurring structures",
+    "attribution": "30-day default attribution window"
+  },
+  "editorial": {
+    "status": "Affiliate programme verified",
+    "profileUrl": "whop.html",
+    "lastVerified": "2026-08",
+    "handsOnReview": false
+  }
+}
+,
+
+{
+  "id": "metricool",
+  "name": "Metricool",
+  "slug": "metricool",
+  "category": "Content",
+  "subcategory": "Social Media Management",
+  "description": "A social media planning, publishing, analytics and reporting platform for creators, marketers and agencies.",
+  "whatItIs": "A multi-platform social media management system for planning content and measuring performance.",
+  "problemSolved": "Brings publishing, scheduling and social analytics into one operational layer.",
+  "bestFor": [
+    "Social media",
+    "Creators",
+    "Agencies",
+    "Marketers",
+    "Content teams"
+  ],
+  "useCases": [
+    "Social scheduling",
+    "Analytics",
+    "Reporting",
+    "Content planning",
+    "Competitor research"
+  ],
+  "capabilities": [
+    "Scheduling",
+    "Analytics",
+    "Reporting",
+    "Planning",
+    "Competitor analysis",
+    "Social inbox"
+  ],
+  "systemRoles": [
+    "Distribution layer",
+    "Analytics",
+    "Content operations"
+  ],
+  "tags": [
+    "social media",
+    "analytics",
+    "creator",
+    "marketing",
+    "content",
+    "affiliate"
+  ],
+  "alternatives": [
+    "Buffer",
+    "Hootsuite",
+    "Later"
+  ],
+  "relatedTools": [
+    "riverside",
+    "opusclip",
+    "kit"
+  ],
+  "pricing": {
+    "currency": "USD",
+    "model": "Subscription / programme dependent",
+    "free": {
+      "available": null
+    },
+    "lastVerified": "2026-08"
+  },
+  "officialUrl": "https://metricool.com/",
+  "affiliateUrl": null,
+  "relationship": {
+    "affiliate": true,
+    "verified": true,
+    "marketplace": null,
+    "affiliateNetwork": "Direct"
+  },
+  "affiliateProgram": {
+    "url": "https://metricool.com/affiliate-program/",
+    "commission": "25% of subscriptions up to $100 per user at Tier 1; 50% up to $300 per user at Tier 2",
+    "attribution": "Programme terms apply"
+  },
+  "editorial": {
+    "status": "Affiliate programme verified",
+    "profileUrl": "metricool.html",
+    "lastVerified": "2026-08",
+    "handsOnReview": false
+  }
+}
 ];

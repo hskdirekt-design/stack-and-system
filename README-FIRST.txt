@@ -1,18 +1,15 @@
-STACK & SYSTEM — COMPLETE AFFILIATE HUB
+STACK & SYSTEM — MASTER AFFILIATE HUB
 
-This is the single combined package for the current affiliate expansion.
+This is the consolidated package.
 
-It combines:
-- The current 455-record tools-data.js
-- 384 PartnerStack company profile pages
-- 7 Direct Affiliate Batch 1 profile pages
-- 16 Direct Affiliate Batch 2 profile pages
-- PartnerStack logo assets matched from the supplied marketplace recording
+Records: 433
+PartnerStack listings: 406
+Direct affiliate opportunities: 23
+Existing reviewed/reference pages: 4
+Profile HTML files: 433
 
-IMPORTANT:
-Copy EVERYTHING in this folder directly into your Stack & System ROOT folder.
-When Windows asks to replace tools-data.js, choose Replace.
-Do not delete any other existing project files.
+Copy the contents directly into your Stack & System root. Replace tools-data.js when prompted.
 
-Commit message:
-Add complete affiliate hub directory
+Important: affiliateUrl values are only retained where the source profile contained a public affiliate/referral URL. Do not treat a listing as a confirmed personal affiliate relationship unless you have actually joined/been approved.
+
+The package deliberately does not alter existing site-wide CSS/JS or invent personal tracking URLs.

@@ -7,80 +7,107 @@
   const $$ = (selector, parent = document) =>
     [...parent.querySelectorAll(selector)];
 
-
- /* =========================================================
+/* =========================================================
    NAVIGATION
    ========================================================= */
-
 const setupNavigation = () => {
-  const navigation = $(".nav-links");
-  const menuButton = $(".mobile-toggle");
+  const mobileToggle = document.querySelector('.mobile-toggle');
+  const primaryNav = document.getElementById('primary-navigation') || document.querySelector('nav'); 
+  const navGroups = document.querySelectorAll('.nav-group');
+  const navLinks = document.querySelectorAll('nav a');
 
-  if (!navigation) return;
-
-  const openMenu = () => {
-    navigation.classList.add("is-open");
-
-    if (menuButton) {
-      menuButton.setAttribute("aria-expanded", "true");
-      menuButton.classList.add("is-active");
-    }
-  };
-
-  const closeMenu = () => {
-    navigation.classList.remove("is-open");
-
-    if (menuButton) {
-      menuButton.setAttribute("aria-expanded", "false");
-      menuButton.classList.remove("is-active");
-    }
-
-    navigation
-      .querySelectorAll(".nav-dropdown.is-open")
-      .forEach((dropdown) => {
-        dropdown.classList.remove("is-open");
-      });
-  };
-
-  const toggleMenu = (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-
-    if (navigation.classList.contains("is-open")) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
-  };
-
-  if (menuButton) {
-    menuButton.onclick = toggleMenu;
+  // 1. Mobile Menu Toggle
+  if (mobileToggle) {
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+      mobileToggle.setAttribute('aria-expanded', !isExpanded);
+      if (primaryNav) {
+        primaryNav.classList.toggle('is-open');
+      }
+    });
   }
 
-  navigation.addEventListener("click", (event) => {
-    const link = event.target.closest("a");
-
-    if (!link) return;
-
-    closeMenu();
+  // 2. Dropdown Functionality (Learn ▾, Build ▾)
+  navGroups.forEach(group => {
+    const toggle = group.querySelector('.nav-group-toggle');
+    if (toggle) {
+      toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Close other open dropdowns
+        navGroups.forEach(otherGroup => {
+          if (otherGroup !== group) {
+            otherGroup.classList.remove('is-open');
+          }
+        });
+        
+        // Toggle the clicked dropdown
+        group.classList.toggle('is-open');
+      });
+    }
   });
 
-  document.addEventListener("click", (event) => {
-    if (!navigation.classList.contains("is-open")) return;
+  // 3. Close dropdowns when clicking outside
+  document.addEventListener('click', (e) => {
+    navGroups.forEach(group => {
+      if (!group.contains(e.target)) {
+        group.classList.remove('is-open');
+      }
+    });
+  });
 
-    if (
-      navigation.contains(event.target) ||
-      menuButton?.contains(event.target)
-    ) {
-      return;
+  // 4. Reset mobile menu on resize to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 991) { // Standard desktop breakpoint
+      if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
+      if (primaryNav) primaryNav.classList.remove('is-open');
+      navGroups.forEach(group => group.classList.remove('is-open'));
+    }
+  });
+
+  // 5. Active State Highlighting
+  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  
+  // Array of blueprint-related pages that should highlight "Blueprints"
+  const blueprintPages = [
+    'blueprints.html', 
+    'gmail-to-notion.html', 
+    'choosing-first-automation-tool.html', 
+    'make-com.html'
+  ];
+
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href) return;
+    
+    const linkPath = href.split('/').pop();
+    let isActive = false;
+
+    // Check exact match
+    if (currentPath === linkPath) {
+      isActive = true;
+    }
+    
+    // Check blueprint cluster match
+    if (blueprintPages.includes(currentPath) && linkPath === 'blueprints.html') {
+      isActive = true;
     }
 
-    closeMenu();
-  });
-
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 900) {
-      closeMenu();
+    // Apply active classes
+    if (isActive) {
+      link.classList.add('active');
+      
+      // If the link is inside a dropdown, highlight the parent toggle too
+      const parentGroup = link.closest('.nav-group');
+      if (parentGroup) {
+        parentGroup.classList.add('active-parent');
+        const parentToggle = parentGroup.querySelector('.nav-group-toggle');
+        if (parentToggle) {
+          parentToggle.classList.add('active');
+        }
+      }
     }
   });
 };

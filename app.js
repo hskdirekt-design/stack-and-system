@@ -8,120 +8,84 @@
     [...parent.querySelectorAll(selector)];
 
 
-  /* =========================================================
-     NAVIGATION
-     ========================================================= */
+ /* =========================================================
+   NAVIGATION
+   ========================================================= */
 
-  const setupNavigation = () => {
+const setupNavigation = () => {
+  const navigation = $(".nav-links");
+  const menuButton = $(".mobile-toggle");
 
-    const navigation = $(".nav-links");
-    const menuButton = $(".mobile-toggle");
+  if (!navigation) return;
 
-    if (!navigation) return;
+  const openMenu = () => {
+    navigation.classList.add("is-open");
 
-
-    /* Add Blog without changing index.html */
-
-    if (!navigation.querySelector('a[href="blog.html"]')) {
-
-      const blogLink = document.createElement("a");
-
-      blogLink.href = "blog.html";
-      blogLink.textContent = "Blog";
-
-      navigation.prepend(blogLink);
-    }
-
-
-    if (!menuButton) return;
-
-
-    const openMenu = () => {
-
-      navigation.classList.add("is-open");
-
-      menuButton.setAttribute(
-        "aria-expanded",
-        "true"
-      );
-
+    if (menuButton) {
+      menuButton.setAttribute("aria-expanded", "true");
       menuButton.classList.add("is-active");
-    };
-
-
-    const closeMenu = () => {
-
-      navigation.classList.remove("is-open");
-
-      menuButton.setAttribute(
-        "aria-expanded",
-        "false"
-      );
-
-      menuButton.classList.remove("is-active");
-    };
-
-
-    const toggleMenu = (event) => {
-
-      event.preventDefault();
-      event.stopPropagation();
-
-      if (navigation.classList.contains("is-open")) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    };
-
-
-    menuButton.onclick = toggleMenu;
-
-
-    navigation.addEventListener("click", (event) => {
-
-      if (event.target.closest("a")) {
-        closeMenu();
-      }
-
-    });
-
-
-    document.addEventListener("click", (event) => {
-
-      if (!navigation.classList.contains("is-open")) {
-        return;
-      }
-
-      if (
-        navigation.contains(event.target) ||
-        menuButton.contains(event.target)
-      ) {
-        return;
-      }
-
-      closeMenu();
-
-    });
-
-
-    window.addEventListener("resize", () => {
-
-      if (window.innerWidth > 900) {
-        closeMenu();
-      }
-
-    });
-
+    }
   };
 
+  const closeMenu = () => {
+    navigation.classList.remove("is-open");
 
-  setupNavigation();
+    if (menuButton) {
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.classList.remove("is-active");
+    }
 
+    navigation
+      .querySelectorAll(".nav-dropdown.is-open")
+      .forEach((dropdown) => {
+        dropdown.classList.remove("is-open");
+      });
+  };
 
-  /* =========================================================
-     3D SYSTEM
-     ========================================================= */
+  const toggleMenu = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (navigation.classList.contains("is-open")) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  };
+
+  if (menuButton) {
+    menuButton.onclick = toggleMenu;
+  }
+
+  navigation.addEventListener("click", (event) => {
+    const link = event.target.closest("a");
+
+    if (!link) return;
+
+    closeMenu();
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!navigation.classList.contains("is-open")) return;
+
+    if (
+      navigation.contains(event.target) ||
+      menuButton?.contains(event.target)
+    ) {
+      return;
+    }
+
+    closeMenu();
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 900) {
+      closeMenu();
+    }
+  });
+};
+
+setupNavigation();
 
   const visual = $(".hero-visual");
 

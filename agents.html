@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>AI Agents Explained | Stack &amp; System</title>
+<title>AI Agents Explained: What They Are, How They Work &amp; How to Build One | Stack &amp; System</title>
 
 <meta
   name="description"
-  content="Understand AI agents, how they work, how agents differ from automation, the technologies behind them, and how to choose the right tools."
+  content="Understand AI agents from the ground up: what an AI agent is, how agents differ from chatbots and automation, the components inside an agent, the agent loop, tools, memory, guardrails and practical examples."
 >
 
 <meta
@@ -16,7 +16,283 @@
   content="index, follow, max-image-preview:large"
 >
 
+<link
+  rel="canonical"
+  href="https://hskdirect.co.uk/agents.html"
+>
+
 <link rel="stylesheet" href="styles.css">
+
+<style>
+.article-body {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.article-body h2 {
+  color: var(--white);
+  margin-top: 58px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.article-body h3 {
+  color: var(--blue-bright);
+  margin-top: 32px;
+  font-size: 19px;
+}
+
+.article-body p,
+.article-body li {
+  color: var(--muted);
+}
+
+.article-body ul,
+.article-body ol {
+  margin-bottom: 24px;
+  padding-left: 22px;
+}
+
+.article-body li {
+  margin-bottom: 11px;
+}
+
+.step-num {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 30px;
+  height: 30px;
+
+  background: var(--blue-dark);
+  color: #fff;
+
+  border-radius: 50%;
+
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.definition {
+  margin: 25px 0;
+  padding: 22px 24px;
+
+  border-left: 3px solid var(--blue);
+  border-radius: 0 10px 10px 0;
+
+  background: rgba(25,191,255,.06);
+}
+
+.definition strong {
+  color: var(--white);
+}
+
+.tip {
+  display: flex;
+  gap: 13px;
+
+  margin: 24px 0;
+  padding: 17px 20px;
+
+  border-left: 3px solid var(--blue);
+  border-radius: 0 9px 9px 0;
+
+  background: rgba(25,191,255,.05);
+}
+
+.tip strong {
+  color: var(--white);
+}
+
+.warn {
+  border-left-color: #ffb703;
+  background: rgba(255,183,3,.05);
+}
+
+.data-table {
+  width: 100%;
+  margin: 24px 0;
+
+  border-collapse: collapse;
+
+  text-align: left;
+  font-size: 14px;
+}
+
+.data-table th,
+.data-table td {
+  padding: 13px 12px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.data-table th {
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.data-table td {
+  color: var(--muted);
+}
+
+.article-body code {
+  font-family: monospace;
+  color: var(--blue-bright);
+  background: var(--bg-soft);
+  padding: 2px 6px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+
+.agent-flow {
+  display: grid;
+  gap: 9px;
+  margin: 28px 0;
+}
+
+.agent-flow div {
+  padding: 15px 18px;
+
+  border: 1px solid var(--line);
+  border-radius: 12px;
+
+  background: rgba(255,255,255,.025);
+
+  color: var(--white);
+  font-weight: 800;
+}
+
+.agent-flow div span {
+  display: block;
+  margin-bottom: 3px;
+
+  color: var(--blue);
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 14px;
+  margin: 25px 0;
+}
+
+.comparison-box {
+  padding: 22px;
+
+  border: 1px solid var(--line);
+  border-radius: 17px;
+
+  background: rgba(255,255,255,.025);
+}
+
+.comparison-box h3 {
+  margin-top: 0;
+}
+
+.comparison-box p {
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+.guide-nav {
+  position: sticky;
+  top: 14px;
+  z-index: 10;
+  max-width: 820px;
+  margin: 0 auto 28px;
+  padding: 12px 14px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(7,10,14,.94);
+  backdrop-filter: blur(10px);
+}
+
+.guide-nav a {
+  padding: 7px 10px;
+  border-radius: 7px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.guide-nav a:hover,
+.guide-nav a:focus-visible {
+  background: rgba(255,255,255,.06);
+  color: var(--white);
+}
+
+.back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 60;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+@media (max-width: 760px) {
+  .guide-nav { top:8px; overflow-x:auto; flex-wrap:nowrap; white-space:nowrap; }
+  .back-to-top { right:14px; bottom:14px; }
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .article-body h2 {
+    font-size: 30px;
+  }
+
+  .data-table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "AI Agents Explained: What They Are, How They Work & How to Build One",
+  "description": "A practical beginner-friendly guide to AI agents, including how they differ from chatbots and automation, their components, tools, memory, the agent loop and guardrails.",
+  "url": "https://hskdirect.co.uk/agents.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Stack & System",
+    "url": "https://hskdirect.co.uk/"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hskdirect.co.uk/agents.html"
+  }
+}
+</script>
+
 </head>
 
 <body>
@@ -89,23 +365,26 @@ Join free
 <section
   class="container page-hero"
   aria-labelledby="page-title"
+  style="padding-bottom:40px;"
 >
 
 <div class="kicker">
-Agents
+AI Agents · Beginner Guide
 </div>
 
 <h1 id="page-title">
-AI that can pursue a goal.
+AI Agents Explained.
 </h1>
 
 <p class="lead">
-AI agents are systems that can interpret a goal, decide what to do,
-use tools, observe the results and continue working toward an outcome.
-This page explains the technology without the hype.
+Understand what an AI agent actually is, how it differs from a chatbot
+and automation, what sits inside an agent, how the agent loop works,
+and where this technology becomes genuinely useful.
 </p>
 
-<div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;">
+<div
+  style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;"
+>
 
 <a
   class="btn btn-primary"
@@ -116,21 +395,84 @@ Start learning →
 
 <a
   class="btn"
-  href="tools.html"
+  href="automation.html"
 >
-Explore Tools →
+Compare with Automation →
 </a>
 
 </div>
 
 </section>
 
+<nav class="guide-nav" aria-label="Agents guide sections">
+  <a href="#what-is-an-agent">What is an agent?</a>
+  <a href="#agent-vs-automation">Agent vs automation</a>
+  <a href="#agent-anatomy">What's inside?</a>
+  <a href="#agent-loop">Agent loop</a>
+  <a href="#real-example">Example</a>
+  <a href="#guardrails">Guardrails</a>
+  <a href="#questions">Questions</a>
+</nav>
 
-<!-- START HERE -->
+
+<!-- QUICK ANSWER -->
 
 <section
   class="section"
-  aria-labelledby="start-here-title"
+  style="padding-top:0;"
+>
+
+<div class="container">
+
+<div class="card">
+
+<span class="tag">
+The short answer
+</span>
+
+<h2>
+What is an AI agent?
+</h2>
+
+<p>
+An AI agent is a software system that is given an objective and can
+use an AI model, information and available tools to decide and carry
+out actions toward that objective.
+</p>
+
+<p>
+The important idea is not simply that the system can generate text.
+It is that the system can participate in a process:
+<strong>decide → act → observe → decide again.</strong>
+</p>
+
+<div class="definition">
+
+<strong>
+Think of an agent as AI connected to a job, tools and a feedback loop.
+</strong>
+
+</div>
+
+<a
+  class="btn btn-primary"
+  href="#agent-loop"
+>
+See the agent loop →
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTENT MAP -->
+
+<section
+  class="section"
+  aria-labelledby="guide-title"
 >
 
 <div class="container">
@@ -139,14 +481,14 @@ Explore Tools →
 Start here
 </div>
 
-<h2 id="start-here-title">
-Understand the idea first.
+<h2 id="guide-title">
+Learn agents in the right order.
 </h2>
 
 <p class="lead">
-You don't need to understand programming or AI jargon to understand
-agents. Start with the difference between an ordinary AI response,
-automation, and an agentic system.
+The terminology can make agents sound more complicated than they are.
+Work through these sections in order and the architecture starts to
+make sense.
 </p>
 
 <div class="grid">
@@ -155,68 +497,60 @@ automation, and an agentic system.
   class="card"
   href="#what-is-an-agent"
 >
-<span class="tag">
-01
-</span>
-
-<h3>
-What is an AI agent?
-</h3>
-
-<p>
-A practical explanation of what makes an AI system agentic and why
-the word "agent" is used.
-</p>
-
-<span class="btn btn-small">
-Learn what an agent is →
-</span>
+<span class="tag">01</span>
+<h3>What is an agent?</h3>
+<p>Start with the basic idea and what makes a system agentic.</p>
+<span class="btn btn-small">Learn the foundation →</span>
 </a>
-
 
 <a
   class="card"
   href="#agent-vs-automation"
 >
-<span class="tag">
-02
-</span>
-
-<h3>
-Agent vs automation
-</h3>
-
-<p>
-Understand the difference between a predetermined workflow and a
-system that can choose its next action.
-</p>
-
-<span class="btn btn-small">
-Compare them →
-</span>
+<span class="tag">02</span>
+<h3>Agent vs automation</h3>
+<p>Understand where predetermined workflows end and agentic behaviour begins.</p>
+<span class="btn btn-small">Compare them →</span>
 </a>
-
 
 <a
   class="card"
   href="#agent-anatomy"
 >
-<span class="tag">
-03
-</span>
+<span class="tag">03</span>
+<h3>What's inside?</h3>
+<p>Learn the role of the model, instructions, context, memory and tools.</p>
+<span class="btn btn-small">See the architecture →</span>
+</a>
 
-<h3>
-What's inside an agent?
-</h3>
+<a
+  class="card"
+  href="#agent-loop"
+>
+<span class="tag">04</span>
+<h3>The agent loop</h3>
+<p>See how an agent moves from a goal to action and back again.</p>
+<span class="btn btn-small">Follow the loop →</span>
+</a>
 
-<p>
-Explore models, instructions, context, memory, tools, planning and
-the agent loop.
-</p>
+<a
+  class="card"
+  href="#real-example"
+>
+<span class="tag">05</span>
+<h3>Real example</h3>
+<p>See how these components could work together in a practical system.</p>
+<span class="btn btn-small">See an example →</span>
+</a>
 
-<span class="btn btn-small">
-See the architecture →
-</span>
+<a
+  class="card"
+  href="#guardrails"
+>
+<span class="tag">06</span>
+<h3>Guardrails</h3>
+<p>Understand why capable agents still need permissions, boundaries and human oversight.</p>
+<span class="btn btn-small">Understand the limits →</span>
 </a>
 
 </div>
@@ -224,6 +558,9 @@ See the architecture →
 </div>
 
 </section>
+
+
+<div class="container article-body">
 
 
 <!-- WHAT IS AN AGENT -->
@@ -231,59 +568,59 @@ See the architecture →
 <section
   id="what-is-an-agent"
   class="section"
-  aria-labelledby="what-is-an-agent-title"
 >
 
-<div class="container">
-
-<div class="card">
-
-<span class="tag">
-01 · Foundation
-</span>
-
-<h2 id="what-is-an-agent-title">
+<h2>
+<span class="step-num">1</span>
 What is an AI agent?
 </h2>
 
 <p>
-The simplest useful definition is:
-<strong>an AI agent is a system given a goal that can decide
-which actions to take in order to achieve that goal.</strong>
+The simplest useful way to think about an AI agent is as a system
+that receives a goal and can determine actions that help achieve that
+goal.
 </p>
 
 <p>
-A normal AI interaction often looks like:
+A normal AI interaction often looks like this:
 </p>
 
-<p>
+<div class="definition">
+
 <strong>
 You → question → AI → answer
 </strong>
-</p>
+
+</div>
 
 <p>
-An agentic system can be more like:
+An agentic system can look more like:
 </p>
 
-<p>
+<div class="definition">
+
 <strong>
-Goal → decide → use a tool → observe the result →
-decide again → complete the goal
+Goal → decide → use a tool → observe the result → decide again → finish
 </strong>
-</p>
+
+</div>
 
 <p>
-The important difference is that the system can participate in a
-process rather than simply producing one response.
+That does not mean an agent is magically independent. The developer
+still defines the available tools, permissions, instructions and
+boundaries. The difference is that the system can make decisions
+within those boundaries rather than following only one fixed sequence.
 </p>
 
-<a
-  class="btn btn-primary"
-  href="#agent-loop"
->
-See the agent loop →
-</a>
+<div class="tip">
+
+<span>💡</span>
+
+<div>
+
+<strong>Important distinction:</strong>
+"Agent" describes an architecture or behaviour. It is not simply
+another name for an AI model.
 
 </div>
 
@@ -292,329 +629,255 @@ See the agent loop →
 </section>
 
 
-<!-- AGENT VS AUTOMATION -->
+<!-- CHATBOT VS AUTOMATION VS AGENT -->
 
 <section
   id="agent-vs-automation"
   class="section"
-  aria-labelledby="agent-vs-automation-title"
 >
 
-<div class="container">
-
-<div class="kicker">
-Understand the difference
-</div>
-
-<h2 id="agent-vs-automation-title">
-Agent or automation?
+<h2>
+<span class="step-num">2</span>
+Agent vs chatbot vs automation.
 </h2>
 
-<div class="grid">
+<p>
+These terms are often mixed together. Separating them makes the whole
+subject much easier to understand.
+</p>
 
-<div class="card">
+<div class="comparison-grid">
 
-<span class="tag">
-Automation
-</span>
+<div class="comparison-box">
+
+<span class="tag">Chatbot</span>
 
 <h3>
-The path is predetermined.
+Responds.
 </h3>
 
 <p>
-A traditional automation follows rules that have already been
-defined.
+Usually designed around a conversation where a user asks something
+and the system generates a response.
 </p>
 
-<p>
-For example:
-</p>
+</div>
+
+<div class="comparison-box">
+
+<span class="tag">Automation</span>
+
+<h3>
+Follows rules.
+</h3>
 
 <p>
-<strong>
-Form submitted → add contact → send email → notify team
-</strong>
+A predefined workflow executes actions when specified triggers and
+conditions occur.
+</p>
+
+</div>
+
+<div class="comparison-box">
+
+<span class="tag">Agent</span>
+
+<h3>
+Pursues a goal.
+</h3>
+
+<p>
+The system can choose among available actions, use tools and react
+to results while working toward an objective.
+</p>
+
+</div>
+
+</div>
+
+<table class="data-table">
+
+<thead>
+<tr>
+<th>System</th>
+<th>Typical behaviour</th>
+<th>Example</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Chatbot</td>
+<td>Generate a response</td>
+<td>Answer a customer's question</td>
+</tr>
+
+<tr>
+<td>Automation</td>
+<td>Follow a defined workflow</td>
+<td>New form → CRM → email</td>
+</tr>
+
+<tr>
+<td>AI-assisted automation</td>
+<td>Use AI inside a defined workflow</td>
+<td>Classify an enquiry before routing it</td>
+</tr>
+
+<tr>
+<td>Agentic system</td>
+<td>Choose actions toward a goal</td>
+<td>Research, evaluate and prepare a report</td>
+</tr>
+
+</tbody>
+
+</table>
+
+<p>
+These categories can overlap. A modern system can combine all of them.
+For example, an agent can use automation as one of its tools.
 </p>
 
 <a
-  class="btn btn-small"
+  class="btn"
   href="automation.html"
 >
-Explore Automation →
+Learn Automation →
 </a>
-
-</div>
-
-
-<div class="card">
-
-<span class="tag">
-AI-assisted automation
-</span>
-
-<h3>
-AI performs part of the work.
-</h3>
-
-<p>
-The workflow remains controlled by predetermined rules, but AI may
-interpret, classify, summarise or generate information inside it.
-</p>
-
-<a
-  class="btn btn-small"
-  href="automation.html"
->
-Explore Automation →
-</a>
-
-</div>
-
-
-<div class="card">
-
-<span class="tag">
-Agentic system
-</span>
-
-<h3>
-The system can choose its next action.
-</h3>
-
-<p>
-An agent can receive a goal, use available tools, inspect the
-results and determine what action should happen next.
-</p>
-
-<a
-  class="btn btn-small"
-  href="#agent-loop"
->
-See the agent loop →
-</a>
-
-</div>
-
-</div>
-
-</div>
 
 </section>
 
 
-<!-- AGENT ANATOMY -->
+<!-- ANATOMY -->
 
 <section
   id="agent-anatomy"
   class="section"
-  aria-labelledby="agent-anatomy-title"
 >
 
-<div class="container">
-
-<div class="kicker">
-The architecture
-</div>
-
-<h2 id="agent-anatomy-title">
-What's inside an agent?
+<h2>
+<span class="step-num">3</span>
+What's inside an AI agent?
 </h2>
 
-<p class="lead">
-The word "agent" describes a system, not a single piece of software.
-Different technologies can provide different parts of that system.
-</p>
-
-<div class="grid">
-
-<a
-  class="card"
-  href="#llm"
->
-<span class="tag">
-01
-</span>
-
-<h3>
-LLM
-</h3>
-
 <p>
-The model provides language understanding, generation and reasoning
-capabilities.
+An agent is not normally one piece of software. It is better
+understood as a collection of components working together.
 </p>
 
-<span class="btn btn-small">
-Understand the model →
-</span>
-</a>
+<table class="data-table">
 
+<thead>
+<tr>
+<th>Component</th>
+<th>What it does</th>
+<th>Simple way to think about it</th>
+</tr>
+</thead>
 
-<a
-  class="card"
-  href="#instructions"
->
-<span class="tag">
-02
-</span>
+<tbody>
 
-<h3>
-Instructions
-</h3>
+<tr>
+<td>Model</td>
+<td>Interprets information and generates decisions or responses</td>
+<td>The intelligence layer</td>
+</tr>
 
-<p>
-Rules and objectives tell the system what it is supposed to accomplish
-and how it should behave.
-</p>
+<tr>
+<td>Instructions</td>
+<td>Define the objective, behaviour and boundaries</td>
+<td>The job description</td>
+</tr>
 
-<span class="btn btn-small">
-Understand instructions →
-</span>
-</a>
+<tr>
+<td>Context</td>
+<td>Provides information currently available to the model</td>
+<td>What it can see now</td>
+</tr>
 
+<tr>
+<td>Memory</td>
+<td>Stores information that can be retrieved later</td>
+<td>What it can remember</td>
+</tr>
 
-<a
-  class="card"
-  href="#context"
->
-<span class="tag">
-03
-</span>
+<tr>
+<td>Tools</td>
+<td>Give the system external capabilities</td>
+<td>What it can do</td>
+</tr>
 
-<h3>
-Context
-</h3>
+<tr>
+<td>State</td>
+<td>Tracks where the task currently is</td>
+<td>Where it is in the job</td>
+</tr>
 
-<p>
-Information currently available to the model while it is working on
-the task.
-</p>
+<tr>
+<td>Loop</td>
+<td>Allows repeated decision and action cycles</td>
+<td>How it keeps working</td>
+</tr>
 
-<span class="btn btn-small">
-Understand context →
-</span>
-</a>
+<tr>
+<td>Guardrails</td>
+<td>Restrict actions and protect the system</td>
+<td>What it is allowed to do</td>
+</tr>
 
+</tbody>
 
-<a
-  class="card"
-  href="#memory"
->
-<span class="tag">
-04
-</span>
-
-<h3>
-Memory
-</h3>
-
-<p>
-Information that can be stored and retrieved across interactions or
-tasks.
-</p>
-
-<span class="btn btn-small">
-Understand memory →
-</span>
-</a>
-
-
-<a
-  class="card"
-  href="#tools"
->
-<span class="tag">
-05
-</span>
-
-<h3>
-Tools
-</h3>
-
-<p>
-External capabilities such as search, databases, APIs, email and
-other software.
-</p>
-
-<span class="btn btn-small">
-Understand tools →
-</span>
-</a>
-
-
-<a
-  class="card"
-  href="#agent-loop"
->
-<span class="tag">
-06
-</span>
-
-<h3>
-Agent loop
-</h3>
-
-<p>
-The cycle of deciding, acting, observing the result and deciding what
-to do next.
-</p>
-
-<span class="btn btn-small">
-See the loop →
-</span>
-</a>
-
-</div>
-
-</div>
+</table>
 
 </section>
 
 
-<!-- LLM -->
+<!-- MODEL -->
 
 <section
-  id="llm"
+  id="model"
   class="section"
-  aria-labelledby="llm-title"
 >
 
-<div class="container">
-
-<div class="card">
-
-<span class="tag">
-Agent component · Model
-</span>
-
-<h2 id="llm-title">
-The LLM provides the intelligence layer.
+<h2>
+<span class="step-num">4</span>
+The model is the intelligence layer.
 </h2>
 
 <p>
-A large language model processes language and generates responses.
-In an agent system it can interpret instructions, evaluate information,
-reason about possible actions and determine which available capability
-may be useful next.
+Large language models can interpret instructions, process information,
+generate language and reason about possible actions.
 </p>
 
 <p>
-The model itself is not automatically an agent. The surrounding
-application supplies the instructions, context, tools and execution
-environment that turn model capability into an agentic system.
+But an LLM by itself is not automatically an agent.
+The surrounding software determines what information reaches the
+model, what tools it can call and what happens after the model produces
+a decision.
 </p>
 
+<div class="tip">
+
+<span>🧠</span>
+
+<div>
+
+<strong>Think about it this way:</strong>
+The model can help decide what should happen. The surrounding
+application is what actually gives that decision somewhere to go.
+
+</div>
+
+</div>
+
 <a
-  class="btn btn-primary"
+  class="btn"
   href="ai.html"
 >
-Explore AI →
+Understand AI →
 </a>
-
-</div>
-
-</div>
 
 </section>
 
@@ -624,44 +887,47 @@ Explore AI →
 <section
   id="instructions"
   class="section"
-  aria-labelledby="instructions-title"
 >
 
-<div class="container">
-
-<div class="card">
-
-<span class="tag">
-Agent component · Instructions
-</span>
-
-<h2 id="instructions-title">
+<h2>
+<span class="step-num">5</span>
 Instructions define the job.
 </h2>
 
 <p>
-An agent needs a clear objective and boundaries. Instructions can
-define what the agent should accomplish, what information it should
-use, what tools it may access and what it must not do.
+An agent needs an objective. Good instructions define what the system
+is trying to accomplish and the boundaries around that task.
 </p>
 
 <p>
-A vague instruction such as "find affiliate opportunities" is less
-useful than a defined objective such as "identify legitimate affiliate
-programmes using authoritative sources and flag anything requiring
-human verification."
+For example:
 </p>
 
-<a
-  class="btn"
-  href="#guardrails"
->
-See guardrails →
-</a>
+<div class="definition">
+
+<strong>
+"Review incoming enquiries, identify the likely intent, collect the
+relevant information and prepare a response for human approval."
+</strong>
 
 </div>
 
+<p>
+That is more useful than simply telling an AI:
+</p>
+
+<div class="definition">
+
+<strong>
+"Handle my enquiries."
+</strong>
+
 </div>
+
+<p>
+The more consequential the action, the more important precise
+instructions and explicit boundaries become.
+</p>
 
 </section>
 
@@ -671,39 +937,35 @@ See guardrails →
 <section
   id="context"
   class="section"
-  aria-labelledby="context-title"
 >
 
-<div class="container">
-
-<div class="card">
-
-<span class="tag">
-Agent component · Context
-</span>
-
-<h2 id="context-title">
-Context is what the model can see now.
+<h2>
+<span class="step-num">6</span>
+Context is what the agent can see now.
 </h2>
 
 <p>
-Context can include the user's request, previous messages, relevant
-documents, retrieved information, tool results and the current state
-of the task.
+Context can include the user's request, previous conversation,
+documents, retrieved information, tool results, database records and
+the current state of a task.
 </p>
 
 <p>
-Good agent systems do not necessarily provide everything they know
-at once. They retrieve or supply the information that is relevant to
-the current decision.
+A useful agent does not necessarily need every piece of information
+at once. It needs access to the information relevant to the decision
+it is currently making.
 </p>
 
-<a
-  class="btn"
-  href="#memory"
->
-Understand memory →
-</a>
+<div class="tip">
+
+<span>💡</span>
+
+<div>
+
+<strong>Context ≠ memory.</strong>
+Context is information available to the model for the current
+decision. Memory refers to information stored so it can potentially
+be retrieved later.
 
 </div>
 
@@ -717,45 +979,39 @@ Understand memory →
 <section
   id="memory"
   class="section"
-  aria-labelledby="memory-title"
 >
 
-<div class="container">
-
-<div class="card">
-
-<span class="tag">
-Agent component · Memory
-</span>
-
-<h2 id="memory-title">
-Memory is stored information.
+<h2>
+<span class="step-num">7</span>
+Memory lets information persist.
 </h2>
 
 <p>
-Memory can allow an application to retain information across tasks
-or interactions. It might be stored in a database, application
-memory system, knowledge base or another data store.
+Memory can allow an agent system to retain information across
+interactions or tasks.
 </p>
 
 <p>
-Memory and context are related but not identical. Memory is stored
-information that can be retrieved; context is information currently
-provided to the model.
+That information might be stored in a database, knowledge base,
+application state or another storage system.
 </p>
 
 <p>
-A knowledge base can also be searched to retrieve relevant information
-for the model. This is one of the ideas behind retrieval-augmented
+A system may also retrieve relevant information from a knowledge base
+when needed. This is one of the ideas behind retrieval-augmented
 generation, commonly called RAG.
 </p>
 
-<a
-  class="btn"
-  href="resources.html"
->
-Explore Resources →
-</a>
+<div class="tip warn">
+
+<span>⚠️</span>
+
+<div>
+
+<strong>Memory is not magic.</strong>
+A system needs an explicit mechanism for storing and retrieving
+information. Simply calling something an "agent" does not automatically
+give it persistent memory.
 
 </div>
 
@@ -769,97 +1025,73 @@ Explore Resources →
 <section
   id="tools"
   class="section"
-  aria-labelledby="tools-title"
 >
 
-<div class="container">
-
-<div class="card">
-
-<span class="tag">
-Agent component · Tools
-</span>
-
-<h2 id="tools-title">
+<h2>
+<span class="step-num">8</span>
 Tools give the agent capabilities.
 </h2>
 
 <p>
-An AI model cannot automatically access every external service.
-An agent system can provide tools that allow it to perform defined
-operations.
+This is where agents become particularly interesting.
+A model can reason about what should happen, but external tools give
+the system ways to interact with the world around it.
 </p>
 
-<div class="grid">
+<table class="data-table">
 
-<div class="card">
+<thead>
+<tr>
+<th>Tool type</th>
+<th>Possible capability</th>
+</tr>
+</thead>
 
-<span class="tag">
-Information
-</span>
+<tbody>
 
-<h3>
-Search &amp; retrieval
-</h3>
+<tr>
+<td>Search</td>
+<td>Find information from approved sources</td>
+</tr>
+
+<tr>
+<td>Database</td>
+<td>Read or update structured records</td>
+</tr>
+
+<tr>
+<td>API</td>
+<td>Interact with another software service</td>
+</tr>
+
+<tr>
+<td>Email</td>
+<td>Draft or, when authorised, send messages</td>
+</tr>
+
+<tr>
+<td>Calendar</td>
+<td>Read availability or create events</td>
+</tr>
+
+<tr>
+<td>Automation platform</td>
+<td>Trigger predictable workflows</td>
+</tr>
+
+<tr>
+<td>Code execution</td>
+<td>Perform defined calculations or transformations</td>
+</tr>
+
+</tbody>
+
+</table>
 
 <p>
-Find information from approved sources or retrieve relevant records.
+The important word is <strong>authorised</strong>. Giving an agent access
+to a tool does not mean it should have unlimited permission to use it.
 </p>
-
-</div>
-
-<div class="card">
-
-<span class="tag">
-Data
-</span>
-
-<h3>
-Databases &amp; APIs
-</h3>
-
-<p>
-Read or write structured information when the system has permission.
-</p>
-
-</div>
-
-<div class="card">
-
-<span class="tag">
-Communication
-</span>
-
-<h3>
-Email &amp; messaging
-</h3>
-
-<p>
-Draft or, where explicitly authorised, send communications.
-</p>
-
-</div>
-
-<div class="card">
-
-<span class="tag">
-Workflow
-</span>
-
-<h3>
-Automation
-</h3>
-
-<p>
-Connect the agent's decisions to predictable workflows and other
-applications.
-</p>
-
-</div>
-
-</div>
-
-<div style="margin-top:24px;">
 
 <a
   class="btn btn-primary"
@@ -868,178 +1100,284 @@ applications.
 Explore the Tools Directory →
 </a>
 
-</div>
-
-</div>
-
-</div>
-
 </section>
 
 
-<!-- AGENT LOOP -->
+<!-- LOOP -->
 
 <section
   id="agent-loop"
   class="section"
-  aria-labelledby="agent-loop-title"
 >
 
-<div class="container">
-
-<div class="kicker">
-The key idea
-</div>
-
-<h2 id="agent-loop-title">
+<h2>
+<span class="step-num">9</span>
 The agent loop.
 </h2>
 
-<p class="lead">
-The defining pattern is not simply "AI + tools". It is the ability
-to use the result of an action to determine what should happen next.
+<p>
+The loop is one of the most useful concepts for understanding agents.
+Instead of thinking about an agent as one enormous AI prompt, think
+about a repeated cycle.
 </p>
 
-<div class="card">
-
-<div class="grid">
+<div class="agent-flow">
 
 <div>
-<span class="tag">
-01
-</span>
-
-<h3>
-Goal
-</h3>
-
-<p>
-The system receives a defined outcome it is expected to pursue.
-</p>
+<span>01 · Goal</span>
+Understand what needs to be achieved.
 </div>
 
 <div>
-<span class="tag">
-02
-</span>
-
-<h3>
-Decide
-</h3>
-
-<p>
-The model determines what action or information is needed next.
-</p>
+<span>02 · Decide</span>
+Determine the next useful action.
 </div>
 
 <div>
-<span class="tag">
-03
-</span>
-
-<h3>
-Act
-</h3>
-
-<p>
-The system calls an available tool or performs an allowed action.
-</p>
+<span>03 · Act</span>
+Use an available tool or produce an intermediate result.
 </div>
 
 <div>
-<span class="tag">
-04
-</span>
-
-<h3>
-Observe
-</h3>
-
-<p>
-The result of the action becomes new information for the system.
-</p>
+<span>04 · Observe</span>
+Inspect what happened.
 </div>
 
 <div>
-<span class="tag">
-05
-</span>
-
-<h3>
-Decide again
-</h3>
-
-<p>
-The system can determine whether another action is required.
-</p>
+<span>05 · Decide again</span>
+Use the new information to determine what should happen next.
 </div>
 
 <div>
-<span class="tag">
-06
-</span>
+<span>06 · Finish</span>
+Stop when the objective has been completed or a human decision is required.
+</div>
 
-<h3>
-Complete
-</h3>
+</div>
+
+<div class="definition">
+
+<strong>
+Goal → Decide → Act → Observe → Decide → Act → Complete
+</strong>
+
+</div>
 
 <p>
-The process stops when the defined outcome has been achieved or
-the system requires human intervention.
+That loop is what makes an agent different from a single AI response.
+It can respond to what happened during the task rather than assuming
+everything will go exactly according to plan.
 </p>
-</div>
-
-</div>
-
-</div>
-
-</div>
 
 </section>
 
 
-<!-- PLANNING -->
+<!-- REAL EXAMPLE -->
 
 <section
-  id="planning"
+  id="real-example"
   class="section"
-  aria-labelledby="planning-title"
 >
 
-<div class="container">
-
-<div class="card">
-
-<span class="tag">
-Agent behaviour
-</span>
-
-<h2 id="planning-title">
-Planning and task decomposition.
+<h2>
+<span class="step-num">10</span>
+A practical agent example.
 </h2>
 
 <p>
-A larger goal may require several smaller actions. An agentic system
-can break a goal into tasks, perform them and adjust its approach
-when the results change what is required.
+Imagine a business receives customer enquiries by email.
+The objective is:
 </p>
 
+<div class="definition">
+
+<strong>
+"Review new enquiries and prepare the right next action."
+</strong>
+
+</div>
+
 <p>
-For example, researching a company could involve checking its
-official website, searching relevant partner networks, comparing
-evidence and preparing a recommendation.
+A possible system could work like this:
+</p>
+
+<div class="agent-flow">
+
+<div>
+<span>Trigger</span>
+New enquiry arrives.
+</div>
+
+<div>
+<span>Context</span>
+The system retrieves the customer message and relevant business information.
+</div>
+
+<div>
+<span>Decision</span>
+The AI determines what type of enquiry it is.
+</div>
+
+<div>
+<span>Tool</span>
+The system searches the relevant knowledge or customer record.
+</div>
+
+<div>
+<span>Action</span>
+It prepares a response or creates a task for the team.
+</div>
+
+<div>
+<span>Human checkpoint</span>
+A person approves consequential communication before it is sent.
+</div>
+
+</div>
+
+<p>
+Notice that this isn't necessarily a completely autonomous robot.
+It can be a controlled system where AI makes useful decisions while
+automation handles predictable steps and a human remains responsible
+for important actions.
 </p>
 
 <a
   class="btn"
-  href="#guardrails"
+  href="systems.html"
 >
-Understand the boundaries →
+Explore Systems →
 </a>
 
-</div>
+</section>
+
+
+<!-- AGENT + AUTOMATION -->
+
+<section
+  id="agent-automation"
+  class="section"
+>
+
+<h2>
+<span class="step-num">11</span>
+Where automation fits.
+</h2>
+
+<p>
+Agents and automation are not competitors.
+They can work together.
+</p>
+
+<p>
+A useful architecture is often:
+</p>
+
+<div class="definition">
+
+<strong>
+Agent decides → automation executes predictable actions
+</strong>
 
 </div>
+
+<p>
+For example, an agent might decide that an enquiry should be
+categorised as "urgent". An automation platform can then perform the
+fixed sequence of actions associated with that category.
+</p>
+
+<p>
+This combination can be easier to control than giving an agent direct
+access to every system.
+</p>
+
+<a
+  class="btn"
+  href="automation.html"
+>
+Learn Automation →
+</a>
+
+</section>
+
+
+<!-- STACK -->
+
+<section
+  id="agent-stack"
+  class="section"
+>
+
+<h2>
+<span class="step-num">12</span>
+What an agent stack can look like.
+</h2>
+
+<p>
+An agent rarely exists in isolation. The surrounding stack may contain
+a model, automation platform, database, knowledge source and
+communication tools.
+</p>
+
+<table class="data-table">
+
+<thead>
+<tr>
+<th>Layer</th>
+<th>Role</th>
+<th>Example category</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Model</td>
+<td>Reasoning and generation</td>
+<td>AI model</td>
+</tr>
+
+<tr>
+<td>Agent runtime</td>
+<td>Coordinates the agent's actions</td>
+<td>Agent framework/platform</td>
+</tr>
+
+<tr>
+<td>Knowledge</td>
+<td>Provides relevant information</td>
+<td>Database / knowledge base</td>
+</tr>
+
+<tr>
+<td>Automation</td>
+<td>Runs predictable workflows</td>
+<td>Automation platform</td>
+</tr>
+
+<tr>
+<td>Tools</td>
+<td>Provides external capabilities</td>
+<td>APIs / software services</td>
+</tr>
+
+<tr>
+<td>Interface</td>
+<td>Lets people interact with the system</td>
+<td>Chat / form / application</td>
+</tr>
+
+</tbody>
+
+</table>
+
+<a
+  class="btn"
+  href="stacks.html"
+>
+Explore Stacks →
+</a>
 
 </section>
 
@@ -1049,88 +1387,120 @@ Understand the boundaries →
 <section
   id="guardrails"
   class="section"
-  aria-labelledby="guardrails-title"
 >
 
-<div class="container">
-
-<div class="kicker">
-Control matters
-</div>
-
-<h2 id="guardrails-title">
+<h2>
+<span class="step-num">13</span>
 Agents need boundaries.
 </h2>
 
-<div class="grid">
-
-<div class="card">
-
-<span class="tag">
-Permissions
-</span>
-
-<h3>
-What can it access?
-</h3>
+<p>
+The more capable an agent becomes, the more important its permissions
+and boundaries become.
+</p>
 
 <p>
-An agent should receive only the access required for its job.
-Read access and write access should be treated differently.
+A sensible system should consider:
 </p>
+
+<ul>
+<li>Which tools can the agent access?</li>
+<li>Which actions are read-only?</li>
+<li>Which actions change data?</li>
+<li>Which actions send external communications?</li>
+<li>Which actions require human approval?</li>
+<li>What happens if the agent cannot complete the task?</li>
+<li>How are actions logged and reviewed?</li>
+</ul>
+
+<div class="tip warn">
+
+<span>⚠️</span>
+
+<div>
+
+<strong>Human oversight matters.</strong>
+An agent should not be given unrestricted authority simply because the
+technology makes an action possible.
 
 </div>
 
-<div class="card">
-
-<span class="tag">
-Validation
-</span>
-
-<h3>
-What evidence does it need?
-</h3>
-
-<p>
-Important decisions should be based on appropriate evidence rather
-than assumptions or unverified claims.
-</p>
-
 </div>
 
-<div class="card">
-
-<span class="tag">
-Limits
-</span>
-
-<h3>
-When should it stop?
-</h3>
-
 <p>
-Systems can use execution, cost, action and time limits to prevent
-uncontrolled loops or unnecessary activity.
+For important workflows, a human approval step can be a feature rather
+than a failure.
 </p>
 
-</div>
+</section>
 
-<div class="card">
 
-<span class="tag">
-Human approval
-</span>
+<!-- WHEN TO USE -->
 
-<h3>
-When should a person decide?
-</h3>
+<section
+  id="when-to-use"
+  class="section"
+>
+
+<h2>
+<span class="step-num">14</span>
+When should you actually use an agent?
+</h2>
 
 <p>
-Important, irreversible, financial or public actions can require
-human approval before execution.
+Agents are not automatically better than ordinary automation.
+Sometimes a simple workflow is the better engineering choice.
 </p>
 
-</div>
+<table class="data-table">
+
+<thead>
+<tr>
+<th>Situation</th>
+<th>Better starting point</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>The steps are always the same</td>
+<td>Automation</td>
+</tr>
+
+<tr>
+<td>AI only needs to classify or summarise something</td>
+<td>AI-assisted automation</td>
+</tr>
+
+<tr>
+<td>The system must choose between several possible actions</td>
+<td>Agentic system</td>
+</tr>
+
+<tr>
+<td>The task requires research across several sources</td>
+<td>Agent may be useful</td>
+</tr>
+
+<tr>
+<td>The action has serious consequences</td>
+<td>Controlled workflow + human approval</td>
+</tr>
+
+</tbody>
+
+</table>
+
+<div class="tip">
+
+<span>💡</span>
+
+<div>
+
+<strong>Start simple.</strong>
+If a deterministic workflow solves the problem reliably, you may not
+need an agent.
 
 </div>
 
@@ -1139,154 +1509,222 @@ human approval before execution.
 </section>
 
 
-<!-- USE CASES -->
+<!-- BUILD -->
 
 <section
-  id="use-cases"
+  id="build"
   class="section"
-  aria-labelledby="use-cases-title"
 >
 
-<div class="container">
-
-<div class="kicker">
-Where agents can help
-</div>
-
-<h2 id="use-cases-title">
-Real-world agent use cases.
-</h2>
-
-<p class="lead">
-Agents are most useful when a task involves interpretation, changing
-information, multiple possible actions or a need to adapt to results.
-</p>
-
-<div class="grid">
-
-<div class="card">
-
-<span class="tag">
-Research
-</span>
-
-<h3>
-Research agents
-</h3>
-
-<p>
-Gather information, compare sources, summarise findings and prepare
-structured research for review.
-</p>
-
-</div>
-
-<div class="card">
-
-<span class="tag">
-Content
-</span>
-
-<h3>
-Content workflows
-</h3>
-
-<p>
-Research topics, organise information, create drafts and route work
-through review and publishing steps.
-</p>
-
-<a
-  class="btn btn-small"
-  href="content.html"
->
-Explore Content →
-</a>
-
-</div>
-
-<div class="card">
-
-<span class="tag">
-Business
-</span>
-
-<h3>
-Lead research
-</h3>
-
-<p>
-Research potential customers, classify opportunities and prepare
-information for sales teams or human review.
-</p>
-
-</div>
-
-<div class="card">
-
-<span class="tag">
-Operations
-</span>
-
-<h3>
-Business operations
-</h3>
-
-<p>
-Interpret requests, retrieve information and coordinate actions
-across connected business systems.
-</p>
-
-<a
-  class="btn btn-small"
-  href="systems.html"
->
-Explore Systems →
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- AGENTS AND STACKS -->
-
-<section
-  class="section"
-  aria-labelledby="agents-fit-title"
->
-
-<div class="container">
-
-<div class="card">
-
-<div class="kicker">
-Beyond the agent
-</div>
-
-<h2 id="agents-fit-title">
-An agent is usually part of a larger system.
+<h2>
+<span class="step-num">15</span>
+How to start learning agents.
 </h2>
 
 <p>
-An agent rarely exists in isolation. It may sit inside a larger stack
-containing models, databases, automation, business applications,
-communication tools and human approval.
+You don't need to build a fully autonomous system on day one.
+A better path is to understand the layers individually.
 </p>
 
-<p>
-Understanding agents therefore becomes much easier when you understand
-how the surrounding technology fits together.
-</p>
+<ol>
+<li>Understand AI models.</li>
+<li>Learn how automation works.</li>
+<li>Learn how APIs and tools connect software.</li>
+<li>Understand context and knowledge retrieval.</li>
+<li>Build a simple AI-assisted workflow.</li>
+<li>Add a decision point.</li>
+<li>Introduce a tool.</li>
+<li>Test the system.</li>
+<li>Add permissions and human approval.</li>
+<li>Only then consider greater autonomy.</li>
+</ol>
 
-<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;">
+<div class="actions">
 
 <a
   class="btn btn-primary"
+  href="automation.html"
+>
+Learn Automation →
+</a>
+
+<a
+  class="btn"
+  href="tools.html"
+>
+Explore Tools →
+</a>
+
+<a
+  class="btn"
+  href="blueprints.html"
+>
+Explore Blueprints →
+</a>
+
+</div>
+
+</section>
+
+
+<!-- SUMMARY -->
+
+<section
+  id="summary"
+  class="section"
+>
+
+<h2>
+<span class="step-num">16</span>
+The simplest mental model.
+</h2>
+
+<p>
+If you remember only one thing from this guide, remember this:
+</p>
+
+<div class="definition">
+
+<strong>
+An AI model provides intelligence.
+An agent system gives that intelligence a goal, context, tools,
+a decision loop and boundaries.
+</strong>
+
+</div>
+
+<p>
+That is the foundation.
+Everything else — frameworks, platforms, memory systems, tool calling,
+automation and multi-agent architectures — builds on top of it.
+</p>
+
+<div class="actions">
+
+<a
+  class="btn btn-primary"
+  href="stacks.html"
+>
+See How Tools Fit Together →
+</a>
+
+<a
+  class="btn"
+  href="solutions.html"
+>
+Explore Solutions →
+</a>
+
+</div>
+
+</section>
+
+
+<!-- FAQ AS VISIBLE CONTENT -->
+
+<section
+  id="questions"
+  class="section"
+>
+
+<h2>
+Common questions about AI agents.
+</h2>
+
+<h3>
+Is ChatGPT an AI agent?
+</h3>
+
+<p>
+A conversational AI model or application is not automatically an
+agent. Whether a particular implementation is agentic depends on
+whether it can pursue tasks through tools, decisions and actions
+within a surrounding system.
+</p>
+
+<h3>
+Do AI agents replace automation?
+</h3>
+
+<p>
+No. Automation remains extremely useful for predictable processes.
+Agents can add decision-making where the path is less predictable.
+The two can work together.
+</p>
+
+<h3>
+Do agents need memory?
+</h3>
+
+<p>
+Not necessarily. Some agent tasks can be completed using only the
+current context. Persistent memory becomes useful when information
+needs to survive beyond the current interaction or task.
+</p>
+
+<h3>
+Can an agent use external software?
+</h3>
+
+<p>
+Yes, when the surrounding application provides authorised tools or
+integrations. Tool access is one of the main ways an agent can move
+beyond generating information and perform useful actions.
+</p>
+
+<h3>
+Are AI agents fully autonomous?
+</h3>
+
+<p>
+They can be designed with different levels of autonomy, but greater
+autonomy also increases the importance of permissions, monitoring,
+testing and human oversight.
+</p>
+
+<h3>
+Do I need to know how to code?
+</h3>
+
+<p>
+Not necessarily to understand the concepts. No-code and low-code
+platforms can make many agent and automation concepts accessible
+without writing a traditional software application.
+</p>
+
+</section>
+
+
+<!-- NEXT -->
+
+<section class="section">
+
+<div class="card">
+
+<span class="tag">
+Continue learning
+</span>
+
+<h2>
+You've got the foundation.
+</h2>
+
+<p>
+Now move from understanding agents to understanding the tools,
+stacks and systems that make them useful.
+</p>
+
+<div class="actions">
+
+<a
+  class="btn btn-primary"
+  href="tools.html"
+>
+Explore Tools →
+</a>
+
+<a
+  class="btn"
   href="stacks.html"
 >
 Explore Stacks →
@@ -1299,179 +1737,18 @@ Explore Stacks →
 Explore Systems →
 </a>
 
-<a
-  class="btn"
-  href="solutions.html"
->
-Explore Solutions →
-</a>
-
-</div>
-
 </div>
 
 </div>
 
 </section>
 
-
-<!-- TOOL DISCOVERY -->
-
-<section
-  class="section"
-  aria-labelledby="agent-tools-title"
->
-
-<div class="container">
-
-<div class="kicker">
-Find the technology
 </div>
-
-<h2 id="agent-tools-title">
-Explore the agent ecosystem.
-</h2>
-
-<p class="lead">
-Once you understand the architecture, you can start evaluating the
-different tools and platforms that provide the components.
-</p>
-
-<div class="grid">
-
-<a
-  class="card"
-  href="tools.html"
->
-<span class="tag">
-Tools
-</span>
-
-<h3>
-AI &amp; automation tools
-</h3>
-
-<p>
-Explore the wider directory of software that can form part of AI
-and automation systems.
-</p>
-
-<span class="btn btn-small">
-Explore Tools →
-</span>
-</a>
-
-
-<a
-  class="card"
-  href="ai.html"
->
-<span class="tag">
-AI
-</span>
-
-<h3>
-AI models &amp; capabilities
-</h3>
-
-<p>
-Understand the wider AI layer that provides models and capabilities
-used inside modern applications.
-</p>
-
-<span class="btn btn-small">
-Explore AI →
-</span>
-</a>
-
-
-<a
-  class="card"
-  href="automation.html"
->
-<span class="tag">
-Automation
-</span>
-
-<h3>
-Connect the workflow
-</h3>
-
-<p>
-See where predictable automation fits alongside more flexible
-agentic behaviour.
-</p>
-
-<span class="btn btn-small">
-Explore Automation →
-</span>
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- NEXT STEPS -->
-
-<section
-  class="section"
-  aria-labelledby="next-steps-title"
->
-
-<div class="container">
-
-<div class="card">
-
-<div class="kicker">
-Keep learning
-</div>
-
-<h2 id="next-steps-title">
-From understanding to building.
-</h2>
-
-<p>
-Once the fundamentals make sense, the next step is learning how
-agents fit into practical stacks and systems rather than treating
-them as isolated AI products.
-</p>
-
-<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;">
-
-<a
-  class="btn btn-primary"
-  href="stacks.html"
->
-Build a Stack →
-</a>
-
-<a
-  class="btn"
-  href="blueprints.html"
->
-Explore Blueprints →
-</a>
-
-<a
-  class="btn"
-  href="resources.html"
->
-Explore Resources →
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
 
 </main>
 
+
+<button class="btn back-to-top" id="back-to-top" type="button" aria-label="Back to top">↑ Back to top</button>
 
 <footer>
 
@@ -1479,10 +1756,7 @@ Explore Resources →
 
 <div>
 
-<a
-  class="logo"
-  href="index.html"
->
+<a class="logo" href="index.html">
 STACK<span>&amp;</span>SYSTEM
 </a>
 
@@ -1500,71 +1774,38 @@ links after approval and verification.
 
 <div>
 
-<h4>
-Discover
-</h4>
+<h4>Discover</h4>
 
-<a href="content.html">
-Content
-</a>
-
-<a href="tools.html">
-Tools
-</a>
-
-<a href="agents.html">
-Agents
-</a>
+<a href="content.html">Content</a>
+<a href="ai.html">AI</a>
+<a href="automation.html">Automation</a>
+<a href="agents.html">Agents</a>
+<a href="money.html">Money</a>
+<a href="tools.html">Tools</a>
 
 </div>
 
 
 <div>
 
-<h4>
-Build
-</h4>
+<h4>Build</h4>
 
-<a href="stacks.html">
-Stacks
-</a>
-
-<a href="systems.html">
-Systems
-</a>
-
-<a href="solutions.html">
-Solutions
-</a>
-
-<a href="blueprints.html">
-Blueprints
-</a>
-
-<a href="products.html">
-Products
-</a>
+<a href="stacks.html">Stacks</a>
+<a href="systems.html">Systems</a>
+<a href="solutions.html">Solutions</a>
+<a href="blueprints.html">Blueprints</a>
+<a href="resources.html">Resources</a>
 
 </div>
 
 
 <div>
 
-<h4>
-Platform
-</h4>
+<h4>Platform</h4>
 
-<a href="signal.html">
-The Signal
-</a>
-
-<a href="resources.html">
-Resources
-</a>
-
-<a href="newsletter.html">
-Newsletter
-</a>
+<a href="products.html">Products</a>
+<a href="signal.html">The Signal</a>
+<a href="newsletter.html">Newsletter</a>
 
 </div>
 
@@ -1573,18 +1814,32 @@ Newsletter
 
 <div
   class="container"
-  style="margin-top:30px"
+  style="margin-top:30px;"
 >
+
 © <span data-year></span> Stack &amp; System
+
 </div>
 
 </footer>
 
 
-<script
-  src="app.js"
-  defer
-></script>
+<script src="app.js" defer></script>
+
+<script>
+(() => {
+  const button = document.getElementById("back-to-top");
+  if (!button) return;
+  const updateVisibility = () => {
+    button.classList.toggle("is-visible", window.scrollY > 650);
+  };
+  window.addEventListener("scroll", updateVisibility, { passive: true });
+  button.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+  updateVisibility();
+})();
+</script>
 
 </body>
 </html>

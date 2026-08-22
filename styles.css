@@ -279,3 +279,136 @@ h3 {
   }
 
 }
+/* =========================================================
+   STACK & SYSTEM — STANDARD NAVIGATION
+   ========================================================= */
+
+.nav-links {
+  align-items: center;
+}
+
+.nav-group {
+  position: relative;
+}
+
+.nav-group-toggle {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 8px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.nav-group-toggle:hover,
+.nav-group-toggle:focus-visible,
+.nav-links > a:hover,
+.nav-links > a:focus-visible {
+  color: var(--white);
+}
+
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+
+  min-width: 190px;
+  padding: 8px;
+
+  display: grid;
+  gap: 2px;
+
+  background: rgba(7,10,14,.98);
+
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 12px;
+
+  box-shadow: 0 18px 45px rgba(0,0,0,.35);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(-5px);
+
+  transition:
+    opacity .16s ease,
+    transform .16s ease,
+    visibility .16s ease;
+
+  z-index: 50;
+}
+
+.nav-group.is-open .nav-dropdown,
+.nav-group:hover .nav-dropdown,
+.nav-group:focus-within .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-dropdown a {
+  display: block;
+
+  padding: 9px 11px;
+
+  border-radius: 8px;
+
+  white-space: nowrap;
+}
+
+.nav-dropdown a:hover,
+.nav-dropdown a:focus-visible {
+  background: rgba(255,255,255,.06);
+}
+
+.nav-group.has-current > .nav-group-toggle,
+.nav-links > a[aria-current="page"] {
+  color: var(--white);
+}
+
+/* Mobile */
+
+@media (max-width: 900px) {
+
+  .nav-group {
+    width: 100%;
+  }
+
+  .nav-group-toggle {
+    width: 100%;
+    justify-content: space-between;
+    padding: 12px 0;
+  }
+
+  .nav-dropdown {
+    position: static;
+
+    min-width: 0;
+
+    padding: 0 0 8px 14px;
+
+    background: transparent;
+
+    border: 0;
+    box-shadow: none;
+
+    display: none;
+
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .nav-group.is-open .nav-dropdown {
+    display: grid;
+  }
+
+  .nav-links > a {
+    width: 100%;
+    padding: 12px 0;
+  }
+}

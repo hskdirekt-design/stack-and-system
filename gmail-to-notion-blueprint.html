@@ -26,16 +26,34 @@
 <header class="site-header">
   <div class="container nav">
     <a class="logo" href="index.html">STACK<span>&amp;</span>SYSTEM</a>
-    <nav id="primary-navigation" class="nav-links" aria-label="Primary navigation">
-      <a href="content.html">Content</a>
-      <a href="tools.html">Tools</a>
-      <a href="agents.html">Agents</a>
-      <a href="stacks.html">Stacks</a>
-      <a href="systems.html">Systems</a>
-      <a href="solutions.html">Solutions</a>
-      <a href="blueprints.html">Blueprints</a>
+    <nav class="nav-links" id="primary-navigation" aria-label="Primary navigation">
+      <div class="nav-group">
+        <button class="nav-group-toggle" type="button" aria-expanded="false">
+          <span>Learn</span><span aria-hidden="true">▾</span>
+        </button>
+        <div class="nav-dropdown">
+          <a href="ai.html">AI</a>
+          <a href="automation.html">Automation</a>
+          <a href="agents.html">Agents</a>
+          <a href="content.html">Content</a>
+          <a href="money.html">Money</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <button class="nav-group-toggle" type="button" aria-expanded="false">
+          <span>Build</span><span aria-hidden="true">▾</span>
+        </button>
+        <div class="nav-dropdown">
+          <a href="tools.html">Tools</a>
+          <a href="stacks.html">Stacks</a>
+          <a href="systems.html">Systems</a>
+          <a href="solutions.html">Solutions</a>
+          <a href="blueprints.html" aria-current="page" class="active">Blueprints</a>
+        </div>
+      </div>
       <a href="resources.html">Resources</a>
       <a href="products.html">Products</a>
+      <a href="signal.html">The Signal</a>
     </nav>
     <div class="nav-actions">
       <a class="btn btn-small" href="signin.html" data-user>Sign in</a>
@@ -54,7 +72,6 @@
 
   <section class="section" style="padding-top: 0;">
     <div class="container" style="max-width: 800px; margin: 0 auto;">
-      
       <div class="card" style="margin-bottom: 40px; padding: 30px;">
         <h3 style="margin-top:0;">📋 What this blueprint covers</h3>
         <p style="margin-bottom:0;">By the end of this guide, every starred or labeled email in your Gmail will automatically create a new entry in a Notion database — sender, subject, body snippet, and a direct link back to the email.</p>
@@ -71,7 +88,7 @@
 
         <h2><span class="step-num">2</span>Set up your Notion database</h2>
         <p class="lead">Before touching Make.com, create the destination for your emails.</p>
-        
+
         <h3>2.1 Create the database</h3>
         <ol>
           <li>Open Notion and create a new page called <strong>"Email Inbox"</strong>.</li>
@@ -106,7 +123,7 @@
         </ol>
 
         <h2><span class="step-num">3</span>Build the Make.com scenario</h2>
-        
+
         <h3>3.1 Create a new scenario</h3>
         <ol>
           <li>Log into your <a href="https://www.make.com/en/register?pc=stackandsystem" target="_blank" rel="sponsored noopener" style="color:var(--blue); font-weight:bold;">Make.com account</a> and click <strong>Create a new scenario</strong>.</li>
@@ -121,7 +138,7 @@
           <li>Set <strong>Folder</strong> to <code>INBOX</code> (or <code>STARRED</code> for starred emails only).</li>
           <li>Set <strong>Filter type</strong> to <code>SEARCH</code>: <code>label:important -category:promotions -category:social</code></li>
         </ol>
-        
+
         <div class="tip warn">
           <span style="font-size: 20px;">⚠️</span>
           <div><strong>Important:</strong> On a Google Workspace account, your admin may need to whitelist Make.com in the Google Admin Console under <em>Security → API Controls → App Access Control</em>.</div>
@@ -151,11 +168,10 @@
           <li>Click <strong>Run once</strong> in Make.com (top-right).</li>
           <li>Check your Notion database — the email should appear within seconds.</li>
         </ol>
-        
+
         <div style="margin-top: 40px;" class="actions">
           <a class="btn btn-primary" href="https://www.make.com/en/register?pc=stackandsystem" target="_blank" rel="sponsored noopener">Build this on Make.com →</a>
         </div>
-
       </div>
     </div>
   </section>

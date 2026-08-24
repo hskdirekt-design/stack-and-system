@@ -22,35 +22,6 @@
 
   --shadow: 0 30px 90px rgba(0,0,0,.45);
   --blue-shadow: 0 0 70px rgba(25,191,255,.18);
-
-  /* Fluid Spring Motion */
-  --spring-duration: 0.5s;
-  --spring-ease: cubic-bezier(0.25, 1.2, 0.4, 1);
-  --motion-fast: 0.2s ease-out;
-
-  /* Refined Glassmorphism */
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-blur: blur(16px);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
-
-/* Strictly respect reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  :root {
-    --spring-duration: 0s;
-    --spring-ease: linear;
-    --motion-fast: 0s linear;
-  }
-}
-
-/* Strictly respect reduced transparency */
-@media (prefers-reduced-transparency: reduce) {
-  :root {
-    --glass-bg: #1a1a1a;
-    --glass-border: #333333;
-    --glass-blur: none;
-  }
 }
 
 * {
@@ -221,57 +192,7 @@ h3 {
   font-size: 18px;
   line-height: 1.7;
 }
-
-/* =========================================================
-   APPLE-DESIGN INTERACTIONS & GLASSMORPHISM
-   ========================================================= */
-
-.btn {
-  transition: transform var(--spring-duration) var(--spring-ease),
-              opacity var(--motion-fast);
-  will-change: transform, opacity;
-}
-
-/* Touch-first active state (press down) */
-.btn:active {
-  transform: scale(0.96);
-  opacity: 0.8;
-}
-
-/* Desktop hover state (lift up slightly) */
-@media (hover: hover) and (pointer: fine) {
-  .btn:hover {
-    transform: scale(1.02);
-  }
-  .btn:active {
-    transform: scale(0.96);
-  }
-}
-
-.card, .feature-panel {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
-  border-radius: 12px;
-  
-  transition: transform var(--spring-duration) var(--spring-ease),
-              box-shadow var(--spring-duration) var(--spring-ease);
-  will-change: transform, box-shadow;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .card:hover, .feature-panel:hover {
-    transform: translateY(-4px) scale(1.01);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
-    border-color: rgba(255, 255, 255, 0.2);
-  }
-}
-
-/* =========================================================
-   MOBILE NAVIGATION
-   ========================================================= */
+/* MOBILE NAVIGATION */
 
 @media (max-width: 900px) {
 
@@ -358,7 +279,6 @@ h3 {
   }
 
 }
-
 /* =========================================================
    STACK & SYSTEM — STANDARD NAVIGATION
    ========================================================= */
@@ -450,7 +370,7 @@ h3 {
   color: var(--white);
 }
 
-/* Mobile Navigation Overrides */
+/* Mobile */
 
 @media (max-width: 900px) {
 

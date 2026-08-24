@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Search | Stack &amp; System</title>
+  <meta name="description" content="Search Stack & System for AI tools, automation, agents, workflows, blueprints, resources and products.">
+  <meta name="robots" content="noindex,follow">
+  <meta name="theme-color" content="#05070a">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .search-page-form{display:flex;gap:10px;max-width:760px;margin:30px 0}
+    .search-page-form input{flex:1;min-width:0;padding:15px 18px;border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--white);outline:0}
+    .search-page-form input:focus{border-color:var(--line-blue)}
+    .search-results{display:grid;gap:14px;margin-top:35px}
+    .search-result{display:block;padding:22px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.025)}
+    .search-result:hover{border-color:var(--line-blue);transform:translateY(-2px)}
+    .search-result h3{margin-bottom:7px}
+    .search-result p{margin:0;color:var(--muted)}
+    .search-empty{color:var(--muted)}
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a class="logo" href="index.html">STACK<span>&amp;</span>SYSTEM</a>
+    <nav id="primary-navigation" class="nav-links" aria-label="Primary navigation">
+  <div class="nav-group">
+    <button class="nav-group-toggle" type="button" aria-expanded="false">
+      <span>Learn</span><span aria-hidden="true">▾</span>
+    </button>
+    <div class="nav-dropdown">
+      <a href="ai.html">AI</a>
+      <a href="automation.html">Automation</a>
+      <a href="agents.html">Agents</a>
+      <a href="content.html">Content</a>
+      <a href="money.html">Money</a>
+    </div>
+  </div>
+
+  <div class="nav-group">
+    <button class="nav-group-toggle" type="button" aria-expanded="false">
+      <span>Build</span><span aria-hidden="true">▾</span>
+    </button>
+    <div class="nav-dropdown">
+      <a href="tools.html">Tools</a>
+      <a href="stacks.html">Stacks</a>
+      <a href="systems.html">Systems</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="blueprints.html">Blueprints</a>
+    </div>
+  </div>
+
+  <a href="resources.html">Resources</a>
+  <a href="products.html">Products</a>
+  <a href="signal.html">The Signal</a>
+</nav>
+    <div class="nav-actions">
+      <a class="btn btn-small" href="signin.html" data-user>Sign in</a>
+      <a class="btn btn-primary btn-small" href="newsletter.html">Join free</a>
+      <button class="btn btn-small mobile-toggle" type="button" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="primary-navigation"></button>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="container page-hero">
+    <div class="kicker">Search</div>
+    <h1>Find what you need.</h1>
+    <p class="lead">Search across the Stack &amp; System library.</p>
+    <form class="search-page-form" role="search">
+      <label class="sr-only" for="search-page-input">Search Stack &amp; System</label>
+      <input id="search-page-input" type="search" placeholder="Search AI, tools, automations, blueprints..." autocomplete="off">
+      <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+    <div id="search-count" class="muted"></div>
+    <div id="search-results" class="search-results"></div>
+  </section>
+</main>
+<script>
+(async () => {
+  const form=document.querySelector(".search-page-form");
+  const input=document.querySelector("#search-page-input");
+  const results=document.querySelector("#search-results");
+  const count=document.querySelector("#search-count");
+  let index=[];
+  try {
+    index=await (await fetch("search-index.json",{cache:"no-store"})).json();
+  } catch(e) {
+    results.innerHTML="<p class='search-empty'>Search is temporarily unavailable.</p>";
+    return;
+  }
+  const params=new URLSearchParams(location.search);
+  input.value=params.get("q")||"";
+  const run=()=>{
+    const q=input.value.trim().toLowerCase();
+    history.replaceState(null,"",q ? "search.html?q="+encodeURIComponent(q) : "search.html");
+    if(!q){count.textContent="";results.innerHTML="<p class='search-empty'>Enter a search term to begin.</p>";return;}
+    const terms=q.split(/\s+/).filter(Boolean);
+    const matches=index.map(item=>{
+      const hay=[item.title,item.description,(item.headings||[]).join(" ")].join(" ").toLowerCase();
+      const score=terms.reduce((n,t)=>n+(hay.includes(t)?1:0),0);
+      return {...item,score};
+    }).filter(item=>item.score>0).sort((a,b)=>b.score-a.score||a.title.localeCompare(b.title)).slice(0,50);
+    count.textContent=matches.length+" result"+(matches.length===1?"":"s");
+    results.innerHTML=matches.length?matches.map(item=>`<a class="search-result" href="${item.url}"><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.description||"Open this page.")}</p></a>`).join(""):"<p class='search-empty'>No matching pages found.</p>";
+  };
+  const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+  form.addEventListener("submit",e=>{e.preventDefault();run()});
+  run();
+})();
+</script>
+<script src="app.js" defer></script>
+</body>
+</html>

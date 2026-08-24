@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Gmail → Notion Automation Blueprint | Stack &amp; System</title>
+  <meta name="description" content="Turn inbox clutter into an organized Notion database in under 5 minutes, using a free Make.com scenario.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .article-body h2 { color: var(--white); margin-top: 50px; padding-bottom: 12px; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 12px; }
+    .article-body h3 { color: var(--blue-bright); margin-top: 30px; font-size: 18px; }
+    .step-num { display: inline-flex; justify-content: center; align-items: center; width: 28px; height: 28px; background: var(--blue-dark); color: #fff; border-radius: 50%; font-size: 14px; font-weight: bold; }
+    .tip { background: rgba(25,191,255,.05); border-left: 3px solid var(--blue); padding: 16px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; display: flex; gap: 12px; }
+    .warn { border-left-color: #ffb703; background: rgba(255, 183, 3, 0.05); }
+    .data-table { width: 100%; text-align: left; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+    .data-table th, .data-table td { padding: 12px; border-bottom: 1px solid var(--line); }
+    .data-table th { color: var(--blue); font-weight: bold; text-transform: uppercase; font-size: 12px; letter-spacing: 0.05em; }
+    .article-body ul, .article-body ol { color: var(--muted); margin-bottom: 24px; padding-left: 20px;}
+    .article-body li { margin-bottom: 10px; }
+    .article-body code { font-family: monospace; background: var(--bg-soft); color: var(--blue-bright); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--line); }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="logo" href="index.html">STACK<span>&amp;</span>SYSTEM</a>
+    <nav id="primary-navigation" class="nav-links" aria-label="Primary navigation">
+  <div class="nav-group">
+    <button class="nav-group-toggle" type="button" aria-expanded="false">
+      <span>Learn</span><span aria-hidden="true">▾</span>
+    </button>
+    <div class="nav-dropdown">
+      <a href="ai.html">AI</a>
+      <a href="automation.html">Automation</a>
+      <a href="agents.html">Agents</a>
+      <a href="content.html">Content</a>
+      <a href="money.html">Money</a>
+    </div>
+  </div>
+
+  <div class="nav-group">
+    <button class="nav-group-toggle" type="button" aria-expanded="false">
+      <span>Build</span><span aria-hidden="true">▾</span>
+    </button>
+    <div class="nav-dropdown">
+      <a href="tools.html">Tools</a>
+      <a href="stacks.html">Stacks</a>
+      <a href="systems.html">Systems</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="blueprints.html" aria-current="page" class="active">Blueprints</a>
+    </div>
+  </div>
+
+  <a href="resources.html">Resources</a>
+  <a href="products.html">Products</a>
+  <a href="signal.html">The Signal</a>
+</nav>
+    <div class="nav-actions">
+      <a class="btn btn-small" href="signin.html" data-user>Sign in</a>
+      <a class="btn btn-primary btn-small" href="newsletter.html">Join free</a>
+      <button class="btn btn-small mobile-toggle" type="button" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="primary-navigation"></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="container page-hero" style="padding-bottom: 40px;">
+    <div class="kicker">Zero-Code · Make.com · 2026 Edition</div>
+    <h1>Gmail → Notion Automation Blueprint</h1>
+    <p class="lead">Turn inbox clutter into an organized task database in under 5 minutes.</p>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container" style="max-width: 800px; margin: 0 auto;">
+      
+      <div class="card" style="margin-bottom: 40px; padding: 30px;">
+        <h3 style="margin-top:0;">📋 What this blueprint covers</h3>
+        <p style="margin-bottom:0;">By the end of this guide, every starred or labeled email in your Gmail will automatically create a new entry in a Notion database — sender, subject, body snippet, and a direct link back to the email.</p>
+      </div>
+
+      <div class="article-body">
+        <h2><span class="step-num">1</span>Prerequisites</h2>
+        <ul>
+          <li>A Gmail account (personal or Google Workspace)</li>
+          <li>A Notion account (free tier works)</li>
+          <li>A free account on <a href="make-com.html" style="color:var(--blue); font-weight:bold;">Make.com</a></li>
+          <li>5 minutes of uninterrupted focus</li>
+        </ul>
+
+        <h2><span class="step-num">2</span>Set up your Notion database</h2>
+        <p class="lead">Before touching Make.com, create the destination for your emails.</p>
+        
+        <h3>2.1 Create the database</h3>
+        <ol>
+          <li>Open Notion and create a new page called <strong>"Email Inbox"</strong>.</li>
+          <li>Add an <strong>Inline Database</strong> (Table view).</li>
+          <li>Name the database <strong>"Captured Emails"</strong>.</li>
+        </ol>
+
+        <h3>2.2 Configure these properties</h3>
+        <table class="data-table">
+          <thead><tr><th>Property Name</th><th>Type</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td>Name</td><td>Title</td><td>Email subject line</td></tr>
+            <tr><td>Sender</td><td>Email</td><td>From address</td></tr>
+            <tr><td>Received</td><td>Date</td><td>Timestamp of the email</td></tr>
+            <tr><td>Status</td><td>Select</td><td>New, Actioned, Archived</td></tr>
+            <tr><td>Body Snippet</td><td>Text</td><td>First 200 chars of email body</td></tr>
+            <tr><td>Gmail Link</td><td>URL</td><td>Direct link to open the email</td></tr>
+            <tr><td>Label</td><td>Multi-select</td><td>Gmail label (e.g., Urgent, Read)</td></tr>
+          </tbody>
+        </table>
+
+        <div class="tip">
+          <span style="font-size: 20px;">💡</span>
+          <div><strong>Pro tip:</strong> Add a <code>Priority</code> Select property with options <code>High / Medium / Low</code>. Use Make.com filters later to auto-tag emails from specific senders as High priority.</div>
+        </div>
+
+        <h3>2.3 Share with Make.com</h3>
+        <ol>
+          <li>Click the <strong>⋯</strong> menu in the top-right of your database page.</li>
+          <li>Select <strong>Add connections</strong> → search for <strong>Make</strong> → click <strong>Confirm</strong>.</li>
+          <li>Copy the <strong>Database ID</strong> from the URL: <code>notion.so/workspace/[DATABASE-ID]?v=...</code></li>
+        </ol>
+
+        <h2><span class="step-num">3</span>Build the Make.com scenario</h2>
+        
+        <h3>3.1 Create a new scenario</h3>
+        <ol>
+          <li>Log into your <a href="https://www.make.com/en/register?pc=stackandsystem" target="_blank" rel="sponsored noopener" style="color:var(--blue); font-weight:bold;">Make.com account</a> and click <strong>Create a new scenario</strong>.</li>
+          <li>Search for and select the <strong>Gmail</strong> module as your trigger.</li>
+          <li>Choose the trigger: <strong>Watch Emails</strong>.</li>
+        </ol>
+
+        <h3>3.2 Connect your Gmail</h3>
+        <ol>
+          <li>Click <strong>Add</strong> to create a new connection.</li>
+          <li>Sign in with Google and authorize Make.com to access Gmail.</li>
+          <li>Set <strong>Folder</strong> to <code>INBOX</code> (or <code>STARRED</code> for starred emails only).</li>
+          <li>Set <strong>Filter type</strong> to <code>SEARCH</code>: <code>label:important -category:promotions -category:social</code></li>
+        </ol>
+        
+        <div class="tip warn">
+          <span style="font-size: 20px;">⚠️</span>
+          <div><strong>Important:</strong> On a Google Workspace account, your admin may need to whitelist Make.com in the Google Admin Console under <em>Security → API Controls → App Access Control</em>.</div>
+        </div>
+
+        <h3>3.4 Map the data fields</h3>
+        <table class="data-table">
+          <thead><tr><th>Notion Property</th><th>Gmail Data</th></tr></thead>
+          <tbody>
+            <tr><td>Name</td><td>Subject</td></tr>
+            <tr><td>Sender</td><td>From</td></tr>
+            <tr><td>Received</td><td>Date</td></tr>
+            <tr><td>Body Snippet</td><td>Snippet (or Body for full text)</td></tr>
+            <tr><td>Gmail Link</td><td><code>https://mail.google.com/mail/u/0/#inbox/{Message ID}</code></td></tr>
+            <tr><td>Label</td><td>Label name(s)</td></tr>
+          </tbody>
+        </table>
+
+        <div class="tip">
+          <span style="font-size: 20px;">🧠</span>
+          <div><strong>Smart mapping:</strong> Set <code>Status</code> to <code>New</code> manually so every incoming email starts in your "New" queue. For <code>Body Snippet</code>, use <code>substring()</code> to cap it at 200 characters.</div>
+        </div>
+
+        <h2><span class="step-num">4</span>Test your automation</h2>
+        <ol>
+          <li>Send yourself an email with the subject <code>Test: Blueprint Working</code>.</li>
+          <li>Click <strong>Run once</strong> in Make.com (top-right).</li>
+          <li>Check your Notion database — the email should appear within seconds.</li>
+        </ol>
+        
+        <div style="margin-top: 40px;" class="actions">
+          <a class="btn btn-primary" href="https://www.make.com/en/register?pc=stackandsystem" target="_blank" rel="sponsored noopener">Build this on Make.com →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <a class="logo" href="index.html">STACK<span>&amp;</span>SYSTEM</a>
+      <p>Practical AI, automation and online-business systems.</p>
+    </div>
+    <div>
+      <h4>Discover</h4><a href="content.html">Content</a><a href="tools.html">Tools</a><a href="agents.html">Agents</a><a href="resources.html">Resources</a>
+    </div>
+    <div>
+      <h4>Build</h4><a href="stacks.html">Stacks</a><a href="systems.html">Systems</a><a href="solutions.html">Solutions</a><a href="blueprints.html">Blueprints</a><a href="products.html">Products</a>
+    </div>
+    <div>
+      <h4>Platform</h4><a href="signin.html">Sign in</a><a href="newsletter.html">Newsletter</a><a href="index.html">Home</a>
+    </div>
+  </div>
+  <div class="container" style="margin-top:30px">
+    © <span data-year></span> Stack &amp; System
+  </div>
+</footer>
+<script src="app.js" defer></script>
+</body>
+</html>

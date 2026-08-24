@@ -7,120 +7,196 @@
   const $$ = (selector, parent = document) =>
     [...parent.querySelectorAll(selector)];
 
-/* =========================================================
-   NAVIGATION
-   ========================================================= */
-const setupNavigation = () => {
-  const mobileToggle = document.querySelector('.mobile-toggle');
-  const primaryNav = document.getElementById('primary-navigation') || document.querySelector('nav'); 
-  const navGroups = document.querySelectorAll('.nav-group');
-  const navLinks = document.querySelectorAll('nav a');
 
-  // 1. Mobile Menu Toggle
-  if (mobileToggle) {
-    mobileToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
-      mobileToggle.setAttribute('aria-expanded', !isExpanded);
-      if (primaryNav) {
-        primaryNav.classList.toggle('is-open');
+  /* =========================================================
+     NAVIGATION
+     ========================================================= */
+
+  const setupNavigation = () => {
+    const navigation = $(".nav-links");
+    const menuButton = $(".mobile-toggle");
+
+    if (!navigation) return;
+
+    const closeDropdowns = () => {
+      navigation.querySelectorAll(".nav-group.is-open").forEach((group) => {
+        group.classList.remove("is-open");
+        const toggle = $(".nav-group-toggle", group);
+        if (toggle) toggle.setAttribute("aria-expanded", "false");
+      });
+    };
+
+    const closeMenu = () => {
+      navigation.classList.remove("is-open");
+      closeDropdowns();
+
+      if (menuButton) {
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.classList.remove("is-active");
       }
-    });
-  }
+    };
 
-  // 2. Dropdown Functionality (Learn ▾, Build ▾)
-  navGroups.forEach(group => {
-    const toggle = group.querySelector('.nav-group-toggle');
-    if (toggle) {
-      toggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        // Close other open dropdowns
-        navGroups.forEach(otherGroup => {
-          if (otherGroup !== group) {
-            otherGroup.classList.remove('is-open');
-          }
-        });
-        
-        // Toggle the clicked dropdown
-        group.classList.toggle('is-open');
+    const openMenu = () => {
+      navigation.classList.add("is-open");
+
+      if (menuButton) {
+        menuButton.setAttribute("aria-expanded", "true");
+        menuButton.classList.add("is-active");
+      }
+    };
+
+    navigation.querySelectorAll(".nav-group-toggle").forEach((toggle) => {
+      toggle.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const group = toggle.closest(".nav-group");
+        if (!group) return;
+
+        const open = group.classList.contains("is-open");
+        closeDropdowns();
+
+        if (!open) {
+          group.classList.add("is-open");
+          toggle.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+
+    navigation.addEventListener("click", (event) => {
+      if (event.target.closest("a")) closeMenu();
+    });
+
+    if (menuButton) {
+      menuButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (navigation.classList.contains("is-open")) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
       });
     }
-  });
 
-  // 3. Close dropdowns when clicking outside
-  document.addEventListener('click', (e) => {
-    navGroups.forEach(group => {
-      if (!group.contains(e.target)) {
-        group.classList.remove('is-open');
+    document.addEventListener("click", (event) => {
+      if (
+        navigation.contains(event.target) ||
+        menuButton?.contains(event.target)
+      ) {
+        return;
+      }
+
+      closeDropdowns();
+
+      if (navigation.classList.contains("is-open")) {
+        closeMenu();
       }
     });
-  });
 
-  // 4. Reset mobile menu on resize to desktop
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 991) { // Standard desktop breakpoint
-      if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
-      if (primaryNav) primaryNav.classList.remove('is-open');
-      navGroups.forEach(group => group.classList.remove('is-open'));
-    }
-  });
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 900) closeMenu();
+    });
+  };
 
-  // 5. Active State Highlighting
-  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-  
-  // Array of blueprint-related pages that should highlight "Blueprints"
-  const blueprintPages = [
-    'blueprints.html', 
-    'gmail-to-notion.html', 
-    'choosing-first-automation-tool.html', 
-    'make-com.html'
-  ];
+  setupNavigation();
 
-  navLinks.forEach(link => {
-    const href = link.getAttribute('href');
-    if (!href) return;
-    
-    const linkPath = href.split('/').pop();
-    let isActive = false;
 
-    // Check exact match
-    if (currentPath === linkPath) {
-      isActive = true;
-    }
-    
-    // Check blueprint cluster match
-    if (blueprintPages.includes(currentPath) && linkPath === 'blueprints.html') {
-      isActive = true;
-    }
+  /* =========================================================
+     SITE SEARCH
+     ========================================================= */
 
-    // Apply active classes
-    if (isActive) {
-      link.classList.add('active');
-      
-      // If the link is inside a dropdown, highlight the parent toggle too
-      const parentGroup = link.closest('.nav-group');
-      if (parentGroup) {
-        parentGroup.classList.add('active-parent');
-        const parentToggle = parentGroup.querySelector('.nav-group-toggle');
-        if (parentToggle) {
-          parentToggle.classList.add('active');
+  const setupSiteSearch = () => {
+    const actions = $(".nav-actions");
+    if (!actions || $(".site-search", actions)) return;
+
+    const wrapper = document.createElement("form");
+    wrapper.className = "site-search";
+    wrapper.setAttribute("role", "search");
+    wrapper.action = "search.html";
+    wrapper.method = "get";
+
+    wrapper.innerHTML = `
+      <label class="sr-only" for="site-search-input">Search Stack & System</label>
+      <input
+        id="site-search-input"
+        name="q"
+        type="search"
+        placeholder="Search"
+        autocomplete="off"
+      >
+      <button type="submit" aria-label="Search site">⌕</button>
+    `;
+
+    actions.insertBefore(wrapper, actions.firstChild);
+  };
+
+  setupSiteSearch();
+
+
+  /* =========================================================
+     PAGE NAVIGATION HELPERS
+     ========================================================= */
+
+  const setupPageControls = () => {
+    const path = window.location.pathname.replace(/\/+$/, "");
+    const isHome =
+      path === "" ||
+      path === "/" ||
+      path.endsWith("/index.html");
+
+    const controls = document.createElement("div");
+    controls.className = "page-controls";
+    controls.setAttribute("aria-label", "Page navigation");
+
+    if (!isHome) {
+      const back = document.createElement("button");
+      back.className = "page-control page-back";
+      back.type = "button";
+      back.innerHTML = "← <span>Back</span>";
+      back.addEventListener("click", () => {
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.href = "index.html";
         }
-      }
+      });
+      controls.appendChild(back);
     }
-  });
-};
 
-setupNavigation();
+    const top = document.createElement("button");
+    top.className = "page-control page-top";
+    top.type = "button";
+    top.innerHTML = "↑ <span>Top</span>";
+    top.setAttribute("aria-label", "Back to top");
+    top.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    controls.appendChild(top);
+
+    document.body.appendChild(controls);
+
+    const update = () => {
+      controls.classList.toggle("is-visible", window.scrollY > 420);
+    };
+
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+  };
+
+  setupPageControls();
+
+
+  /* =========================================================
+     3D SYSTEM
+     ========================================================= */
 
   const visual = $(".hero-visual");
-
 
   if (visual) {
 
     const nodes = [
-
       {
         selector: ".node-1",
         number: "01",
@@ -128,7 +204,6 @@ setupNavigation();
         description: "Find an opportunity",
         href: "solutions.html"
       },
-
       {
         selector: ".node-2",
         number: "02",
@@ -136,7 +211,6 @@ setupNavigation();
         description: "Choose the right tools",
         href: "ai.html"
       },
-
       {
         selector: ".node-3",
         number: "03",
@@ -144,7 +218,6 @@ setupNavigation();
         description: "Connect the workflow",
         href: "automation.html"
       },
-
       {
         selector: ".node-4",
         number: "04",
@@ -152,7 +225,6 @@ setupNavigation();
         description: "Build something useful",
         href: "products.html"
       },
-
       {
         selector: ".node-5",
         number: "05",
@@ -160,652 +232,312 @@ setupNavigation();
         description: "Measure the result",
         href: "money.html"
       }
-
     ];
 
-
     nodes.forEach((item, index) => {
-
       const original = $(item.selector, visual);
-
       if (!original) return;
 
-
       let node;
-
-
-      if (
-        original.tagName.toLowerCase() === "a"
-      ) {
-
+      if (original.tagName.toLowerCase() === "a") {
         node = original;
-
       } else {
-
         node = document.createElement("a");
-
         node.href = item.href;
-
         node.className = original.className;
-
         original.replaceWith(node);
-
       }
-
 
       node.classList.add(
         "system-node",
         `system-node-${index + 1}`
       );
 
-
       node.setAttribute(
         "aria-label",
         `${item.number} ${item.title}: ${item.description}`
       );
 
-
       node.innerHTML = `
-        <span class="node-number">
-          ${item.number}
-        </span>
-
-        <strong>
-          ${item.title}
-        </strong>
-
-        <small>
-          ${item.description}
-        </small>
+        <span class="node-number">${item.number}</span>
+        <strong>${item.title}</strong>
+        <small>${item.description}</small>
       `;
-
     });
-
 
     /* =======================================================
        SYSTEM CORE
        ======================================================= */
-
     const core = $(".system-core", visual);
-
-
     if (core) {
-
       core.innerHTML = `
         <div class="core-inner">
-
-          <span class="core-label">
-            SYSTEM ENGINE
-          </span>
-
-          <strong>
-            AI
-          </strong>
-
-          <span class="core-status">
-            ONLINE
-          </span>
-
+          <span class="core-label">SYSTEM ENGINE</span>
+          <strong>AI</strong>
+          <span class="core-status">ONLINE</span>
         </div>
       `;
-
-      core.setAttribute(
-        "aria-label",
-        "Stack and System AI system engine"
-      );
-
+      core.setAttribute("aria-label", "Stack and System AI system engine");
     }
-
 
     /* =======================================================
        EXTRA ORBITS
        ======================================================= */
-
     if (!$(".system-glow", visual)) {
-
       const glow = document.createElement("div");
-
       glow.className = "system-glow";
-
       visual.prepend(glow);
-
     }
-
 
     if (!$(".orbit-two", visual)) {
-
       const orbit = document.createElement("div");
-
-      orbit.className =
-        "system-orbit orbit-two";
-
+      orbit.className = "system-orbit orbit-two";
       visual.appendChild(orbit);
-
     }
-
 
     if (!$(".orbit-three", visual)) {
-
       const orbit = document.createElement("div");
-
-      orbit.className =
-        "system-orbit orbit-three";
-
+      orbit.className = "system-orbit orbit-three";
       visual.appendChild(orbit);
-
     }
-
 
     /* =======================================================
        PARTICLES
        ======================================================= */
-
     if (!$(".system-particles", visual)) {
-
-      const particles =
-        document.createElement("div");
-
-      particles.className =
-        "system-particles";
-
+      const particles = document.createElement("div");
+      particles.className = "system-particles";
 
       for (let i = 0; i < 32; i++) {
-
-        const particle =
-          document.createElement("span");
-
-
-        particle.style.setProperty(
-          "--particle-x",
-          `${Math.random() * 100}%`
-        );
-
-
-        particle.style.setProperty(
-          "--particle-y",
-          `${Math.random() * 100}%`
-        );
-
-
-        particle.style.setProperty(
-          "--particle-delay",
-          `${Math.random() * -8}s`
-        );
-
-
-        particle.style.setProperty(
-          "--particle-size",
-          `${1 + Math.random() * 2.5}px`
-        );
-
-
+        const particle = document.createElement("span");
+        particle.style.setProperty("--particle-x", `${Math.random() * 100}%`);
+        particle.style.setProperty("--particle-y", `${Math.random() * 100}%`);
+        particle.style.setProperty("--particle-delay", `${Math.random() * -8}s`);
+        particle.style.setProperty("--particle-size", `${1 + Math.random() * 2.5}px`);
         particles.appendChild(particle);
-
       }
-
-
       visual.appendChild(particles);
-
     }
-
 
     /* =======================================================
        POINTER PARALLAX
        ======================================================= */
-
-    if (
-      window.matchMedia("(pointer:fine)").matches
-    ) {
-
+    if (window.matchMedia("(pointer:fine)").matches) {
       let targetX = 0;
       let targetY = 0;
-
       let currentX = 0;
       let currentY = 0;
 
+      visual.addEventListener("pointermove", (event) => {
+        const rect = visual.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
+        targetX = x * 12;
+        targetY = y * -10;
+      });
 
-      visual.addEventListener(
-        "pointermove",
-        (event) => {
-
-          const rect =
-            visual.getBoundingClientRect();
-
-
-          const x =
-            (
-              event.clientX -
-              rect.left
-            ) /
-            rect.width -
-            0.5;
-
-
-          const y =
-            (
-              event.clientY -
-              rect.top
-            ) /
-            rect.height -
-            0.5;
-
-
-          targetX = x * 12;
-          targetY = y * -10;
-
-        }
-      );
-
-
-      visual.addEventListener(
-        "pointerleave",
-        () => {
-
-          targetX = 0;
-          targetY = 0;
-
-        }
-      );
-
+      visual.addEventListener("pointerleave", () => {
+        targetX = 0;
+        targetY = 0;
+      });
 
       const animate = () => {
-
-        currentX +=
-          (targetX - currentX) * 0.06;
-
-        currentY +=
-          (targetY - currentY) * 0.06;
-
-
-        visual.style.transform =
-          `
-            rotateY(${currentX}deg)
-            rotateX(${currentY}deg)
-          `;
-
-
+        currentX += (targetX - currentX) * 0.06;
+        currentY += (targetY - currentY) * 0.06;
+        visual.style.transform = `rotateY(${currentX}deg) rotateX(${currentY}deg)`;
         requestAnimationFrame(animate);
-
       };
 
-
       animate();
-
     }
-
   }
-
 
   /* =========================================================
      THE MACHINE
      ========================================================= */
-
   const machine = $(".flow");
 
-
   if (machine) {
-
     const machineSteps = [
-
       {
         number: "01",
         title: "Discover",
         description: "Find the opportunity.",
         href: "solutions.html"
       },
-
       {
         number: "02",
         title: "Stack",
         description: "Choose the tools.",
         href: "stacks.html"
       },
-
       {
         number: "03",
         title: "Automate",
         description: "Connect the workflow.",
         href: "automation.html"
       },
-
       {
         number: "04",
         title: "Deliver",
         description: "Create the outcome.",
         href: "systems.html"
       },
-
       {
         number: "05",
         title: "Measure",
         description: "Track what works.",
         href: "money.html"
       }
-
     ];
 
-
-    const existingSteps =
-      $$(":scope > div", machine);
-
+    const existingSteps = $$(":scope > div", machine);
 
     existingSteps.forEach((step, index) => {
-
-      const data =
-        machineSteps[index];
-
+      const data = machineSteps[index];
       if (!data) return;
 
-
-      const link =
-        document.createElement("a");
-
-
+      const link = document.createElement("a");
       link.href = data.href;
-
-      link.className =
-        "flow-step";
-
-
+      link.className = "flow-step";
       link.innerHTML = `
-        <span>
-          ${data.number}
-        </span>
-
-        <strong>
-          ${data.title}
-        </strong>
-
-        <small>
-          ${data.description}
-        </small>
+        <span>${data.number}</span>
+        <strong>${data.title}</strong>
+        <small>${data.description}</small>
       `;
-
-
       step.replaceWith(link);
-
     });
-
   }
-
 
   /* =========================================================
      SCROLL REVEALS
      ========================================================= */
+  const revealItems = $$(".card, .tool-preview, .feature-panel, .signal-panel, .flow-step");
 
-  const revealItems =
-    $$(
-      ".card, .tool-preview, .feature-panel, .signal-panel, .flow-step"
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12 }
     );
 
-
-  if (
-    "IntersectionObserver" in window
-  ) {
-
-    const observer =
-      new IntersectionObserver(
-        (entries) => {
-
-          entries.forEach((entry) => {
-
-            if (!entry.isIntersecting) {
-              return;
-            }
-
-
-            entry.target.classList.add(
-              "is-visible"
-            );
-
-
-            observer.unobserve(
-              entry.target
-            );
-
-          });
-
-        },
-        {
-          threshold: 0.12
-        }
-      );
-
-
     revealItems.forEach((item) => {
-
       item.classList.add("reveal");
-
       observer.observe(item);
-
     });
-
   } else {
-
     revealItems.forEach((item) => {
-
-      item.classList.add(
-        "is-visible"
-      );
-
+      item.classList.add("is-visible");
     });
-
   }
-
 
   /* =========================================================
      SCROLL VISUALS
      ========================================================= */
-
-  const sections =
-    $$(".section");
-
+  const sections = $$(".section");
 
   sections.forEach((section, index) => {
-
-    if (
-      index === 0 ||
-      section.querySelector(".section-visual")
-    ) {
+    if (index === 0 || section.querySelector(".section-visual")) {
       return;
     }
 
-
-    const sectionVisual =
-      document.createElement("div");
-
-
-    sectionVisual.className =
-      "section-visual";
-
-
+    const sectionVisual = document.createElement("div");
+    sectionVisual.className = "section-visual";
     sectionVisual.innerHTML = `
       <div class="visual-grid"></div>
-
       <div class="visual-orb orb-a"></div>
-
       <div class="visual-orb orb-b"></div>
-
       <div class="visual-ring ring-a"></div>
-
       <div class="visual-ring ring-b"></div>
-
       <div class="visual-core">
-        <span>
-          ${String(index).padStart(2, "0")}
-        </span>
+        <span>${String(index).padStart(2, "0")}</span>
       </div>
     `;
-
-
-    section.prepend(
-      sectionVisual
-    );
-
+    section.prepend(sectionVisual);
   });
 
+  const visualSections = $$(".section-visual");
 
-  const visualSections =
-    $$(".section-visual");
-
-
-  if (
-    "IntersectionObserver" in window
-  ) {
-
-    const visualObserver =
-      new IntersectionObserver(
-        (entries) => {
-
-          entries.forEach((entry) => {
-
-            entry.target.classList.toggle(
-              "is-active",
-              entry.isIntersecting
-            );
-
-          });
-
-        },
-        {
-          threshold: 0.15
-        }
-      );
-
+  if ("IntersectionObserver" in window) {
+    const visualObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle("is-active", entry.isIntersecting);
+        });
+      },
+      { threshold: 0.15 }
+    );
 
     visualSections.forEach((item) => {
-
       visualObserver.observe(item);
-
     });
-
   }
-
 
   /* =========================================================
      CURRENT YEAR
      ========================================================= */
-
-  const year =
-    $("#current-year") ||
-    $("[data-year]");
-
+  const year = $("#current-year") || $("[data-year]");
 
   if (year) {
-
-    year.textContent =
-      new Date().getFullYear();
-
+    year.textContent = new Date().getFullYear();
   }
-
 
   /* =========================================================
      ACTIVE NAVIGATION
      ========================================================= */
-
-  const currentPage =
-    location.pathname
-      .split("/")
-      .pop() ||
-    "index.html";
-
+  const currentPage = location.pathname.split("/").pop() || "index.html";
 
   $$(".nav-links a").forEach((link) => {
-
-    if (
-      link.getAttribute("href") ===
-      currentPage
-    ) {
-
-      link.classList.add(
-        "is-current"
-      );
-
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("is-current");
     }
-
   });
-
 
   /* =========================================================
      EXTERNAL LINKS
      ========================================================= */
-
   $$("a[data-external]").forEach((link) => {
-
-    link.setAttribute(
-      "target",
-      "_blank"
-    );
-
-    link.setAttribute(
-      "rel",
-      "noopener noreferrer"
-    );
-
+    link.setAttribute("target", "_blank");
+    link.setAttribute("rel", "noopener noreferrer");
   });
-
 
   /* =========================================================
      NEWSLETTER FORMS
      ========================================================= */
-
   $$("form[data-newsletter]").forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
 
-    form.addEventListener(
-      "submit",
-      (event) => {
+      const email = $("input[type='email']", form);
+      const message = $(".form-message", form);
 
-        event.preventDefault();
-
-
-        const email =
-          $("input[type='email']", form);
-
-        const message =
-          $(".form-message", form);
-
-
-        if (!email || !message) {
-          return;
-        }
-
-
-        const value =
-          email.value.trim();
-
-
-        if (!value) {
-
-          message.textContent =
-            "Enter your email address.";
-
-          return;
-
-        }
-
-
-        if (!email.checkValidity()) {
-
-          message.textContent =
-            "Enter a valid email address.";
-
-          return;
-
-        }
-
-
-        message.textContent =
-          "You're ready to join The Signal.";
-
-        form.classList.add(
-          "submitted"
-        );
-
-        email.value = "";
-
+      if (!email || !message) {
+        return;
       }
-    );
 
+      const value = email.value.trim();
+
+      if (!value) {
+        message.textContent = "Enter your email address.";
+        return;
+      }
+
+      if (!email.checkValidity()) {
+        message.textContent = "Enter a valid email address.";
+        return;
+      }
+
+      message.textContent = "You're ready to join The Signal.";
+      form.classList.add("submitted");
+      email.value = "";
+    });
   });
 
 })();

@@ -12,7 +12,7 @@
 <header class="site-header">
   <div class="container nav">
     <a class="logo" href="index.html">STACK<span>&amp;</span>SYSTEM</a>
-    <nav id="primary-navigation" class="nav-links" aria-label="Primary navigation">
+    <nav class="nav-links" id="primary-navigation" aria-label="Primary navigation">
   <div class="nav-group">
     <button class="nav-group-toggle" type="button" aria-expanded="false">
       <span>Learn</span><span aria-hidden="true">▾</span>
@@ -42,6 +42,14 @@
   <a href="resources.html">Resources</a>
   <a href="products.html">Products</a>
   <a href="signal.html">The Signal</a>
+
+  <!-- Site Search -->
+  <div class="nav-search">
+    <form action="/search.html" method="get" class="search-form">
+      <input type="search" name="q" id="site-search" placeholder="Search..." aria-label="Search website">
+      <button type="submit" aria-label="Submit search">🔍</button>
+    </form>
+  </div>
 </nav>
     <div class="nav-actions">
       <a class="btn btn-small" href="signin.html" data-user>Sign in</a>

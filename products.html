@@ -10,7 +10,7 @@
 <body>
 <header class="site-header"><div class="container nav">
 <a class="logo" href="index.html">STACK<span>&</span>SYSTEM</a>
-<nav id="primary-navigation" class="nav-links" aria-label="Primary navigation">
+<nav class="nav-links" id="primary-navigation" aria-label="Primary navigation">
   <div class="nav-group">
     <button class="nav-group-toggle" type="button" aria-expanded="false">
       <span>Learn</span><span aria-hidden="true">▾</span>
@@ -38,8 +38,16 @@
   </div>
 
   <a href="resources.html">Resources</a>
-  <a href="products.html" aria-current="page" class="active">Products</a>
+  <a href="products.html">Products</a>
   <a href="signal.html">The Signal</a>
+
+  <!-- Site Search -->
+  <div class="nav-search">
+    <form action="/search.html" method="get" class="search-form">
+      <input type="search" name="q" id="site-search" placeholder="Search..." aria-label="Search website">
+      <button type="submit" aria-label="Submit search">🔍</button>
+    </form>
+  </div>
 </nav>
 <div class="nav-actions"><a class="btn btn-small" href="signin.html">Sign in</a><a class="btn btn-primary btn-small" href="newsletter.html">Join free</a><button class="btn btn-small mobile-toggle" aria-label="Menu">☰</button></div>
 </div></header>
@@ -52,18 +60,6 @@
 </section>
 <section class="section"><div class="container grid">
 <a class="card" href="blueprints.html"><span class="tag">Guides</span><h3>System Blueprints</h3><p>Implementation guides designed to move you from idea to execution without the fluff.</p><span class="btn btn-small">View Blueprints →</span></a>
-<a class="card" href="ai-money-making-blueprint">
-<span class="tag">Premium Blueprint · £29.99</span>
-<h3>AI Money-Making Blueprint</h3>
-<p>350 prompts, 14 practical categories, an idea evaluation framework and a seven-day opportunity test.</p>
-<span class="btn btn-small">View the Blueprint →</span>
-</a>
-<a class="card" href="overworked-professionals-ai-survival-guide">
-<span class="tag">Digital Guide · £14.99</span>
-<h3>The Overworked Professional's AI Survival Guide</h3>
-<p>A practical AI guide for busy professionals who want useful systems without unnecessary complexity.</p>
-<span class="btn btn-small">View the guide →</span>
-</a>
 <a class="card" href="marketplace.html"><span class="tag">Assets</span><h3>The Marketplace</h3><p>Kits, templates, and automation packs that bundle implementation to save you time.</p><span class="btn btn-small">Open Marketplace →</span></a>
 <div class="card"><span class="tag">Coming Soon</span><h3>Agent Kits & Prompts</h3><p>Packaged system instructions, tool schemas, and guardrails ready to deploy.</p></div>
 </div></section>

@@ -1,0 +1,58 @@
+STACK & SYSTEM — A2 WHOLE-SITE NAVIGATION + SEARCH PATCH
+
+SOURCE OF TRUTH
+- Local copies supplied for this project were used for the complete replacement files in this package.
+- GitHub main was read to cross-check architecture and destination existence.
+
+GUARDRAILS APPLIED
+- Only <nav class="nav-links"> blocks were replaced in the files in this package.
+- Existing page content, 3D markup, scripts, CSS references, footers, Stripe/product markup and SEO metadata were not rewritten.
+- app.js was NOT changed.
+- Tools/company pages were deliberately excluded from this package because they use a separate ecosystem/navigation architecture.
+- Blog and Marketplace remain valid pages but are not included in the canonical primary navigation.
+
+CANONICAL NAVIGATION
+LEARN: AI, Automation, Agents, Content, Money
+BUILD: Tools, Stacks, Systems, Solutions, Blueprints
+MAIN: Resources, Products, The Signal
+SEARCH: /search.html?q=...
+
+VERIFIED DESTINATIONS
+- search.html exists in the main repository.
+- _redirects maps /search.html to the search page with a 200 clean route.
+- The canonical tool ecosystem remains separate.
+
+FILES PATCHED
+- index.html
+- ai.html
+- automation.html
+- agents.html
+- content.html
+- money.html
+- blueprints.html
+- resources.html
+- products.html
+- signal.html
+- newsletter.html
+- blog.html
+- marketplace.html
+- best-ai-tools.html
+- choosing-first-automation-tool.html
+- gmail-to-notion.html
+- gmail-to-notion-blueprint.html
+- open-source-ai-tracker.html
+- overworked-professionals-ai-survival-guide.html
+- ai-money-making-blueprint.html
+
+FILES INTENTIONALLY NOT PATCHED
+- tools.html
+- tools-directory.html
+- individual company/tool pages
+- stacks.html / systems.html / solutions.html from the local snapshot were not reconstructed because complete local copies were not supplied. The current GitHub versions already show canonical main navigation; they should receive the same search addition only after their complete source is available for a surgical replacement.
+- app.js
+- styles.css / styles-layout.css
+- _redirects
+- sitemap.xml
+
+IMPORTANT
+This package is a surgical navigation/search patch, not a rebuilt website. Review these files on the VPS before replacing anything else.

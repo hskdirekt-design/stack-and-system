@@ -1,315 +1,543 @@
-/*
- * Stack & System — A1 Global UX / Navigation
- *
- * Applies only to the MAIN site architecture.
- * The Tools / company ecosystem remains separate.
- *
- * Handles:
- * - Mobile navigation
- * - Learn / Build dropdowns
- * - Active page state
- * - Escape-to-close
- * - Outside-click close
- * - Back button support
- * - Back-to-top
- * - Current year
- * - Accessible navigation state
- */
-
 (() => {
   "use strict";
 
-  const isToolsEcosystem = () => {
-    const path = window.location.pathname.toLowerCase();
+  const $ = (selector, parent = document) =>
+    parent.querySelector(selector);
 
-    return (
-      path.endsWith("/tools.html") ||
-      path.endsWith("/tools-directory.html") ||
-      document.body?.dataset?.ecosystem === "tools"
-    );
-  };
+  const $$ = (selector, parent = document) =>
+    [...parent.querySelectorAll(selector)];
 
-  /*
-   * Do not interfere with the dedicated Tools/company architecture.
-   */
-  if (isToolsEcosystem()) {
-    return;
-  }
 
-  const nav = document.querySelector("#primary-navigation");
-  const mobileToggle = document.querySelector(".mobile-toggle");
+  /* =========================================================
+     NAVIGATION
+     ========================================================= */
 
-  /*
-   * ---------------------------------------------------------
-   * MOBILE NAVIGATION
-   * ---------------------------------------------------------
-   */
+  const setupNavigation = () => {
+    const navigation = $(".nav-links");
+    const menuButton = $(".mobile-toggle");
 
-  const closeMobileNav = () => {
-    if (!nav || !mobileToggle) return;
+    if (!navigation) return;
 
-    nav.classList.remove("is-open");
-    mobileToggle.setAttribute("aria-expanded", "false");
-  };
+    const closeDropdowns = () => {
+      navigation.querySelectorAll(".nav-group.is-open").forEach((group) => {
+        group.classList.remove("is-open");
+        const toggle = $(".nav-group-toggle", group);
+        if (toggle) toggle.setAttribute("aria-expanded", "false");
+      });
+    };
 
-  const openMobileNav = () => {
-    if (!nav || !mobileToggle) return;
+    const closeMenu = () => {
+      navigation.classList.remove("is-open");
+      closeDropdowns();
 
-    nav.classList.add("is-open");
-    mobileToggle.setAttribute("aria-expanded", "true");
-  };
+      if (menuButton) {
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.classList.remove("is-active");
+      }
+    };
 
-  if (nav && mobileToggle) {
-    mobileToggle.addEventListener("click", (event) => {
-      event.stopPropagation();
+    const openMenu = () => {
+      navigation.classList.add("is-open");
 
-      const expanded =
-        mobileToggle.getAttribute("aria-expanded") === "true";
+      if (menuButton) {
+        menuButton.setAttribute("aria-expanded", "true");
+        menuButton.classList.add("is-active");
+      }
+    };
 
-      expanded ? closeMobileNav() : openMobileNav();
-    });
+    navigation.querySelectorAll(".nav-group-toggle").forEach((toggle) => {
+      toggle.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
 
-    nav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        closeMobileNav();
+        const group = toggle.closest(".nav-group");
+        if (!group) return;
+
+        const open = group.classList.contains("is-open");
+        closeDropdowns();
+
+        if (!open) {
+          group.classList.add("is-open");
+          toggle.setAttribute("aria-expanded", "true");
+        }
       });
     });
-  }
 
-  /*
-   * ---------------------------------------------------------
-   * NAV DROPDOWNS
-   * ---------------------------------------------------------
-   */
-
-  const navGroups = document.querySelectorAll(".nav-group");
-
-  const closeAllDropdowns = (except = null) => {
-    navGroups.forEach((group) => {
-      if (group === except) return;
-
-      group.classList.remove("is-open");
-
-      const toggle = group.querySelector(".nav-group-toggle");
-
-      if (toggle) {
-        toggle.setAttribute("aria-expanded", "false");
-      }
+    navigation.addEventListener("click", (event) => {
+      if (event.target.closest("a")) closeMenu();
     });
-  };
 
-  navGroups.forEach((group) => {
-    const toggle = group.querySelector(".nav-group-toggle");
+    if (menuButton) {
+      menuButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
 
-    if (!toggle) return;
-
-    toggle.addEventListener("click", (event) => {
-      event.preventDefault();
-      event.stopPropagation();
-
-      const isOpen = group.classList.contains("is-open");
-
-      closeAllDropdowns(group);
-
-      group.classList.toggle("is-open", !isOpen);
-      toggle.setAttribute("aria-expanded", String(!isOpen));
-    });
-  });
-
-  /*
-   * Close menus when clicking elsewhere.
-   */
-  document.addEventListener("click", (event) => {
-    const target = event.target;
-
-    if (!(target instanceof Element)) return;
-
-    if (
-      !target.closest(".nav-group") &&
-      !target.closest(".mobile-toggle")
-    ) {
-      closeAllDropdowns();
-      closeMobileNav();
+        if (navigation.classList.contains("is-open")) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
     }
-  });
 
-  /*
-   * Escape closes open navigation.
-   */
-  document.addEventListener("keydown", (event) => {
-    if (event.key !== "Escape") return;
-
-    closeAllDropdowns();
-    closeMobileNav();
-
-    const activeElement = document.activeElement;
-
-    if (activeElement instanceof HTMLElement) {
-      activeElement.blur();
-    }
-  });
-
-  /*
-   * ---------------------------------------------------------
-   * ACTIVE PAGE
-   * ---------------------------------------------------------
-   */
-
-  const currentFile = (() => {
-    const pathname = window.location.pathname;
-
-    const filename = pathname.split("/").pop();
-
-    return filename || "index.html";
-  })();
-
-  const normaliseHref = (href) => {
-    if (!href) return "";
-
-    return href
-      .split("#")[0]
-      .split("?")[0]
-      .replace(/^.\//, "")
-      .toLowerCase();
-  };
-
-  document.querySelectorAll(".nav-links a").forEach((link) => {
-    const href = normaliseHref(link.getAttribute("href"));
-
-    if (!href || href.startsWith("http")) return;
-
-    if (href === currentFile.toLowerCase()) {
-      link.setAttribute("aria-current", "page");
-      link.classList.add("active");
-
-      const parentGroup = link.closest(".nav-group");
-
-      if (parentGroup) {
-        parentGroup.classList.add("has-current");
-      }
-    }
-  });
-
-  /*
-   * ---------------------------------------------------------
-   * BACK BUTTON
-   * ---------------------------------------------------------
-   *
-   * Only enhances an existing back control.
-   * It does not create random navigation destinations.
-   */
-
-  document.querySelectorAll("[data-back]").forEach((button) => {
-    button.addEventListener("click", (event) => {
-      event.preventDefault();
-
-      if (window.history.length > 1) {
-        window.history.back();
+    document.addEventListener("click", (event) => {
+      if (
+        navigation.contains(event.target) ||
+        menuButton?.contains(event.target)
+      ) {
         return;
       }
 
-      const fallback = button.getAttribute("data-back-fallback");
+      closeDropdowns();
 
-      if (fallback) {
-        window.location.href = fallback;
+      if (navigation.classList.contains("is-open")) {
+        closeMenu();
       }
     });
-  });
 
-  /*
-   * Existing .back-link elements remain normal links.
-   * This means visitors are never dependent on browser history.
-   */
-
-  /*
-   * ---------------------------------------------------------
-   * BACK TO TOP
-   * ---------------------------------------------------------
-   */
-
-  const createBackToTop = () => {
-    if (document.querySelector("[data-back-to-top]")) {
-      return document.querySelector("[data-back-to-top]");
-    }
-
-    const button = document.createElement("button");
-
-    button.type = "button";
-    button.className = "back-to-top";
-    button.setAttribute("data-back-to-top", "");
-    button.setAttribute("aria-label", "Back to top");
-    button.innerHTML = "↑";
-
-    document.body.appendChild(button);
-
-    return button;
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 900) closeMenu();
+    });
   };
 
-  const backToTop = createBackToTop();
+  setupNavigation();
 
-  if (backToTop) {
-    const updateBackToTop = () => {
-      backToTop.classList.toggle(
-        "is-visible",
-        window.scrollY > 500
-      );
+
+  /* =========================================================
+     SITE SEARCH
+     ========================================================= */
+
+  const setupSiteSearch = () => {
+    const actions = $(".nav-actions");
+    if (!actions || $(".site-search", actions)) return;
+
+    const wrapper = document.createElement("form");
+    wrapper.className = "site-search";
+    wrapper.setAttribute("role", "search");
+    wrapper.action = "search.html";
+    wrapper.method = "get";
+
+    wrapper.innerHTML = `
+      <label class="sr-only" for="site-search-input">Search Stack & System</label>
+      <input
+        id="site-search-input"
+        name="q"
+        type="search"
+        placeholder="Search"
+        autocomplete="off"
+      >
+      <button type="submit" aria-label="Search site">⌕</button>
+    `;
+
+    actions.insertBefore(wrapper, actions.firstChild);
+  };
+
+  setupSiteSearch();
+
+
+  /* =========================================================
+     PAGE NAVIGATION HELPERS
+     ========================================================= */
+
+  const setupPageControls = () => {
+    const path = window.location.pathname.replace(/\/+$/, "");
+    const isHome =
+      path === "" ||
+      path === "/" ||
+      path.endsWith("/index.html");
+
+    const controls = document.createElement("div");
+    controls.className = "page-controls";
+    controls.setAttribute("aria-label", "Page navigation");
+
+    if (!isHome) {
+      const back = document.createElement("button");
+      back.className = "page-control page-back";
+      back.type = "button";
+      back.innerHTML = "← <span>Back</span>";
+      back.addEventListener("click", () => {
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.href = "index.html";
+        }
+      });
+      controls.appendChild(back);
+    }
+
+    const top = document.createElement("button");
+    top.className = "page-control page-top";
+    top.type = "button";
+    top.innerHTML = "↑ <span>Top</span>";
+    top.setAttribute("aria-label", "Back to top");
+    top.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    controls.appendChild(top);
+
+    document.body.appendChild(controls);
+
+    const update = () => {
+      controls.classList.toggle("is-visible", window.scrollY > 420);
     };
 
-    window.addEventListener(
-      "scroll",
-      updateBackToTop,
-      { passive: true }
-    );
+    window.addEventListener("scroll", update, { passive: true });
+    update();
+  };
 
-    updateBackToTop();
+  setupPageControls();
 
-    backToTop.addEventListener("click", () => {
-      window.scrollTo({
-        top: 0,
-        behavior:
-          window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-          ).matches
-            ? "auto"
-            : "smooth"
+
+  /* =========================================================
+     3D SYSTEM
+     ========================================================= */
+
+  const visual = $(".hero-visual");
+
+  if (visual) {
+
+    const nodes = [
+      {
+        selector: ".node-1",
+        number: "01",
+        title: "IDEA",
+        description: "Find an opportunity",
+        href: "solutions.html"
+      },
+      {
+        selector: ".node-2",
+        number: "02",
+        title: "AI",
+        description: "Choose the right tools",
+        href: "ai.html"
+      },
+      {
+        selector: ".node-3",
+        number: "03",
+        title: "AUTOMATION",
+        description: "Connect the workflow",
+        href: "automation.html"
+      },
+      {
+        selector: ".node-4",
+        number: "04",
+        title: "PRODUCT",
+        description: "Build something useful",
+        href: "products.html"
+      },
+      {
+        selector: ".node-5",
+        number: "05",
+        title: "OUTCOME",
+        description: "Measure the result",
+        href: "money.html"
+      }
+    ];
+
+    nodes.forEach((item, index) => {
+      const original = $(item.selector, visual);
+      if (!original) return;
+
+      let node;
+      if (original.tagName.toLowerCase() === "a") {
+        node = original;
+      } else {
+        node = document.createElement("a");
+        node.href = item.href;
+        node.className = original.className;
+        original.replaceWith(node);
+      }
+
+      node.classList.add(
+        "system-node",
+        `system-node-${index + 1}`
+      );
+
+      node.setAttribute(
+        "aria-label",
+        `${item.number} ${item.title}: ${item.description}`
+      );
+
+      node.innerHTML = `
+        <span class="node-number">${item.number}</span>
+        <strong>${item.title}</strong>
+        <small>${item.description}</small>
+      `;
+    });
+
+    /* =======================================================
+       SYSTEM CORE
+       ======================================================= */
+    const core = $(".system-core", visual);
+    if (core) {
+      core.innerHTML = `
+        <div class="core-inner">
+          <span class="core-label">SYSTEM ENGINE</span>
+          <strong>AI</strong>
+          <span class="core-status">ONLINE</span>
+        </div>
+      `;
+      core.setAttribute("aria-label", "Stack and System AI system engine");
+    }
+
+    /* =======================================================
+       EXTRA ORBITS
+       ======================================================= */
+    if (!$(".system-glow", visual)) {
+      const glow = document.createElement("div");
+      glow.className = "system-glow";
+      visual.prepend(glow);
+    }
+
+    if (!$(".orbit-two", visual)) {
+      const orbit = document.createElement("div");
+      orbit.className = "system-orbit orbit-two";
+      visual.appendChild(orbit);
+    }
+
+    if (!$(".orbit-three", visual)) {
+      const orbit = document.createElement("div");
+      orbit.className = "system-orbit orbit-three";
+      visual.appendChild(orbit);
+    }
+
+    /* =======================================================
+       PARTICLES
+       ======================================================= */
+    if (!$(".system-particles", visual)) {
+      const particles = document.createElement("div");
+      particles.className = "system-particles";
+
+      for (let i = 0; i < 32; i++) {
+        const particle = document.createElement("span");
+        particle.style.setProperty("--particle-x", `${Math.random() * 100}%`);
+        particle.style.setProperty("--particle-y", `${Math.random() * 100}%`);
+        particle.style.setProperty("--particle-delay", `${Math.random() * -8}s`);
+        particle.style.setProperty("--particle-size", `${1 + Math.random() * 2.5}px`);
+        particles.appendChild(particle);
+      }
+      visual.appendChild(particles);
+    }
+
+    /* =======================================================
+       POINTER PARALLAX
+       ======================================================= */
+    if (window.matchMedia("(pointer:fine)").matches) {
+      let targetX = 0;
+      let targetY = 0;
+      let currentX = 0;
+      let currentY = 0;
+
+      visual.addEventListener("pointermove", (event) => {
+        const rect = visual.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
+        targetX = x * 12;
+        targetY = y * -10;
       });
+
+      visual.addEventListener("pointerleave", () => {
+        targetX = 0;
+        targetY = 0;
+      });
+
+      const animate = () => {
+        currentX += (targetX - currentX) * 0.06;
+        currentY += (targetY - currentY) * 0.06;
+        visual.style.transform = `rotateY(${currentX}deg) rotateX(${currentY}deg)`;
+        requestAnimationFrame(animate);
+      };
+
+      animate();
+    }
+  }
+
+  /* =========================================================
+     THE MACHINE
+     ========================================================= */
+  const machine = $(".flow");
+
+  if (machine) {
+    const machineSteps = [
+      {
+        number: "01",
+        title: "Discover",
+        description: "Find the opportunity.",
+        href: "solutions.html"
+      },
+      {
+        number: "02",
+        title: "Stack",
+        description: "Choose the tools.",
+        href: "stacks.html"
+      },
+      {
+        number: "03",
+        title: "Automate",
+        description: "Connect the workflow.",
+        href: "automation.html"
+      },
+      {
+        number: "04",
+        title: "Deliver",
+        description: "Create the outcome.",
+        href: "systems.html"
+      },
+      {
+        number: "05",
+        title: "Measure",
+        description: "Track what works.",
+        href: "money.html"
+      }
+    ];
+
+    const existingSteps = $$(":scope > div", machine);
+
+    existingSteps.forEach((step, index) => {
+      const data = machineSteps[index];
+      if (!data) return;
+
+      const link = document.createElement("a");
+      link.href = data.href;
+      link.className = "flow-step";
+      link.innerHTML = `
+        <span>${data.number}</span>
+        <strong>${data.title}</strong>
+        <small>${data.description}</small>
+      `;
+      step.replaceWith(link);
     });
   }
 
-  /*
-   * ---------------------------------------------------------
-   * CURRENT YEAR
-   * ---------------------------------------------------------
-   */
+  /* =========================================================
+     SCROLL REVEALS
+     ========================================================= */
+  const revealItems = $$(".card, .tool-preview, .feature-panel, .signal-panel, .flow-step");
 
-  document.querySelectorAll("[data-year]").forEach((element) => {
-    element.textContent = String(new Date().getFullYear());
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    revealItems.forEach((item) => {
+      item.classList.add("reveal");
+      observer.observe(item);
+    });
+  } else {
+    revealItems.forEach((item) => {
+      item.classList.add("is-visible");
+    });
+  }
+
+  /* =========================================================
+     SCROLL VISUALS
+     ========================================================= */
+  const sections = $$(".section");
+
+  sections.forEach((section, index) => {
+    if (index === 0 || section.querySelector(".section-visual")) {
+      return;
+    }
+
+    const sectionVisual = document.createElement("div");
+    sectionVisual.className = "section-visual";
+    sectionVisual.innerHTML = `
+      <div class="visual-grid"></div>
+      <div class="visual-orb orb-a"></div>
+      <div class="visual-orb orb-b"></div>
+      <div class="visual-ring ring-a"></div>
+      <div class="visual-ring ring-b"></div>
+      <div class="visual-core">
+        <span>${String(index).padStart(2, "0")}</span>
+      </div>
+    `;
+    section.prepend(sectionVisual);
   });
 
-  /*
-   * ---------------------------------------------------------
-   * MOBILE BREAKPOINT SAFETY
-   * ---------------------------------------------------------
-   *
-   * If the viewport becomes desktop-sized after the mobile
-   * menu was opened, clear the mobile state.
-   */
+  const visualSections = $$(".section-visual");
 
-  const mobileMedia = window.matchMedia("(min-width: 901px)");
-
-  const handleViewportChange = (event) => {
-    if (event.matches) {
-      closeMobileNav();
-      closeAllDropdowns();
-    }
-  };
-
-  if (typeof mobileMedia.addEventListener === "function") {
-    mobileMedia.addEventListener(
-      "change",
-      handleViewportChange
+  if ("IntersectionObserver" in window) {
+    const visualObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle("is-active", entry.isIntersecting);
+        });
+      },
+      { threshold: 0.15 }
     );
-  } else {
-    mobileMedia.addListener(handleViewportChange);
+
+    visualSections.forEach((item) => {
+      visualObserver.observe(item);
+    });
   }
+
+  /* =========================================================
+     CURRENT YEAR
+     ========================================================= */
+  const year = $("#current-year") || $("[data-year]");
+
+  if (year) {
+    year.textContent = new Date().getFullYear();
+  }
+
+  /* =========================================================
+     ACTIVE NAVIGATION
+     ========================================================= */
+  const currentPage = location.pathname.split("/").pop() || "index.html";
+
+  $$(".nav-links a").forEach((link) => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("is-current");
+    }
+  });
+
+  /* =========================================================
+     EXTERNAL LINKS
+     ========================================================= */
+  $$("a[data-external]").forEach((link) => {
+    link.setAttribute("target", "_blank");
+    link.setAttribute("rel", "noopener noreferrer");
+  });
+
+  /* =========================================================
+     NEWSLETTER FORMS
+     ========================================================= */
+  $$("form[data-newsletter]").forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const email = $("input[type='email']", form);
+      const message = $(".form-message", form);
+
+      if (!email || !message) {
+        return;
+      }
+
+      const value = email.value.trim();
+
+      if (!value) {
+        message.textContent = "Enter your email address.";
+        return;
+      }
+
+      if (!email.checkValidity()) {
+        message.textContent = "Enter a valid email address.";
+        return;
+      }
+
+      message.textContent = "You're ready to join The Signal.";
+      form.classList.add("submitted");
+      email.value = "";
+    });
+  });
+
 })();

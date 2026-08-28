@@ -1,0 +1,79 @@
+STACK & SYSTEM — FINAL AUDIT / DEPLOYMENT PACKAGE
+
+SOURCE
+- Built from the uploaded stack-and-system (2).zip.
+- .git directory excluded from deployment package.
+
+COMPLETED
+- A0 architecture baseline preserved.
+- A1 global navigation/UX corrections applied.
+- A2 canonical internal destinations corrected.
+- A3 PartnerStack duplicate profiles consolidated into canonical editorial pages.
+- A3 legacy Apollo page removed with permanent redirect.
+- Final internal-link and fragment crawl performed.
+
+A1
+- Removed only the history-dependent .page-back generation from app.js.
+- Preserved the complete 3D system; the code from `const visual = $(".hero-visual");` onward is byte-for-byte identical to the source.
+- Standardised mobile-toggle accessibility attributes on audited site pages.
+- Standardised active navigation states.
+- Standardised core/auxiliary footer architecture.
+
+A2
+- ai.html: tools.html#elevenlabs -> elevenlabs.html
+- automation.html: tools.html#tally -> tally.html
+- automation.html: tools.html#make -> make-com.html
+- index.html: featured “View the Blueprint” CTA -> ai-money-making-blueprint
+- Clean product URLs remain intentionally supported by _redirects.
+
+A3
+- 65 PartnerStack -2 profiles consolidated.
+- Unique Partner programme/commercial text retained in canonical editorial profiles.
+- tools-data.js profileUrl values changed from -2 files to canonical profile files.
+- 65 duplicate -2 files removed.
+- apollo.html removed.
+- 66 permanent redirects added for removed legacy/duplicate pages.
+- search-index.json filtered to remove deleted duplicate URLs.
+- No missing tools-data HTML references remain.
+
+A4 — COMMERCIAL / AFFILIATE
+- Existing affiliate relationship data was preserved.
+- Editorial inclusion is not converted into a confirmed affiliate claim.
+- Existing affiliate URLs were not invented or replaced.
+
+A5 — DIGITAL PRODUCTS / STRIPE
+- Existing Stripe checkout links preserved.
+- Netlify delivery and webhook functions preserved.
+- Secret environment variables remain server-side.
+- Existing two-product delivery mapping preserved.
+
+A6 — SEO
+- robots.txt preserved and points to sitemap.xml.
+- sitemap.xml preserved.
+- Duplicate profile URLs removed from search index and redirected.
+- Canonical profile files retained.
+
+A7 — MOBILE / ACCESSIBILITY
+- Mobile toggle standardised on pages with the global navigation.
+- aria-expanded and aria-controls retained/standardised.
+- Reduced-motion CSS was not altered.
+
+A8 — FINAL LINK CRAWL
+- Missing local HTML/JS destinations: 0 after accounting for intentional clean URLs, dynamic search destinations and the template file.
+- Missing local fragments: 0.
+- Primary navigation contains no Blog or Marketplace links.
+- No remaining -2 HTML profiles.
+- No tools-data profileUrl references to -2 files.
+
+PRESERVED
+- app.js 3D system.
+- CSS files.
+- Stripe functions.
+- Stripe checkout links.
+- robots.txt.
+- sitemap.xml.
+- Existing tool/company editorial content, except the deliberate consolidation of PartnerStack commercial data.
+- Existing clean URL architecture.
+
+DEPLOYMENT NOTE
+This package is a complete replacement of the deployable website root and intentionally excludes .git metadata. Review on the VPS before committing.

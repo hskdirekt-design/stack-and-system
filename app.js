@@ -150,21 +150,6 @@
     controls.className = "page-controls";
     controls.setAttribute("aria-label", "Page navigation");
 
-    if (!isHome) {
-      const back = document.createElement("button");
-      back.className = "page-control page-back";
-      back.type = "button";
-      back.innerHTML = "← <span>Back</span>";
-      back.addEventListener("click", () => {
-        if (window.history.length > 1) {
-          window.history.back();
-        } else {
-          window.location.href = "index.html";
-        }
-      });
-      controls.appendChild(back);
-    }
-
     const top = document.createElement("button");
     top.className = "page-control page-top";
     top.type = "button";

@@ -4096,7 +4096,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn up to 35% commissions on all customer transactions in the first year!",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "unbounce-2.html",
+      "profileUrl": "unbounce.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -4372,7 +4372,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 30% commission on every transaction + $2000 rewards!",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "adcreative-ai-2.html",
+      "profileUrl": "adcreative-ai.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -4740,7 +4740,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Get rewarded for every referral that closes, with earnings based on customer size: $100 for Core, $300 for Pro and Pro+, and 10% commission for Enterprise.",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "ignition-2.html",
+      "profileUrl": "ignition.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -5016,7 +5016,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 30% for the customer's first year",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "gamma-2.html",
+      "profileUrl": "gamma.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -5430,7 +5430,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "$28 Signup (T1 countries) | $10 Signup (T2 countries) | $2.50 Signup (T3 countries)",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "clickup-2.html",
+      "profileUrl": "clickup.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -5936,7 +5936,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "15% for 1 year from all sales, 15% lifetime on Jason AI SDR sales",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "reply-io-2.html",
+      "profileUrl": "reply-io.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -6304,7 +6304,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "**Our average ACV is $10K!** Earn up to 20% commission of each paying customer you refer. No cap on earnings!!",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "amplemarket-2.html",
+      "profileUrl": "amplemarket.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -6488,7 +6488,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 20% on 1st Year Subscription Revenue. Average $4,800 commission per customer.",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "quartile-2.html",
+      "profileUrl": "quartile.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -6626,7 +6626,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 10% for 6 months on payments for customers you refer!",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "runpod-2.html",
+      "profileUrl": "runpod.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -6764,7 +6764,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "💸 Earn 20% of every sale (recurring for 2 years)!",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "landbot-2.html",
+      "profileUrl": "landbot.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -6948,7 +6948,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "15% for 1-month subscription",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "landingi-2.html",
+      "profileUrl": "landingi.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -7408,7 +7408,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 20% on every transaction",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "seamless-2.html",
+      "profileUrl": "seamless.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -7914,7 +7914,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 20% of revenue share for up to 2 years!",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "motion-2.html",
+      "profileUrl": "motion.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -8236,7 +8236,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "🤑 Earn up to 30% recurring commission on all sales! Average Partner earns $2,300 in 90 days.",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "sanebox-2.html",
+      "profileUrl": "sanebox.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -8834,7 +8834,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 20% recurring commision! 💸",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "brand24-2.html",
+      "profileUrl": "brand24.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -8926,7 +8926,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn up to 20% commission on qualified customers (avg ACV $4000/yr)",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "sleekflow-2.html",
+      "profileUrl": "sleekflow.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -9340,7 +9340,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn up to 35% commission on qualifying orders!",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "plesk-2.html",
+      "profileUrl": "plesk.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -10352,7 +10352,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 30% Lifetime commission on workspace subscription plus extra earnings for every additional member you bring in.",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "krispcall-communications-inc-2.html",
+      "profileUrl": "krispcall-communications-inc.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -11272,7 +11272,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 25% Commission for your referrals (avg commission $80/mo/customer)",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "atria-2.html",
+      "profileUrl": "atria.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -11456,7 +11456,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Promote our tool to your audience, and you will receive 20% of all their transactions forever",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "browse-ai-2.html",
+      "profileUrl": "browse-ai.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -11778,7 +11778,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn up to 20% for the first 12 months on each new paid customer you refer!",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "lusha-2.html",
+      "profileUrl": "lusha.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -12560,7 +12560,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "$250 commission for demo-complete and up to $750 per closed-won deal",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "weave-communications-inc-2.html",
+      "profileUrl": "weave-communications-inc.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -12836,7 +12836,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 20% revenue share for the first 12 months of every workspace subscription",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "mindstudio-2.html",
+      "profileUrl": "mindstudio.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -13388,7 +13388,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn up to 30% Revenue Share depending on the plan purchase",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "ngram-2.html",
+      "profileUrl": "ngram.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -13710,7 +13710,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 20% commissions for the first year!",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "aisdr-inc-2.html",
+      "profileUrl": "aisdr-inc.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -13848,7 +13848,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn $150 for every paid signup for businesses",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "checkr-2.html",
+      "profileUrl": "checkr.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -13894,7 +13894,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Up to 50% for each paid costumer",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "alidrop-2.html",
+      "profileUrl": "alidrop.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -13986,7 +13986,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 50% commission for every new subscription you refer (Launch offer valid until July 1, 2026)",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "prezi-2.html",
+      "profileUrl": "prezi.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -14216,7 +14216,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 10% on new software sales for the first year. Additional 20% through the end of March 2026!",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "airia-2.html",
+      "profileUrl": "airia.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -14262,7 +14262,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn up to $43 per referral promoting Beautiful.ai -- 30% commission on Pro plans ($144/year), 15% on Teams plans ($480/user/year). First-year payout on annual, first-month on monthly.",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "beautiful-ai-2.html",
+      "profileUrl": "beautiful-ai.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -14400,7 +14400,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "50% Commission | $300 AOV",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "bitdefender-2.html",
+      "profileUrl": "bitdefender.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -14446,7 +14446,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn up to 30% recurring commission",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "claap-2.html",
+      "profileUrl": "claap.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -14538,7 +14538,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 20% of your referred customer's subscription revenue for one year, up to $1,200 per customer.",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "assembly-2.html",
+      "profileUrl": "assembly.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -14584,7 +14584,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 30% Extra Payout this August. Refer a new customer and earn an increased payout for every referral that converts before 31 August.",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "tradify-2.html",
+      "profileUrl": "tradify.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -14814,7 +14814,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 30% recurring monthly commissions up to 12 months!",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "pangram-labs-2.html",
+      "profileUrl": "pangram-labs.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -15090,7 +15090,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "20% per new customer for 12 months (up to $1,200/customer)",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "databox-2.html",
+      "profileUrl": "databox.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -15228,7 +15228,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Up to 20% revenue share",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "spiky-ai-2.html",
+      "profileUrl": "spiky-ai.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -15366,7 +15366,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "20% revenue share for 3 years if the referral converts (≈$18K total on a $30K deal)",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "expertise-ai-2.html",
+      "profileUrl": "expertise-ai.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -15504,7 +15504,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "25-50% recurring commission",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "vista-social-2.html",
+      "profileUrl": "vista-social.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -15872,7 +15872,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 20% for the lifetime of the customer!",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "bidx-2.html",
+      "profileUrl": "bidx.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -15918,7 +15918,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 20% Revenue Share for the first year",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "devs-ai-2.html",
+      "profileUrl": "devs-ai.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -16424,7 +16424,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 10% of net revenue on new referral for two years!",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "vida-global-inc-2.html",
+      "profileUrl": "vida-global-inc.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -16930,7 +16930,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 50% commission on every successful sale.",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "logome-ai-2.html",
+      "profileUrl": "logome-ai.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -17022,7 +17022,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 50% commission for the first year of every new customer! (plans start at $89/mo)",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "omniseo-2.html",
+      "profileUrl": "omniseo.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -17160,7 +17160,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Introduce us to an HR or L&D leaders and earn commissions for qualified referrals and signed contracts",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "evolve-2.html",
+      "profileUrl": "evolve.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -17252,7 +17252,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "20% revenue share for the first year",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "rebolt-2.html",
+      "profileUrl": "rebolt.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -17390,7 +17390,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 15% for the lifetime of the customer!",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "datahawk-2.html",
+      "profileUrl": "datahawk.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -17436,7 +17436,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 10% commission on all first year revenue (ACV $25,000/customer)",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "shade-2.html",
+      "profileUrl": "shade.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -17528,7 +17528,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Each customer can receive up to 30% of the revenue, with no upper limit！",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "thordata-2.html",
+      "profileUrl": "thordata.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -17666,7 +17666,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 20% commission on first year net new sales.",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "snowfire-ai-2.html",
+      "profileUrl": "snowfire-ai.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -17804,7 +17804,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 20% of revenue for the first 12 months! (average $1K per referral)",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "demodesk-2.html",
+      "profileUrl": "demodesk.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -17988,7 +17988,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 25% of First Year Subscription Revenue for each successful referral",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "teikametrics-2.html",
+      "profileUrl": "teikametrics.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -18264,7 +18264,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 20% for every paid referral for 12 months",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "synthflow-ai-2.html",
+      "profileUrl": "synthflow-ai.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -18402,7 +18402,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn up to 20% revenue share for the first year (ACV $175-$497)",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "dry-ground-ai-2.html",
+      "profileUrl": "dry-ground-ai.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -18494,7 +18494,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn up to $150 per paid referral — plus exclusive partner offers",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "backlog-by-nulab-inc-2.html",
+      "profileUrl": "backlog-by-nulab-inc.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -18632,7 +18632,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "40% from subscription, first 12 months (~$1,195/customer)",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "adwisely-2.html",
+      "profileUrl": "adwisely.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -18770,7 +18770,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn competitive revenue commissions (20% | $300-$900/Customer) for 6 months!",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "elevateforward-ai-2.html",
+      "profileUrl": "elevateforward-ai.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -19046,7 +19046,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn $300 USD for every successful AISQ Meteor referral.",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "aisq-2.html",
+      "profileUrl": "aisq.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -19230,7 +19230,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "canvas-score-by-roya-com-2.html",
+      "profileUrl": "canvas-score-by-roya-com.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -19276,7 +19276,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn 50% Revenue Share for the first year of customer purchases!",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "thetop-2.html",
+      "profileUrl": "thetop.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -19322,7 +19322,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "20% commission on every customer transaction for the first year.",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "confido-health-2.html",
+      "profileUrl": "confido-health.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -19552,7 +19552,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "20% recurring commission (up to $20k / customer)",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "typewise-2.html",
+      "profileUrl": "typewise.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -19736,7 +19736,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn up to 35% revenue share for the life of the customer",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "sentaro-2.html",
+      "profileUrl": "sentaro.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -19920,7 +19920,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "30% for every transaction for the customer's first year",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "testdriver-ai-2.html",
+      "profileUrl": "testdriver-ai.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }
@@ -20334,7 +20334,7 @@ const STACK_SYSTEM_TOOLS = [
     "partnerStackCommission": "Earn $2,000 to $3,000+ per month for the lifetime of every client you refer (8% of gross receipts, average 36 month engagement)",
     "editorial": {
       "status": "PartnerStack opportunity",
-      "profileUrl": "stratos-development-group-2.html",
+      "profileUrl": "stratos-development-group.html",
       "lastVerified": "2026-08",
       "handsOnReview": false
     }

@@ -12,11 +12,11 @@ Copy these into the root of the repository:
 - `netlify/functions/deliver-blueprint.mjs`
 - `netlify/functions/stripe-webhook.mjs`
 
-Do NOT add your PDFs to GitHub.
+Do NOT add your PDFs to GitHub. Store them privately in Netlify Blobs only.
 
 ## 2. Stripe redirect
 
-For BOTH live Payment Links, use the same After payment URL:
+For BOTH live Stripe Buy Buttons / Payment Links, use the same After payment URL:
 
 `https://hskdirect.co.uk/blueprint-download.html?session_id={CHECKOUT_SESSION_ID}`
 
@@ -54,7 +54,7 @@ Copy the endpoint's signing secret into Netlify as `STRIPE_WEBHOOK_SECRET`.
 
 ## 5. Store the PDFs privately
 
-The delivery function expects a Netlify Blobs store called:
+The delivery function expects a private Netlify Blobs store called:
 
 `blueprint-pdfs`
 

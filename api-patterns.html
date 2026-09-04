@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>The 5 API Patterns Every Automation Engineer Needs to Know | Stack &amp; System</title>
+  <link rel="canonical" href="https://hskdirect.co.uk/api-patterns.html">
+  <meta name="description" content="The 5 API Patterns Every Automation Engineer Needs to Know — practical tools, systems and guidance from Stack &amp; System.">
+  <link rel="stylesheet" href="styles.css">
+  
+  <style>
+    /* Small article-specific tweaks that inherit from main stylesheet */
+    .article-body h2 { color: var(--white); margin-top: 50px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    .article-body h3 { color: var(--blue-bright); margin-top: 30px; }
+    .article-body pre { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 10px; padding: 20px; overflow-x: auto; margin-bottom: 24px; color: var(--muted); font-size: 14px;}
+    .article-body code { font-family: monospace; color: var(--blue-bright); }
+    .article-body ul { color: var(--muted); margin-bottom: 24px; padding-left: 20px;}
+    .article-body li { margin-bottom: 10px; }
+    .toc-card { background: rgba(25,191,255,.05); border: 1px solid var(--line-blue); border-radius: var(--radius); padding: 30px; margin-bottom: 50px;}
+    .toc-card ul { list-style: none; padding: 0; }
+    .toc-card a { color: var(--muted); font-size: 14px; }
+    .toc-card a:hover { color: var(--blue-bright); }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <a class="logo" href="index.html">STACK<span>&amp;</span>SYSTEM</a>
+    <nav id="primary-navigation" class="nav-links" aria-label="Primary navigation">
+  <div class="nav-group">
+    <button class="nav-group-toggle" type="button" aria-expanded="false">
+      <span>Learn</span><span aria-hidden="true">▾</span>
+    </button>
+    <div class="nav-dropdown">
+      <a href="ai.html">AI</a>
+      <a href="automation.html">Automation</a>
+      <a href="agents.html">Agents</a>
+      <a href="content.html">Content</a>
+      <a href="money.html">Money</a>
+    </div>
+  </div>
+
+  <div class="nav-group">
+    <button class="nav-group-toggle" type="button" aria-expanded="false">
+      <span>Build</span><span aria-hidden="true">▾</span>
+    </button>
+    <div class="nav-dropdown">
+      <a href="tools.html">Tools</a>
+      <a href="stacks.html">Stacks</a>
+      <a href="systems.html">Systems</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="blueprints.html">Blueprints</a>
+    </div>
+  </div>
+
+  <a href="resources.html">Resources</a>
+  <a href="products.html">Products</a>
+  <a href="signal.html">The Signal</a>
+</nav>
+    <div class="nav-actions">
+      <a class="btn btn-small" href="signin.html" data-user>Sign in</a>
+      <a class="btn btn-primary btn-small" href="newsletter.html">Join free</a>
+      <button class="btn btn-small mobile-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-navigation"></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="container page-hero" style="padding-bottom: 40px;">
+    <div class="kicker">Engineering · 17 Aug 2026</div>
+    <h1>The 5 API Patterns Every Automation Engineer Needs to Know</h1>
+    <p class="lead">Most automation scripts fail not because the code is wrong, but because the architecture is fragile. Here are the five API patterns that separate working systems from broken ones — and how to choose the right pattern for your data flow.</p>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container" style="max-width: 800px; margin: 0 auto;">
+      
+      <div class="toc-card">
+        <h3 style="margin-top: 0; text-transform: uppercase; letter-spacing: .1em; font-size: 12px; color: var(--blue);">Contents</h3>
+        <ul>
+            <li><a href="#pattern-1">1. The REST-to-Action Pattern</a></li>
+            <li><a href="#pattern-2">2. The GraphQL Aggregation Pattern</a></li>
+            <li><a href="#pattern-3">3. The Internal API Bridge Pattern</a></li>
+            <li><a href="#pattern-4">4. The Partner API Handshake Pattern</a></li>
+            <li><a href="#pattern-5">5. The SOAP Legacy Wrapper Pattern</a></li>
+        </ul>
+      </div>
+
+      <div class="article-body">
+        <p class="lead">If you have ever written a script that pulls data from an API, transforms it, and pushes it somewhere else, you have already built an API-to-something pipeline. The question is not whether you can do it — the question is whether it will still be running in six months.</p>
+        <p class="lead">Most automation failures I see are not code failures. They are architecture failures. The script worked on day one because the API was stable, the rate limits were generous, and the data schema matched expectations. By month three, the script is throwing 429s, the schema has shifted, and the person who wrote it has moved on to another project.</p>
+
+        <h2 id="pattern-1">1. The REST-to-Action Pattern</h2>
+        <p class="lead">This is the pattern everyone starts with, and for good reason. A REST API exposes resources through predictable URLs. You <code>GET</code> a resource, inspect the JSON, extract what you need, and trigger an action. It is simple, well-documented, and universally supported.</p>
+        <p class="lead">The canonical form looks like this:</p>
+        <pre><code>Trigger Event → GET /resource/{id} → Inspect Response → Take Action</code></pre>
+        
+        <h3>When to use it</h3>
+        <ul>
+            <li>The API returns clean, predictable JSON</li>
+            <li>You only need a small subset of the response fields</li>
+            <li>The action is triggered by a discrete event (new order, new post, new review)</li>
+            <li>You can tolerate a small delay between the event and the action</li>
+        </ul>
+
+        <h3>The trap most people fall into</h3>
+        <p class="lead">The trap is assuming the API response structure is a contract. It is not. APIs change. Fields get renamed. Nested objects get flattened. Arrays become objects. If your script hardcodes field paths like <code>data.product.name</code>, you are one API update away from a <code>KeyError</code>.</p>
+
+        <h2 id="pattern-2">2. The GraphQL Aggregation Pattern</h2>
+        <p class="lead">REST APIs make you work for your data. If you need a user's profile, their recent posts, and their follower count, you make three requests. If you need that for 100 users, you make 300 requests. GraphQL fixes this by letting you describe exactly what you need in a single query.</p>
+        <pre><code>Define Data Requirements → Construct Query → POST to /graphql → Receive Exactly What You Asked For → Process</code></pre>
+
+        <h3>When to use it</h3>
+        <ul>
+            <li>You need data from multiple related resources</li>
+            <li>Bandwidth or request count matters (mobile, serverless, high-frequency)</li>
+            <li>The API provider offers a GraphQL endpoint with good documentation</li>
+        </ul>
+
+        <h2 id="pattern-3">3. The Internal API Bridge Pattern</h2>
+        <p class="lead">This is the pattern nobody talks about until they need it. You are pulling data from an external API and you want to process it before it hits your main system. But the external data is messy. The Internal API Bridge pattern solves this by inserting your own API between the external source and your consumer.</p>
+
+        <h2 id="pattern-4">4. The Partner API Handshake Pattern</h2>
+        <p class="lead">Some APIs are not public. They are partner APIs, accessible only through OAuth2, mutual TLS, or signed requests. The Partner API Handshake pattern is about managing the authentication lifecycle, not just the request. It is not enough to get a token. You need to refresh it before it expires.</p>
+
+        <h2 id="pattern-5">5. The SOAP Legacy Wrapper Pattern</h2>
+        <p class="lead">SOAP is not dead. It is just hiding in enterprise systems. The SOAP Legacy Wrapper pattern is about modernising the interface without modernising the backend. You build a thin wrapper that speaks SOAP to the legacy system and exposes a clean, modern interface to your automation scripts.</p>
+      </div>
+
+      <div class="card" style="margin-top:48px;">
+        <div class="kicker">Keep building</div>
+        <h2>From an API pattern to a working system.</h2>
+        <p>
+          The patterns above are useful when they help you build something
+          reliable. Explore Stack &amp; System's systems and blueprints to
+          see how tools, workflows and outcomes fit together.
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a class="btn btn-primary" href="systems.html">Explore systems →</a>
+          <a class="btn btn-small" href="blueprints.html">Explore blueprints →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <a class="logo" href="index.html" aria-label="Stack & System home">STACK<span>&amp;</span>SYSTEM</a>
+      <p>Practical AI, automation and online-business systems.</p>
+      <p class="affiliate-note">Affiliate relationships are identified separately from editorial inclusion.</p>
+    </div>
+    <div>
+      <h4>Learn</h4>
+      <a href="ai.html">AI</a><a href="automation.html">Automation</a><a href="agents.html">Agents</a><a href="content.html">Content</a><a href="money.html">Money</a>
+    </div>
+    <div>
+      <h4>Build</h4>
+      <a href="tools.html">Tools</a><a href="stacks.html">Stacks</a><a href="systems.html">Systems</a><a href="solutions.html">Solutions</a><a href="blueprints.html">Blueprints</a>
+    </div>
+    <div>
+      <h4>Platform</h4>
+      <a href="resources.html">Resources</a><a href="products.html">Products</a><a href="signal.html">The Signal</a><a href="signin.html">Sign in</a><a href="newsletter.html">Newsletter</a><a href="index.html">Home</a>
+    </div>
+  </div>
+  <div class="container" style="margin-top:30px">© <span data-year></span> Stack &amp; System</div>
+</footer>
+<script src="app.js" defer></script>
+</body>
+</html>

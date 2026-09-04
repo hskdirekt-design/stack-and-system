@@ -1,0 +1,22 @@
+{
+  "production_deployment": "paused",
+  "company_profile_pages": 480,
+  "logo_assets": 323,
+  "commercial_channels": [
+    "Make",
+    "Tally",
+    "Carrd",
+    "ElevenLabs",
+    "TikTok"
+  ],
+  "major_remaining_work": [
+    "homepage final redesign",
+    "search leakage audit and public/private data separation",
+    "product sales pages and Stripe purchase/delivery verification",
+    "legacy blog content recovery and placement",
+    "company directory transformation at scale",
+    "mobile/accessibility/SEO/broken-link QA",
+    "TikTok content-to-site/product workflow",
+    "final pre-deployment audit"
+  ]
+}

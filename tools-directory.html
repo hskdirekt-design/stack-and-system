@@ -39,6 +39,7 @@
     href="styles.css"
   >
 
+<meta name="description" content="Explore the technology. — practical tools, systems and guidance from Stack &amp; System.">
 </head>
 
 
@@ -309,6 +310,18 @@
 
         </div>
 
+        <div style="margin-top:22px;">
+          <div class="kicker">Popular jobs</div>
+          <div class="actions" id="job-shortcuts" role="group" aria-label="Search the directory by job">
+            <button class="btn btn-small" type="button" data-query="content creation">Create content</button>
+            <button class="btn btn-small" type="button" data-query="lead generation">Generate leads</button>
+            <button class="btn btn-small" type="button" data-query="customer support">Improve support</button>
+            <button class="btn btn-small" type="button" data-query="workflow automation">Automate work</button>
+            <button class="btn btn-small" type="button" data-query="AI workflow">Build an AI workflow</button>
+            <button class="btn btn-small" type="button" data-query="digital product">Launch a digital product</button>
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -385,6 +398,48 @@
 
   </section>
 
+
+
+  <!-- CHOOSING TOOLS -->
+
+  <section
+    class="section"
+    aria-labelledby="choose-tool-title"
+  >
+    <div class="container">
+      <div class="card">
+        <div class="kicker">Choose with intent</div>
+        <h2 id="choose-tool-title">Don't choose a tool because it's popular.</h2>
+        <p>
+          Start with the job you need done. Then compare the problem solved,
+          best-fit use cases, system role, alternatives and practical trade-offs.
+        </p>
+
+        <div class="grid" style="margin-top:28px;">
+          <div>
+            <span class="tag">01 · Job</span>
+            <h3>What needs to happen?</h3>
+            <p>Define the task or outcome before looking at software.</p>
+          </div>
+          <div>
+            <span class="tag">02 · Fit</span>
+            <h3>Who is it for?</h3>
+            <p>Look at the audience, skill level, workflow and scale.</p>
+          </div>
+          <div>
+            <span class="tag">03 · Stack</span>
+            <h3>What does it connect to?</h3>
+            <p>A good tool should fit the wider system rather than create another silo.</p>
+          </div>
+          <div>
+            <span class="tag">04 · Outcome</span>
+            <h3>What does success look like?</h3>
+            <p>Choose the smallest stack that can reliably produce the result you need.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
   <!-- DIRECTORY EXPLANATION -->
@@ -620,28 +675,13 @@
 
 
     function getSearchableText(tool) {
-
       return [
-
         tool.name,
         tool.category,
-        tool.subcategory,
         tool.description,
-        tool.whatItIs,
-        tool.problemSolved,
         tool.bestFor,
-        tool.useCases,
-        tool.capabilities,
-        tool.systemRoles,
-        tool.tags,
-        tool.alternatives,
-        tool.relatedTools
-
-      ]
-        .map(searchableValue)
-        .join(" ")
-        .toLowerCase();
-
+        tool.capabilities
+      ].map(searchableValue).join(" ").toLowerCase();
     }
 
 
@@ -709,6 +749,23 @@
               "article"
             );
 
+          const logoSlug =
+            String(tool.url || "")
+              .split("/")
+              .pop()
+              .replace(/\.html$/i, "");
+
+          const logoPath =
+            logoSlug
+              ? `assets/partnerstack-logos/${logoSlug}.jpg`
+              : "";
+
+          const logoInitial =
+            String(tool.name || "?")
+              .trim()
+              .charAt(0)
+              .toUpperCase();
+
 
           article.className =
             "card";
@@ -729,102 +786,72 @@
 
 
           const bestFor =
-            Array.isArray(
-              tool.bestFor
-            )
-              ? tool.bestFor.join(", ")
-              : String(
-                  tool.bestFor || ""
-                );
+            Array.isArray(tool.bestFor)
+              ? tool.bestFor.slice(0, 3).join(", ")
+              : String(tool.bestFor || "");
 
+          const problemSolved =
+            String(tool.problemSolved || "");
+
+          const alternatives =
+            Array.isArray(tool.alternatives)
+              ? tool.alternatives.slice(0, 3).join(", ")
+              : String(tool.alternatives || "");
 
           const tags =
-            Array.isArray(
-              tool.tags
-            )
-              ? tool.tags.slice(0, 5)
+            Array.isArray(tool.tags)
+              ? tool.tags.slice(0, 4)
               : [];
-
 
           const tagMarkup =
             tags.length
-
-              ? `
-
-                <div
-                  style="
-                    display:flex;
-                    flex-wrap:wrap;
-                    gap:6px;
-                    margin-top:15px;
-                  "
-                >
-
-                  ${tags.map(
-                    function (tag) {
-
-                      return `
-
-                        <span class="tag">
-                          ${escapeHtml(tag)}
-                        </span>
-
-                      `;
-
-                    }
-                  ).join("")}
-
-                </div>
-
-              `
-
+              ? `<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:15px;">
+                  ${tags.map(function(tag) {
+                    return `<span class="tag">${escapeHtml(tag)}</span>`;
+                  }).join("")}
+                </div>`
               : "";
-
 
           const actionLabel =
             isInternal
-              ? `Explore ${tool.name} →`
+              ? `See how ${tool.name} fits →`
               : "Visit Official Site ↗";
-
 
           const externalAttributes =
             isInternal
               ? ""
               : ' target="_blank" rel="noopener noreferrer"';
 
-
           article.innerHTML = `
+            <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+              <div style="width:54px;height:54px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.12);border-radius:14px;background:rgba(255,255,255,.045);overflow:hidden;flex:0 0 54px;">
+                <img src="${escapeHtml(logoPath)}" alt="${escapeHtml(tool.name)} logo" width="44" height="44" loading="lazy"
+                     style="width:44px;height:44px;object-fit:contain;"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                <span style="display:none;font-weight:800;font-size:1.2rem;" aria-hidden="true">${escapeHtml(logoInitial)}</span>
+              </div>
+              <div>
+                <span class="tag">${escapeHtml(tool.category)}</span>
+                <h3 style="margin:.45rem 0 0;">${escapeHtml(tool.name)}</h3>
+              </div>
+            </div>
+            <p>${escapeHtml(tool.description)}</p>
 
-            <span class="tag">
-              ${escapeHtml(tool.category)}
-            </span>
+            ${bestFor ? `
+              <p><strong>Best for:</strong> ${escapeHtml(bestFor)}</p>
+            ` : ""}
 
+            ${problemSolved ? `
+              <p><strong>Problem it solves:</strong> ${escapeHtml(problemSolved)}</p>
+            ` : ""}
 
-            <h3>
-              ${escapeHtml(tool.name)}
-            </h3>
-
-
-            <p>
-              ${escapeHtml(tool.description)}
-            </p>
-
-
-            <p>
-              <strong>Best for:</strong>
-              ${escapeHtml(bestFor)}
-            </p>
-
+            ${alternatives ? `
+              <p style="opacity:.82;"><strong>Alternatives:</strong> ${escapeHtml(alternatives)}</p>
+            ` : ""}
 
             ${tagMarkup}
 
-
-            <div
-              style="
-                margin-top:20px;
-              "
-            >
-
+            <div style="margin-top:20px;">
               <a
                 class="btn btn-small"
                 href="${escapeHtml(destination)}"
@@ -832,11 +859,8 @@
               >
                 ${escapeHtml(actionLabel)}
               </a>
-
             </div>
-
           `;
-
 
           results.appendChild(
             article
@@ -983,6 +1007,36 @@
       );
 
     }
+
+
+    const jobShortcuts =
+      document.querySelectorAll(
+        "#job-shortcuts [data-query]"
+      );
+
+    jobShortcuts.forEach(
+      function (button) {
+
+        button.addEventListener(
+          "click",
+          function () {
+
+            searchInput.value =
+              button.dataset.query || "";
+
+            setActiveCategory(
+              "all"
+            );
+
+            searchInput.focus();
+
+            render();
+
+          }
+        );
+
+      }
+    );
 
 
     const params =

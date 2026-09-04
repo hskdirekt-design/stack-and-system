@@ -58,6 +58,10 @@ export default async (request) => {
     return json("No purchased product was found on this checkout session.", 400);
   }
 
+  if (items.length !== 1) {
+    return json("This checkout contains more than one item and cannot be fulfilled automatically yet.", 403);
+  }
+
   const product = items[0].price?.product;
   const productName = typeof product === "string" ? null : product?.name;
   const normalizedName = productName?.trim().toUpperCase();

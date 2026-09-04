@@ -1,0 +1,27 @@
+{
+  "make": {
+    "type": "SaaS affiliate",
+    "status": "verified link supplied by owner",
+    "url": "https://www.make.com/en/register?pc=stackandsystem"
+  },
+  "tally": {
+    "type": "Referral partner",
+    "status": "verified link supplied by owner",
+    "url": "https://tally.cello.so/bKOHpwR6kGK"
+  },
+  "carrd": {
+    "type": "Referral partner",
+    "status": "verified link supplied by owner",
+    "url": "https://try.carrd.com/2w1vj2sj"
+  },
+  "elevenlabs": {
+    "type": "SaaS affiliate",
+    "status": "verified link supplied by owner",
+    "url": "https://try.elevenlabs.io/9bgot6k6tgcs"
+  },
+  "tiktok": {
+    "type": "TikTok affiliate/partner channel",
+    "status": "new partnership; terms not assumed",
+    "url": "https://getstartedtiktok.partnerlinks.io/n3tcdd8loqb6"
+  }
+}

@@ -11,10 +11,7 @@
 
   <title>{{TOOL_NAME}} Review &amp; Guide | Stack &amp; System</title>
 
-  <meta
-    name="description"
-    content="{{META_DESCRIPTION}}"
-  >
+  <meta name="description" content="{{TOOL_NAME}} — practical tools, systems and guidance from Stack &amp; System.">
 
   <link
     rel="canonical"
@@ -27,6 +24,17 @@
   <meta property="og:url" content="{{CANONICAL_URL}}">
 
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .tool-brand{display:flex;align-items:center;gap:18px;margin-bottom:22px}
+    .tool-logo-frame{width:96px;height:96px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.12);border-radius:22px;background:rgba(255,255,255,.045);overflow:hidden;flex:0 0 96px}
+    .tool-logo-frame img{display:block;width:76px;height:76px;object-fit:contain}
+    .logo-fallback-mark{display:none;font-size:2rem;font-weight:800}
+    .tool-logo-frame.logo-fallback .logo-fallback-mark{display:block}
+    .brand-note{margin:.25rem 0 0;opacity:.68;font-size:.9rem}
+    .partner-panel{border-color:rgba(255,255,255,.14)}
+    .partner-disclosure{font-size:.9rem;opacity:.72}
+    @media(max-width:640px){.tool-logo-frame{width:76px;height:76px;flex-basis:76px}.tool-logo-frame img{width:60px;height:60px}}
+  </style>
 </head>
 
 <body>
@@ -101,15 +109,21 @@
 
   <section class="container page-hero">
 
-    <div class="kicker">
-      {{CATEGORY}} · {{EDITORIAL_STATUS}}
+    <div class="tool-brand" aria-label="{{TOOL_NAME}} brand">
+      <div class="tool-logo-frame">
+        <img src="{{LOGO_PATH}}" alt="{{TOOL_NAME}} logo" width="96" height="96" loading="eager"
+             onerror="this.closest('.tool-logo-frame').classList.add('logo-fallback');this.remove();">
+        <span class="logo-fallback-mark" aria-hidden="true">{{LOGO_INITIAL}}</span>
+      </div>
+      <div>
+        <span class="kicker">{{CATEGORY}} · {{EDITORIAL_STATUS}}</span>
+        <p class="brand-note">Independent Stack &amp; System profile</p>
+      </div>
     </div>
 
     <h1>{{TOOL_NAME}}</h1>
 
-    <p class="lead">
-      {{SHORT_DESCRIPTION}}
-    </p>
+    <p class="lead">{{META_DESCRIPTION}}</p>
 
     <div class="actions">
 
@@ -796,6 +810,21 @@
 
     </div>
 
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="card partner-panel">
+        <span class="kicker">Commercial transparency</span>
+        <h2>How Stack &amp; System works with tools</h2>
+        <p>We build useful profiles around what a product does, who it suits,
+        how it fits into a wider stack and what trade-offs to consider.
+        If a verified referral or affiliate relationship exists, the relevant
+        action can use a tracked partner destination.</p>
+        <p><strong>Relationship status:</strong> {{PARTNER_STATUS}}</p>
+        <p class="partner-disclosure">{{PARTNER_DISCLOSURE}}</p>
+      </div>
+    </div>
   </section>
 
 </main>

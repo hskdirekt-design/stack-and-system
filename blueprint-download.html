@@ -16,6 +16,8 @@
 .download-spinner{width:34px;height:34px;border:3px solid rgba(255,255,255,.18);border-top-color:var(--blue-bright);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:18px}
 @keyframes spin{to{transform:rotate(360deg)}}
 </style>
+<meta name="description" content="Your purchase is ready. — practical tools, systems and guidance from Stack &amp; System.">
+<link rel="canonical" href="https://hskdirect.co.uk/blueprint-download.html">
 </head>
 <body>
 
@@ -64,8 +66,8 @@
 <main>
 <section class="container page-hero">
 <div class="kicker">Purchase confirmed</div>
-<h1>Your Blueprint is ready.</h1>
-<p class="lead">We're checking your Stripe payment and preparing the download.</p>
+<h1>Your purchase is ready.</h1>
+<p class="lead"></p>
 </section>
 
 <section class="section">
@@ -74,7 +76,7 @@
 <div id="download-state" class="download-state">
 <div class="download-spinner" aria-hidden="true"></div>
 <h2>Verifying your purchase…</h2>
-<p>Please keep this page open for a moment.</p>
+<p>Please keep this page open for a moment while we verify your payment.</p>
 </div>
 </div>
 </div>
@@ -142,12 +144,12 @@
       link.href = url;
       link.download = filename;
       link.className = "btn btn-primary";
-      link.textContent = "Download your Blueprint PDF";
+      link.textContent = "Download your purchase";
 
       state.innerHTML = `
         <div class="kicker">Verified</div>
         <h2>Your purchase is confirmed.</h2>
-        <p>Your PDF is ready. Keep this download for your personal use.</p>
+        <p>Your PDF is ready. Your purchase is ready to download. Keep the file for your personal use.</p>
       `;
       state.appendChild(link);
 
@@ -157,7 +159,7 @@
       state.innerHTML = `
         <h2>We couldn't complete the download.</h2>
         <p class="download-error">${error.message || "Please contact Stack & System if you completed payment and still cannot access your purchase."}</p>
-        <a class="btn btn-small" href="mailto:support@hskdirect.co.uk">Contact support</a>
+        <a class="btn btn-small" href="products.html#custom">Contact Stack &amp; System</a>
       `;
     });
 })();

@@ -812,15 +812,21 @@
                 </div>`
               : "";
 
-          const actionLabel =
-            isInternal
-              ? `See how ${tool.name} fits →`
-              : "Visit Official Site ↗";
+          const isPartner = Boolean(tool.isPartner && tool.affiliateUrl);
 
-          const externalAttributes =
-            isInternal
-              ? ""
-              : ' target="_blank" rel="noopener noreferrer"';
+          const actionMarkup = isPartner ? `
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;">
+              <a class="btn btn-primary btn-small" href="${escapeHtml(tool.affiliateUrl)}" target="_blank" rel="sponsored noopener noreferrer">
+                ${escapeHtml(tool.ctaText || "Try " + tool.name + " →")}
+              </a>
+              ${profileUrl ? `<a class="btn btn-small" href="${escapeHtml(profileUrl)}">Review →</a>` : ""}
+            </div>
+          ` : `
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;">
+              ${profileUrl ? `<a class="btn btn-small" href="${escapeHtml(profileUrl)}">See how it fits →</a>` : ""}
+              ${tool.officialUrl ? `<a class="btn btn-small" style="opacity:.85;" href="${escapeHtml(tool.officialUrl)}" target="_blank" rel="noopener noreferrer">Official site ↗</a>` : ""}
+            </div>
+          `;
 
           article.innerHTML = `
             <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
@@ -832,6 +838,7 @@
               </div>
               <div>
                 <span class="tag">${escapeHtml(tool.category)}</span>
+                ${isPartner ? '<span class="tag" style="background:rgba(0,180,255,.18);color:#66c2ff;border-color:rgba(0,180,255,.3);">Partner</span>' : ''}
                 <h3 style="margin:.45rem 0 0;">${escapeHtml(tool.name)}</h3>
               </div>
             </div>
@@ -851,21 +858,12 @@
 
             ${tagMarkup}
 
-            <div style="margin-top:20px;">
-              <a
-                class="btn btn-small"
-                href="${escapeHtml(destination)}"
-                ${externalAttributes}
-              >
-                ${escapeHtml(actionLabel)}
-              </a>
-            </div>
+            ${actionMarkup}
           `;
 
           results.appendChild(
             article
           );
-
         }
       );
 

@@ -1,4 +1,6 @@
 /blog.html /api-patterns.html 301
+/terms.html /privacy.html 301
+/terms /privacy.html 301
 
 # Duplicate blueprint consolidation
 /gmail-to-notion-blueprint.html /gmail-to-notion.html 301

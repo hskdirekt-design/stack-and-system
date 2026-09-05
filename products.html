@@ -9,12 +9,7 @@
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="stylesheet" href="styles.css">
 <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-<style>
-.storefront-hero{padding-top:72px;padding-bottom:34px}
-.storefront-hero h1{max-width:850px}
-.storefront-points{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-.storefront-points span{padding:9px 13px;border:1px solid rgba(255,255,255,.12);border-radius:999px;background:rgba(255,255,255,.035);font-size:.9rem}
-</style>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
 <header class="site-header"><div class="container nav">
@@ -85,9 +80,8 @@
       <div class="form-row"><label>First name<input type="text" name="first-name" autocomplete="given-name" required></label><label>Email<input type="email" name="email" autocomplete="email" required></label></div>
       <div class="form-row"><label>What are you looking for?<select name="creation-type" required><option value="">Choose one</option><option>Personalised lullaby</option><option>Personalised family song</option><option>Personalised children's music book</option><option>Birthday song or story</option><option>Something else</option></select></label><label>Child's first name<input type="text" name="child-first-name" required></label></div>
       <div class="form-row"><label>Child's age<input type="number" name="child-age" min="0" max="18" required></label><label>Preferred feel/style<input type="text" name="style" placeholder="e.g. gentle, magical, upbeat"></label></div>
-      <label>Tell me a little more<textarea name="brief" rows="5" placeholder="Favourite things, occasion, message, story idea or anything you'd like included."></textarea></label>
+      <label>Tell me a little more<textarea name="brief" rows="5" placeholder="Favourite things, occasion, message, story idea or anything you'd like included." required></textarea></label>
       <label class="consent-row"><input type="checkbox" name="consent" value="yes" required> <span>I agree that Stack &amp; System can use these details to respond to my enquiry.</span></label>
-      <label>Tell me about them and what you'd like<input type="text" name="brief" placeholder="Interests, occasion, message, ideas…" required></label>
       <button class="btn btn-primary" type="submit">Send my request →</button>
       <small class="form-note">Your details are used to respond to this request. No payment is taken through this form.</small>
     </form>

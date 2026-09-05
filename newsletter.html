@@ -38,7 +38,33 @@
 </nav>
 <div class="nav-actions"><a class="btn btn-small" href="signin.html" data-user>Sign in</a><a class="btn btn-primary btn-small" href="newsletter.html">Join free</a><button class="btn btn-small mobile-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-navigation"></button></div></header><main>
 <section class="container page-hero"><div class="kicker">The Signal</div><h1>Useful updates. No noise.</h1><p>A newsletter for practical AI tools, launches, automation opportunities and online-business signals worth tracking.</p></section>
-<section class="container"><div class="form-card"><h2>Join The Signal</h2><p class="lead" style="font-size:15px">Preview mode stores your email locally on this device. Before launch, connect this form to a proper email service.</p></div></section>
+<section class="container" style="padding-bottom: 60px;">
+  <div class="form-card">
+    <div style="text-align:center;margin-bottom:24px;">
+      <span class="tag" style="margin-bottom:12px;display:inline-block;">WEEKLY DISPATCH</span>
+      <h2 style="margin-bottom:8px;">Join The Signal</h2>
+      <p class="lead" style="font-size:14px;margin:0 auto;color:var(--muted);">Curated signals on AI tools, automation stacks, and digital products that actually work. Sent weekly.</p>
+    </div>
+    <form name="newsletter-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="newsletter-form">
+      <input type="hidden" name="form-name" value="newsletter-signup">
+      <p class="hidden-field" style="display:none;"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
+      <div class="field">
+        <label for="newsletter-name">First name (optional)</label>
+        <input id="newsletter-name" type="text" name="first-name" autocomplete="given-name" placeholder="Your first name">
+      </div>
+      <div class="field">
+        <label for="newsletter-email">Email address</label>
+        <input id="newsletter-email" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+      </div>
+      <button class="btn btn-primary" type="submit" style="width:100%;min-height:46px;margin-top:6px;font-weight:700;">
+        Subscribe to The Signal →
+      </button>
+      <p class="form-note" style="margin-top:16px;font-size:12px;color:var(--muted);text-align:center;line-height:1.5;">
+        No spam, ever. Unsubscribe with one click anytime. See our <a href="privacy.html" style="text-decoration:underline;color:var(--blue-bright);">Privacy Policy</a>.
+      </p>
+    </form>
+  </div>
+</section>
 </main><footer>
   <div class="container footer-grid">
     <div>

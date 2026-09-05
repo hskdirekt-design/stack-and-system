@@ -10,16 +10,6 @@ const STACK_SYSTEM_TOOLS = [
     "officialUrl": "https://1password.com/"
   },
   {
-    "name": "$50 for per Listing",
-    "category": "Business",
-    "description": "GetResponse Services Inc.",
-    "bestFor": "Small businesses, Business operations",
-    "capabilities": [],
-    "profileUrl": "50-for-per-listing.html",
-    "isPartner": false,
-    "officialUrl": "https://50-for-per-listing.com/"
-  },
-  {
     "name": "800.com",
     "category": "Business",
     "description": "800.com - Toll-Free and Local Business Number Separate your business and personal numbers. Build stronger customer relationships while tracking your busine",
@@ -2763,16 +2753,6 @@ const STACK_SYSTEM_TOOLS = [
     "profileUrl": "motive.html",
     "isPartner": false,
     "officialUrl": "https://motive.com/"
-  },
-  {
-    "name": "MQL Activation Bonus",
-    "category": "Business",
-    "description": "Guesty",
-    "bestFor": "Small businesses, Business operations",
-    "capabilities": [],
-    "profileUrl": "mql-activation-bonus.html",
-    "isPartner": false,
-    "officialUrl": "https://mql-activation-bonus.com/"
   },
   {
     "name": "MRPeasy",

@@ -1,12 +1,22 @@
+# Security: Block public access to internal strategy and archived directories
+/internal/* /404.html 404
+/_archive/* /404.html 404
+
 /blog.html /api-patterns.html 301
 /terms.html /privacy.html 301
 /terms /privacy.html 301
 
 # Duplicate blueprint consolidation
 /gmail-to-notion-blueprint.html /gmail-to-notion.html 301
+/gmail-to-notion-blueprint /gmail-to-notion.html 301
+
+# Decommissioned PartnerStack internal deal pages
+/50-for-per-listing.html /getresponse.html 301
+/mql-activation-bonus.html /tools-directory.html 301
 
 # Legacy orphaned tool profile
 /apollo.html /apollo-io.html 301
+/p3mo-co-sell-partner-programme.html /p3mo-ltd.html 301
 
 # The 65 duplicate PartnerStack profiles mapped to canonical profiles
 /adcreative-ai-2.html /adcreative-ai.html 301
@@ -17,11 +27,11 @@
 /alidrop-2.html /alidrop.html 301
 /amplemarket-2.html /amplemarket.html 301
 /assembly-2.html /assembly.html 301
-/audienceplus-2.html /audienceplus.html 301
-/autods-2.html /autods.html 301
-/bandoffers-2.html /bandoffers.html 301
+/audienceplus-2.html /tools-directory.html 301
+/autods-2.html /tools-directory.html 301
+/bandoffers-2.html /tools-directory.html 301
 /bill-com-2.html /bill.html 301
-/black-crow-ai-2.html /black-crow-ai.html 301
+/black-crow-ai-2.html /tools-directory.html 301
 /checkr-2.html /checkr.html 301
 /claap-2.html /claap.html 301
 /clickup-2.html /clickup.html 301

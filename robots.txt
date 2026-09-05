@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /internal/
+Disallow: /_archive/
+Disallow: /blueprint-download.html
+Disallow: /search.html
 Sitemap: https://hskdirect.co.uk/sitemap.xml

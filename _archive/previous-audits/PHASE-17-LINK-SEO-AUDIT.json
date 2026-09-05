@@ -1,0 +1,21 @@
+{
+  "html_pages": 488,
+  "local_references_checked": 16376,
+  "missing_local_html_targets": 0,
+  "seo_pages_checked": 488,
+  "missing_title": 0,
+  "missing_description": 1,
+  "missing_canonical": 13,
+  "legacy_blog_references": 2,
+  "missing_targets": [],
+  "legacy_references": [
+    {
+      "file": "index.html",
+      "reference": "blog.html"
+    },
+    {
+      "file": "resources.html",
+      "reference": "blog.html"
+    }
+  ]
+}

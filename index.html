@@ -30,11 +30,12 @@
 .logo-card{display:grid;grid-template-columns:auto 1fr;column-gap:12px;align-items:center;padding:18px;text-decoration:none;border:1px solid rgba(255,255,255,.11);border-radius:20px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.02));transition:transform .2s ease,border-color .2s ease}
 .logo-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.24)}
 .logo-card strong{font-size:1rem}.logo-card small{grid-column:2;opacity:.6;margin-top:2px}
-.logo-mark{width:46px;height:46px;display:grid;place-items:center;border-radius:13px;border:1px solid rgba(255,255,255,.13);font-weight:800;font-size:.95rem}
+.logo-mark{width:46px;height:46px;object-fit:cover;border-radius:13px;border:1px solid rgba(255,255,255,.13)}
 @media(max-width:800px){.logo-showcase{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.featured-tools-visual .section-heading{align-items:flex-start;flex-direction:column}.logo-showcase{grid-template-columns:1fr}}
 </style>
 <link rel="canonical" href="https://hskdirect.co.uk/index.html">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -130,16 +131,20 @@
 
       <div class="logo-showcase">
         <a class="logo-card" href="make-com.html">
-          <span class="logo-mark">M</span><strong>Make</strong><small>Automation</small>
+          <img class="logo-mark" src="assets/logos/make.svg" alt="Make" width="46" height="46">
+          <strong>Make</strong><small>Automation</small>
         </a>
         <a class="logo-card" href="tally.html">
-          <span class="logo-mark">T</span><strong>Tally</strong><small>Forms</small>
+          <img class="logo-mark" src="assets/logos/tally.svg" alt="Tally" width="46" height="46">
+          <strong>Tally</strong><small>Forms</small>
         </a>
         <a class="logo-card" href="carrd.html">
-          <span class="logo-mark">C</span><strong>Carrd</strong><small>Websites</small>
+          <img class="logo-mark" src="assets/logos/carrd.svg" alt="Carrd" width="46" height="46">
+          <strong>Carrd</strong><small>Websites</small>
         </a>
         <a class="logo-card" href="elevenlabs.html">
-          <span class="logo-mark">11</span><strong>ElevenLabs</strong><small>AI voice</small>
+          <img class="logo-mark" src="assets/logos/elevenlabs.svg" alt="ElevenLabs" width="46" height="46">
+          <strong>ElevenLabs</strong><small>AI voice</small>
         </a>
       </div>
     </div>
